@@ -1,10 +1,10 @@
-# Coding Standards for Dart/Flutter
+# Coding Standards for Dart/Flutter Recycling Prototype
 
 ## 1. Naming Conventions
 
 - **Classes**: Use `UpperCamelCase` for class names.
   ```dart
-  class plasticCounterClass {}
+  class PlasticCounterClass {}
   ```
 
 - **Variables**: Use `LowerCamelCase` for variable names.
@@ -26,3 +26,5 @@
   ```dart
   my_recycling_file.dart
   ```
+
+- **Directory Names**: Use `SnakeCase` for file names
