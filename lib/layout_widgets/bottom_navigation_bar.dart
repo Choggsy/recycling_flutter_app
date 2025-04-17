@@ -12,9 +12,14 @@ class CustomBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double iconSize = MediaQuery.of(context)
+        .size.width * 0.08; // Adjust
+
     return BottomNavigationBar(
       currentIndex: currentIndex,
       onTap: onTap,
+      showSelectedLabels: false,
+      showUnselectedLabels: false,
       items: const [
         BottomNavigationBarItem(
           icon: ImageIcon(AssetImage('assets/navigation/reuse.png')),

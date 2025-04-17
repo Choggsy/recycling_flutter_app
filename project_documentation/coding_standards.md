@@ -54,15 +54,17 @@
   var cardboardCounter;
   ```
 - **Minimal Wise Comments**: If comments are required, explain _why_ not _what_ is happening
- ```dart
-   // Avoid
-  // Increment i by 1
+```dart
+  /* Avoid
+  Increment i by 1
+  */
   i++;
-  
-  // Preferred
-  // Increment index to account for zero-based indexing
+
+  /*Preferred
+  Increment index to account for zero-based indexing
+   */
   i++; 
-  ```
+```
 
 - **Avoid Magic Numbers**: Use named constants instead of magic numbers to make code more understandable.
  ```dart
