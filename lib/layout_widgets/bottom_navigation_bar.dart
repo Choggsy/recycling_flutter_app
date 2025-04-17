@@ -17,16 +17,16 @@ class CustomBottomNavigationBar extends StatelessWidget {
       onTap: onTap,
       items: const [
         BottomNavigationBarItem(
-          icon: Icon(Icons.home),
+          icon: ImageIcon(AssetImage('assets/navigation/reuse.png')),
+          label: 'Upcycle',
+        ),
+        BottomNavigationBarItem(
+          icon: ImageIcon(AssetImage('assets/navigation/home.png')),
           label: 'Home',
         ),
         BottomNavigationBarItem(
-          icon: Icon(Icons.search), //TODO : This will change to Upcycling after tutorial
-          label: 'Search',
-        ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person), //TODO : This will change to Guidelines after tutorial
-          label: 'Profile',
+          icon: ImageIcon(AssetImage('assets/navigation/guidelines.png')),
+          label: 'Guidelines',
         ),
       ],
     );
