@@ -105,5 +105,6 @@
 - **Avoid Rebuilding Unnecessary Widgets**: Use _const constructors_ and _const widgets_ where possible to avoid unnecessary rebuilds.
 
 ## References 
--  **Dart Team. (2024).** _Effective Dart: Documentation._ [online] Available at: https://dart.dev/effective-dart/documentation [Accessed 16 Apr. 2025].
+- **Dart Team. (2024).** _Effective Dart: Documentation._ [online] Available at: https://dart.dev/effective-dart/documentation [Accessed 16 Apr. 2025].
 - **Dart Team. (2024).** _Effective Dart: Style._ [online] Available at: https://dart.dev/effective-dart/style [Accessed 16 Apr. 2025].
+- **Dart Team. (2024).** _Effective Dart: Usage._ [online] Available at: https://dart.dev/effective-dart/usage [Accessed 17 Apr. 2025].
