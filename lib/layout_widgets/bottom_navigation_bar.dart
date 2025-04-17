@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../properties/device_view_vectors.dart' show ScreenConfig;
+
 class CustomBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
   final Function(int) onTap;
@@ -12,16 +14,8 @@ class CustomBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double iconSize;
-
-    if (screenWidth < 600) {
-      // Phone view
-      iconSize = screenWidth * 0.08;
-    } else {
-      // Tablet view
-      iconSize = screenWidth * 0.029;
-    }
+    double iconSize = ScreenConfig.getIconSize(
+        MediaQuery.of(context).size.width);
 
     return BottomNavigationBar(
       currentIndex: currentIndex,
