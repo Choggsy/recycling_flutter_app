@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../properties/device_view_vectors.dart' show ScreenConfig;
+import '../properties/device_view_vector.dart' show ScreenConfig;
 
 class CustomBottomNavigationBar extends StatelessWidget {
   final int currentIndex;

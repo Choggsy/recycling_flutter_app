@@ -15,7 +15,7 @@ class ScreenConfig {
   static const double phoneLargeImageFactor = 0.3;
 
   static ViewType getViewType(double screenWidth) {
-    return screenWidth < phoneScreen ? ViewType.phone : ViewType.tablet;
+    return screenWidth <= phoneScreen ? ViewType.phone : ViewType.tablet;
   }
 
   static double getIconSize(double screenWidth) {
@@ -37,6 +37,7 @@ class ScreenConfig {
           default:
             return screenWidth * phoneMediumImageFactor; // Default to medium
         }
+
       case ViewType.tablet:
         switch (size) {
           case 'small':
