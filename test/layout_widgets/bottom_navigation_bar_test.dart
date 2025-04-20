@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:recycling_flutter_app/layout_widgets/bottom_navigation_bar.dart' show CustomBottomNavigationBar;
-import 'package:recycling_flutter_app/properties/device_view_vector.dart' show ScreenConfig;
+import 'package:recycling_flutter_app/layout_widgets/bottom_navigation_bar.dart'
+    show CustomBottomNavigationBar;
+import 'package:recycling_flutter_app/properties/device_view_vector.dart'
+    show ScreenConfig;
+
+final double delta = 1.0;
 
 void main() {
-  testWidgets('CustomBottomNavigationBar has all buttons', (WidgetTester tester) async {
+  testWidgets('CustomBottomNavigationBar has all buttons', (
+    WidgetTester tester,
+  ) async {
     await mockApp(tester);
 
     // Verify the presence of each button
@@ -13,62 +19,80 @@ void main() {
     expect(find.byType(ImageIcon).at(2), findsOneWidget);
   });
 
-  testWidgets('CustomBottomNavigationBar icon size changes with small phone screen size', (WidgetTester tester) async {
-    double smallScreenWidth = 300.0;
+  testWidgets(
+    'CustomBottomNavigationBar icon size changes with small phone screen size',
+    (WidgetTester tester) async {
+      final double smallScreenWidth = 300.0;
+      physicalDimensions(tester, smallScreenWidth);
+      await mockApp(tester);
 
-    // Test with small phone screen size
-    tester.view.devicePixelRatio = 1.0;
-    tester.view.physicalSize = Size(smallScreenWidth, 600);
-    await mockApp(tester);
-    double smallIconSize = ScreenConfig.getIconSize(smallScreenWidth);
-    expect(find.byType(SizedBox).first, findsOneWidget);
-    expect(tester.widget<SizedBox>(find.byType(SizedBox).first).width, closeTo(smallIconSize, 1.0));
+      expect(find.byType(SizedBox).first, findsOneWidget);
+      expect(
+        tester.widget<SizedBox>(find.byType(SizedBox).first).width,
+        closeTo(ScreenConfig.getIconSize(smallScreenWidth), delta),
+      );
 
-    // Reset screen size
-    tester.view.resetPhysicalSize();
-    tester.view.resetDevicePixelRatio();
-  });
+      resetScreenSize(tester);
+    },
+  );
 
-  testWidgets('CustomBottomNavigationBar icon size changes with large phone screen size', (WidgetTester tester) async {
-    double largeScreenWidth = 600.0;
+  testWidgets(
+    'CustomBottomNavigationBar icon size changes with large phone screen size',
+    (WidgetTester tester) async {
+      final double largeScreenWidth = 600.0;
+      physicalDimensions(tester, largeScreenWidth);
+      await mockApp(tester);
 
-    // Test with large phone screen size
-    tester.view.devicePixelRatio = 1.0;
-    tester.view.physicalSize = Size(largeScreenWidth, 600);
-    await mockApp(tester);
-    double largeIconSize = ScreenConfig.getIconSize(largeScreenWidth);
-    expect(find.byType(SizedBox).first, findsOneWidget);
-    expect(tester.widget<SizedBox>(find.byType(SizedBox).first).width, closeTo(largeIconSize, 1.0));
+      expect(find.byType(SizedBox).first, findsOneWidget);
+      expect(
+        tester.widget<SizedBox>(find.byType(SizedBox).first).width,
+        closeTo(ScreenConfig.getIconSize(largeScreenWidth), delta),
+      );
 
-    // Reset screen size
-    tester.view.resetPhysicalSize();
-    tester.view.resetDevicePixelRatio();
-  });
+      resetScreenSize(tester);
+    },
+  );
 
-  testWidgets('CustomBottomNavigationBar icon size changes with tablet screen size', (WidgetTester tester) async {
-    double tabletScreenWidth = 800.0;
+  testWidgets(
+    'CustomBottomNavigationBar icon size changes with tablet screen size',
+    (WidgetTester tester) async {
+      final double tabletScreenWidth = 800.0;
+      physicalDimensions(tester, tabletScreenWidth);
+      await mockApp(tester);
 
-    // Test with tablet screen size
-    tester.view.devicePixelRatio = 1.0;
-    tester.view.physicalSize = Size(tabletScreenWidth, 600);
-    await mockApp(tester);
-    double tabletIconSize = ScreenConfig.getIconSize(tabletScreenWidth);
-    expect(find.byType(SizedBox).first, findsOneWidget);
-    expect(tester.widget<SizedBox>(find.byType(SizedBox).first).width, closeTo(tabletIconSize, 1.0));
+      expect(find.byType(SizedBox).first, findsOneWidget);
+      expect(
+        tester.widget<SizedBox>(find.byType(SizedBox).first).width,
+        closeTo(ScreenConfig.getIconSize(tabletScreenWidth), delta),
+      );
 
-    // Reset screen size
-    tester.view.resetPhysicalSize();
-    tester.view.resetDevicePixelRatio();
-  });
+      resetScreenSize(tester);
+    },
+  );
 }
 
-Future<void> mockApp(WidgetTester tester) async {
-  await tester.pumpWidget(MaterialApp(
-    home: Scaffold(
-      bottomNavigationBar: CustomBottomNavigationBar(
-        currentIndex: 0,
-        onTap: (index) {},
+void resetScreenSize(final WidgetTester tester) {
+  tester.view.resetPhysicalSize();
+  tester.view.resetDevicePixelRatio();
+}
+
+void physicalDimensions(
+  final WidgetTester tester,
+  final double smallScreenWidth,
+) {
+  tester.view.devicePixelRatio = delta;
+  tester.view.physicalSize = Size(smallScreenWidth, 600);
+}
+
+Future<void> mockApp(final WidgetTester tester) async {
+  await tester.pumpWidget(
+    MaterialApp(
+      home: Scaffold(
+        bottomNavigationBar: CustomBottomNavigationBar(
+          currentIndex: 0,
+          onTap: (index) {},
+        ),
       ),
     ),
-  ));
+  );
 }
