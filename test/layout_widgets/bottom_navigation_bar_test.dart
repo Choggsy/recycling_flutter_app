@@ -5,14 +5,7 @@ import 'package:recycling_flutter_app/properties/device_view_vector.dart' show S
 
 void main() {
   testWidgets('CustomBottomNavigationBar has all buttons', (WidgetTester tester) async {
-    await tester.pumpWidget(MaterialApp(
-      home: Scaffold(
-        bottomNavigationBar: CustomBottomNavigationBar(
-          currentIndex: 0,
-          onTap: (index) {},
-        ),
-      ),
-    ));
+    await mockApp(tester);
 
     // Verify the presence of each button
     expect(find.byType(ImageIcon).at(0), findsOneWidget);
@@ -24,62 +17,58 @@ void main() {
     double smallScreenWidth = 300.0;
 
     // Test with small phone screen size
-    await tester.binding.setSurfaceSize(Size(smallScreenWidth, 600));
-    await tester.pumpWidget(MaterialApp(
-      home: Scaffold(
-        bottomNavigationBar: CustomBottomNavigationBar(
-          currentIndex: 0,
-          onTap: (index) {},
-        ),
-      ),
-    ));
+    tester.view.devicePixelRatio = 1.0;
+    tester.view.physicalSize = Size(smallScreenWidth, 600);
+    await mockApp(tester);
     double smallIconSize = ScreenConfig.getIconSize(smallScreenWidth);
     expect(find.byType(SizedBox).first, findsOneWidget);
     expect(tester.widget<SizedBox>(find.byType(SizedBox).first).width, closeTo(smallIconSize, 1.0));
 
     // Reset screen size
-    await tester.binding.setSurfaceSize(null);
+    tester.view.resetPhysicalSize();
+    tester.view.resetDevicePixelRatio();
   });
 
   testWidgets('CustomBottomNavigationBar icon size changes with large phone screen size', (WidgetTester tester) async {
     double largeScreenWidth = 600.0;
 
     // Test with large phone screen size
-    await tester.binding.setSurfaceSize(Size(largeScreenWidth, 600));
-    await tester.pumpWidget(MaterialApp(
-      home: Scaffold(
-        bottomNavigationBar: CustomBottomNavigationBar(
-          currentIndex: 0,
-          onTap: (index) {},
-        ),
-      ),
-    ));
+    tester.view.devicePixelRatio = 1.0;
+    tester.view.physicalSize = Size(largeScreenWidth, 600);
+    await mockApp(tester);
     double largeIconSize = ScreenConfig.getIconSize(largeScreenWidth);
     expect(find.byType(SizedBox).first, findsOneWidget);
     expect(tester.widget<SizedBox>(find.byType(SizedBox).first).width, closeTo(largeIconSize, 1.0));
 
     // Reset screen size
-    await tester.binding.setSurfaceSize(null);
+    tester.view.resetPhysicalSize();
+    tester.view.resetDevicePixelRatio();
   });
 
   testWidgets('CustomBottomNavigationBar icon size changes with tablet screen size', (WidgetTester tester) async {
     double tabletScreenWidth = 800.0;
 
     // Test with tablet screen size
-    await tester.binding.setSurfaceSize(Size(tabletScreenWidth, 600));
-    await tester.pumpWidget(MaterialApp(
-      home: Scaffold(
-        bottomNavigationBar: CustomBottomNavigationBar(
-          currentIndex: 0,
-          onTap: (index) {},
-        ),
-      ),
-    ));
+    tester.view.devicePixelRatio = 1.0;
+    tester.view.physicalSize = Size(tabletScreenWidth, 600);
+    await mockApp(tester);
     double tabletIconSize = ScreenConfig.getIconSize(tabletScreenWidth);
     expect(find.byType(SizedBox).first, findsOneWidget);
     expect(tester.widget<SizedBox>(find.byType(SizedBox).first).width, closeTo(tabletIconSize, 1.0));
 
     // Reset screen size
-    await tester.binding.setSurfaceSize(null);
+    tester.view.resetPhysicalSize();
+    tester.view.resetDevicePixelRatio();
   });
+}
+
+Future<void> mockApp(WidgetTester tester) async {
+  await tester.pumpWidget(MaterialApp(
+    home: Scaffold(
+      bottomNavigationBar: CustomBottomNavigationBar(
+        currentIndex: 0,
+        onTap: (index) {},
+      ),
+    ),
+  ));
 }
