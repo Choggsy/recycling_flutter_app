@@ -9,9 +9,9 @@ class UpcyclePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Reuse'),
+      appBar: CustomAppBar(title: 'Upcycling', showBackButton: false),
       body: Center(
-        child: Text('Reuse Page'),
+        child: Text('Upcycle Page'),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(
         currentIndex: 0,

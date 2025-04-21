@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:recycling_flutter_app/component/bottom_navigation_bar.dart' show CustomBottomNavigationBar;
 import 'package:recycling_flutter_app/component/top_app_bar.dart' show CustomAppBar;
 import '../helper/get_material_page.dart' show getMaterialPage;
@@ -12,18 +11,13 @@ class GuidelinesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Guidelines'),
+      appBar: CustomAppBar(title: 'Guidelines', showBackButton: false),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(10.0),
-        child: StaggeredGrid.count(
-          crossAxisCount: 4, // Number of columns in the grid
-          mainAxisSpacing: 10.0,
-          crossAxisSpacing: 10.0,
-          children: MosaicButtons.buildMosaicButtons(
-            context,
-            ['Cardboard', 'Glass', 'Plastic', 'Material 3', 'Material 4', 'Material 5', 'Material 6', 'Material 7', 'Material 8'],
-            getMaterialPage,
-          ),
+        child: MosaicButtons.buildMosaicGrid(
+          context,
+          ['Cardboard', 'Glass', 'Plastic', 'Material 3', 'Material 4', 'Material 5', 'Material 6', 'Material 7', 'Material 8'],
+          getMaterialPage,
         ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(
