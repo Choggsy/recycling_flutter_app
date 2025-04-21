@@ -4,32 +4,33 @@ import 'package:recycling_flutter_app/component/tile_button.dart' show TileButto
 import '../helper/grid_helper.dart' show GridHelper;
 
 class MosaicButtons {
-  static Widget buildMosaicGrid(final BuildContext context, final List<String> labels, final Function getPage) {
+  static Widget buildMosaicGrid(final BuildContext context, final List labels, final Function getPage) {
+    final Size screenSize = MediaQuery.of(context).size;
+    final bool isTablet = screenSize.width > 600; // Adjust the threshold as needed
+
     return StaggeredGrid.count(
-      crossAxisCount: 4, // Number of columns in the grid
+      crossAxisCount: isTablet ? 6 : 4, // More columns for tablets
       mainAxisSpacing: 10.0,
       crossAxisSpacing: 10.0,
-      children: _buildMosaicButtons(labels, getPage),
+      children: _buildMosaicButtons(labels, getPage, isTablet),
     );
   }
 
-  static List<Widget> _buildMosaicButtons(final List<String> labels, final Function getPage) {
-    List<Widget> buttons = [];
+  static List<Widget> _buildMosaicButtons(final List labels, final Function getPage, final bool isTablet) {
+    return labels.asMap().entries.map((entry) {
+      final int index = entry.key;
+      final String label = entry.value;
+      final int patternIndex = index % 5;
 
-    for (int i = 0; i < labels.length; i++) {
-      final int patternIndex = i % 5;
-      buttons.add(
-        StaggeredGridTile.count(
-          crossAxisCellCount: GridHelper.getCrossAxisCellCount(patternIndex),
-          mainAxisCellCount: GridHelper.getMainAxisCellCount(patternIndex),
-          child: TileButton(
-            label: labels[i],
-            index: i,
-            getPage: getPage,
-          ),
+      return StaggeredGridTile.count(
+        crossAxisCellCount: GridHelper.getCrossAxisCellCount(patternIndex),
+        mainAxisCellCount: isTablet ? GridHelper.getMainAxisCellCount(patternIndex) / 1.5 : GridHelper.getMainAxisCellCount(patternIndex),
+        child: TileButton(
+          label: label,
+          index: index,
+          getPage: getPage,
         ),
       );
-    }
-    return buttons;
+    }).toList();
   }
 }
