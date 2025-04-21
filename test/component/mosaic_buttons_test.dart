@@ -2,105 +2,73 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:recycling_flutter_app/component/mosaic_buttons.dart' show MosaicButtons;
 import 'package:recycling_flutter_app/helper/get_material_page.dart' show getMaterialPage;
+import 'package:recycling_flutter_app/properties/device_view_vector.dart' show ScreenConfig;
 import 'package:recycling_flutter_app/view/material/cardboard_page.dart';
 import 'package:recycling_flutter_app/view/material/glass_page.dart';
 import 'package:recycling_flutter_app/view/material/plastic_page.dart';
 
 void main() {
-  testWidgets('MosaicButtons builds a grid with correct number of buttons and labels', (WidgetTester tester) async {
-    // Define test data
-    final List<String> labels = ['Cardboard', 'Glass', 'Plastic'];
-    final Function getPage = getMaterialPage;
+  final List<String> testData = ['Cardboard', 'Glass', 'Plastic'];
 
-    // Build the widget
-    await tester.pumpWidget(MaterialApp(
-      home: Builder(
-        builder: (context) {
-          return Scaffold(
-            body: MosaicButtons.buildMosaicGrid(context, labels, getPage),
-          );
-        },
-      ),
-    ));
+  testWidgets('MosaicButtons builds a grid with correct number of buttons and labels on phone', (final WidgetTester tester) async {
+    await pumpMosaicGridWidget(tester, Size(ScreenConfig.phoneScreen.toDouble(), 800.0), testData, getMaterialPage);
+    expect(find.byType(ElevatedButton), findsNWidgets(testData.length));
 
-    // Verify the number of buttons
-    expect(find.byType(ElevatedButton), findsNWidgets(labels.length));
-
-    // Verify the labels of the buttons
-    for (final label in labels) {
+    for (final label in testData) { // Verify the labels of the buttons
       expect(find.text(label), findsOneWidget);
     }
   });
 
-  testWidgets('MosaicButtons navigates to CardboardPage on button press', (WidgetTester tester) async {
-    // Define test data
-    final List<String> labels = ['Cardboard', 'Glass', 'Plastic'];
-    final Function getPage = getMaterialPage;
+  testWidgets('MosaicButtons builds a grid with correct number of buttons and labels on tablet', (final WidgetTester tester) async {
+    await pumpMosaicGridWidget(tester, Size((ScreenConfig.phoneScreen + 1).toDouble(), 800.0), testData, getMaterialPage);
+    expect(find.byType(ElevatedButton), findsNWidgets(testData.length));
 
-    // Build the widget
-    await tester.pumpWidget(MaterialApp(
-      home: Builder(
-        builder: (context) {
-          return Scaffold(
-            body: MosaicButtons.buildMosaicGrid(context, labels, getPage),
-          );
-        },
-      ),
-    ));
+    for (final label in testData) { // Verify the labels of the buttons
+      expect(find.text(label), findsOneWidget);
+    }
+  });
 
-    // Tap the first button
+  testWidgets('MosaicButtons navigates to CardboardPage on button press', (final WidgetTester tester) async {
+    await pumpMosaicGridWidget(tester, Size(ScreenConfig.phoneScreen.toDouble(), 800.0), testData, getMaterialPage);
+
     await tester.tap(find.byKey(Key('Cardboard')));
     await tester.pumpAndSettle();
-
-    // Verify navigation to the correct page
     expect(find.byType(CardboardPage), findsOneWidget);
   });
 
-  testWidgets('MosaicButtons navigates to GlassPage on button press', (WidgetTester tester) async {
-    // Define test data
-    final List<String> labels = ['Cardboard', 'Glass', 'Plastic'];
-    final Function getPage = getMaterialPage;
-
-    // Build the widget
-    await tester.pumpWidget(MaterialApp(
-      home: Builder(
-        builder: (context) {
-          return Scaffold(
-            body: MosaicButtons.buildMosaicGrid(context, labels, getPage),
-          );
-        },
-      ),
-    ));
-
-    // Tap the second button
+  testWidgets('MosaicButtons navigates to GlassPage on button press', (final WidgetTester tester) async {
+    await pumpMosaicGridWidget(tester, Size(ScreenConfig.phoneScreen.toDouble(), 800.0), testData, getMaterialPage);
     await tester.tap(find.byKey(Key('Glass')));
     await tester.pumpAndSettle();
 
-    // Verify navigation to the correct page
     expect(find.byType(GlassPage), findsOneWidget);
   });
 
-  testWidgets('MosaicButtons navigates to PlasticPage on button press', (WidgetTester tester) async {
-    // Define test data
-    final List<String> labels = ['Cardboard', 'Glass', 'Plastic'];
-    final Function getPage = getMaterialPage;
+  testWidgets('MosaicButtons navigates to PlasticPage on button press', (final WidgetTester tester) async {
+    await pumpMosaicGridWidget(tester, Size(ScreenConfig.phoneScreen.toDouble(), 800.0), testData, getMaterialPage);
+    await tester.tap(find.byKey(Key('Plastic')));
+    await tester.pumpAndSettle();
 
-    // Build the widget
-    await tester.pumpWidget(MaterialApp(
-      home: Builder(
+    expect(find.byType(PlasticPage), findsOneWidget);
+  });
+
+  testWidgets('MosaicButtons handles empty labels list', (final WidgetTester tester) async {
+    await pumpMosaicGridWidget(tester, Size(ScreenConfig.phoneScreen.toDouble(), 800.0), [], getMaterialPage);
+    expect(find.byType(ElevatedButton), findsNothing);
+  });
+}
+
+Future<void> pumpMosaicGridWidget(final WidgetTester tester,final Size size,final List<String> labels,final Function getPage) async {
+  await tester.pumpWidget(MaterialApp(
+    home: MediaQuery(
+      data: MediaQueryData(size: size),
+      child: Builder(
         builder: (context) {
           return Scaffold(
             body: MosaicButtons.buildMosaicGrid(context, labels, getPage),
           );
         },
       ),
-    ));
-
-    // Tap the third button
-    await tester.tap(find.byKey(Key('Plastic')));
-    await tester.pumpAndSettle();
-
-    // Verify navigation to the correct page
-    expect(find.byType(PlasticPage), findsOneWidget);
-  });
+    ),
+  ));
 }
