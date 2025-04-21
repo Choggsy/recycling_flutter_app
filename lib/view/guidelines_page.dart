@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:recycling_flutter_app/component/bottom_navigation_bar.dart' show CustomBottomNavigationBar;
 import 'package:recycling_flutter_app/component/top_app_bar.dart' show CustomAppBar;
 import '../helper/get_page.dart';
@@ -13,47 +14,37 @@ class GuidelinesPage extends StatelessWidget {
       appBar: CustomAppBar(title: 'Guidelines'),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
-        child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 4, // Number of columns in the grid
-            crossAxisSpacing: 10.0,
-            mainAxisSpacing: 10.0,
-            childAspectRatio: 1, // Aspect ratio for square tiles
-          ),
-          itemCount: 6, // Number of buttons
-          itemBuilder: (context, index) {
-            return GridTile(
-              child: Container(
-                decoration: BoxDecoration(
-                  border: Border.all(color: AppColors.darkBrown, width: 3.0), // Thick border
-                  color: AppColors.background, // Use theme color
-                ),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: AppColors.darkBrown, backgroundColor: AppColors.background, // Text color from theme
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.zero, // No rounded corners
-                    ),
-                  ),
-                  onPressed: () {
-                    // TODO: Navigate to different material pages make a getMaterial function like the getPage function
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) {
-                        // Replace with actual pages
-                        if (index == 0) return PlaceholderPage('Cardboard');
-                        if (index == 1) return PlaceholderPage('Glass');
-                        if (index == 2) return PlaceholderPage('Plastic');
-                        // Add more conditions for other buttons
-                        return PlaceholderPage('Material $index');
-                      }),
-                    );
-                  },
-                  child: Text('Material $index'), // Replace with actual button labels
-                ),
-              ),
-            );
-          },
+        child: StaggeredGrid.count(
+          crossAxisCount: 4, // Number of columns in the grid
+          mainAxisSpacing: 10.0,
+          crossAxisSpacing: 10.0,
+          children: [
+            StaggeredGridTile.count(
+              crossAxisCellCount: 2,
+              mainAxisCellCount: 2,
+              child: buildButton(context, 'Cardboard', 0),
+            ),
+            StaggeredGridTile.count(
+              crossAxisCellCount: 2,
+              mainAxisCellCount: 1,
+              child: buildButton(context, 'Glass', 1),
+            ),
+            StaggeredGridTile.count(
+              crossAxisCellCount: 1,
+              mainAxisCellCount: 1,
+              child: buildButton(context, 'Plastic', 2),
+            ),
+            StaggeredGridTile.count(
+              crossAxisCellCount: 1,
+              mainAxisCellCount: 1,
+              child: buildButton(context, 'Material 3', 3),
+            ),
+            StaggeredGridTile.count(
+              crossAxisCellCount: 4,
+              mainAxisCellCount: 2,
+              child: buildButton(context, 'Material 4', 4),
+            ),
+          ],
         ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(
@@ -64,6 +55,38 @@ class GuidelinesPage extends StatelessWidget {
             MaterialPageRoute(builder: (context) => getPage(index)),
           );
         },
+      ),
+    );
+  }
+
+  Widget buildButton(BuildContext context, String label, int index) {
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color: AppColors.darkBrown, width: 3.0), // Thick border
+        color: AppColors.background, // Use theme color
+      ),
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          foregroundColor: AppColors.darkBrown, backgroundColor: AppColors.background, // Text color from theme
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.zero, // No rounded corners
+          ),
+        ),
+        onPressed: () {
+          // Navigate to different material pages
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) {
+              // Replace with actual pages
+              if (index == 0) return PlaceholderPage('Cardboard');
+              if (index == 1) return PlaceholderPage('Glass');
+              if (index == 2) return PlaceholderPage('Plastic');
+              // Add more conditions for other buttons
+              return PlaceholderPage('Material $index');
+            }),
+          );
+        },
+        child: Text(label), // Replace with actual button labels
       ),
     );
   }
