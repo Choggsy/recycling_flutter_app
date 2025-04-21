@@ -10,7 +10,6 @@ void main() {
   testWidgets('CustomBottomNavigationBar has all buttons', (WidgetTester tester) async {
     await mockApp(tester, indexZero);
 
-    // Verify the presence of each button
     expect(find.byType(ImageIcon).at(indexZero), findsOneWidget);
     expect(find.byType(ImageIcon).at(1), findsOneWidget);
     expect(find.byType(ImageIcon).at(2), findsOneWidget);
@@ -61,22 +60,17 @@ void main() {
   testWidgets('CustomBottomNavigationBar onTap callback is called', (WidgetTester tester) async {
     int tappedIndex = -1;
 
-    await mockApp(tester, indexZero, (index) {
-      tappedIndex = index;
-    });
+    await mockApp(tester, indexZero, (index) {tappedIndex = index;});
 
-    // Tap on the second item
     await tester.tap(find.byType(ImageIcon).at(1));
     await tester.pump();
 
-    // Verify that the onTap callback is called with the correct index
     expect(tappedIndex, 1);
   });
 
   testWidgets('CustomBottomNavigationBar updates currentIndex', (WidgetTester tester) async {
     await mockApp(tester, 1);
 
-    // Verify that the second item is selected
     BottomNavigationBar bottomNavigationBar = tester.widget(find.byType(BottomNavigationBar));
     expect(bottomNavigationBar.currentIndex, 1);
   });
