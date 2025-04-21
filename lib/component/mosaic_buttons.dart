@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../properties/app_theme.dart' show AppColors;
+import '../helper/grid_helper.dart' show GridHelper;
 
 class MosaicButtons {
-  static List<Widget> buildMosaicButtons(BuildContext context, List<String> labels, Function getPage) {
+  static List<Widget> buildMosaicButtons(final BuildContext context, final List<String> labels, final Function getPage) {
     List<Widget> buttons = [];
+
     for (int i = 0; i < labels.length; i++) {
+      final int patternIndex = i % 5;
       buttons.add(
         StaggeredGridTile.count(
-          crossAxisCellCount: i == 4 ? 4 : (i == 0 ? 2 : 1),
-          mainAxisCellCount: i == 0 ? 2 : 1,
+          crossAxisCellCount: GridHelper.getCrossAxisCellCount(patternIndex),
+          mainAxisCellCount: GridHelper.getMainAxisCellCount(patternIndex),
           child: buildButton(context, labels[i], i, getPage),
         ),
       );
@@ -17,7 +20,7 @@ class MosaicButtons {
     return buttons;
   }
 
-  static Widget buildButton(BuildContext context, String label, int index, Function getPage) {
+  static Widget buildButton(final BuildContext context, final String label, final int index, final Function getPage) {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(color: AppColors.darkBrown, width: 3.0), // Thick border
