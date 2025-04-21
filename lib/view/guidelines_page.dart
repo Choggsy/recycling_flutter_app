@@ -19,22 +19,20 @@ class GuidelinesPage extends StatelessWidget {
         child: Column(
           children: [
             Space.medium.box,
-            SizedBox(
-              width: double.infinity, // Make the button as wide as the parent
-              child: TileButton(
-                label: "logo guide",
-                index: 0, // Adjust the index as needed
-                getPage: getMaterialPage,
-              ),
-            ),
+            buildTileButton("logo guide", 3, getMaterialPage),
             Space.large.box,
-            Text('Material Guidelines'),
-            Space.small.box,
+            Text(
+              'Material Guidelines',
+              style: Theme.of(context).textTheme.displayMedium,
+            ),
+            Space.medium.box,
             MosaicButtons.buildMosaicGrid(
               context,
               ['Cardboard', 'Glass', 'Plastic', 'Material 3', 'Material 4', 'Material 5', 'Material 6', 'Material 7', 'Material 8'],
               getMaterialPage,
             ),
+            Space.medium.box,
+            buildTileButton("Room Selection", 4, getMaterialPage),
           ],
         ),
       ),
@@ -46,6 +44,18 @@ class GuidelinesPage extends StatelessWidget {
             MaterialPageRoute(builder: (context) => getPage(index)),
           );
         },
+      ),
+    );
+  }
+
+  Widget buildTileButton(String label, int index, Function getPage) {
+    return SizedBox(
+      width: double.infinity,
+      height: 110.0, // Adjust the height as needed
+      child: TileButton(
+        label: label,
+        index: index,
+        getPage: getPage,
       ),
     );
   }

@@ -29,6 +29,11 @@ class AppTheme {
       textTheme: TextTheme(
         bodyLarge: TextStyle(color: AppColors.darkRedBrown),
         bodyMedium: TextStyle(color: AppColors.darkBrown),
+        displayMedium: TextStyle(
+          color: AppColors.darkGreen,
+          fontSize: 24.0, // Adjust the font size as needed
+          fontWeight: FontWeight.bold,
+        ),
       ),
       appBarTheme: AppBarTheme(
         color: AppColors.greenish,
@@ -43,3 +48,4 @@ class AppTheme {
     );
   }
 }
+
