@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:recycling_flutter_app/layout_widgets/top_app_bar.dart' show CustomAppBar;
+import 'package:recycling_flutter_app/component/top_app_bar.dart' show CustomAppBar;
 
 void main() {
   testWidgets('CustomAppBar displays the correct title', (final WidgetTester tester) async {

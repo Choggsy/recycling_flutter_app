@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:recycling_flutter_app/layout_widgets/bottom_navigation_bar.dart'
-    show CustomBottomNavigationBar;
+import 'package:recycling_flutter_app/component/bottom_navigation_bar.dart' show CustomBottomNavigationBar;
+
 import 'package:recycling_flutter_app/properties/device_view_vector.dart'
     show ScreenConfig;
 
