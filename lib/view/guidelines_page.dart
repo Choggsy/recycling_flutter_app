@@ -14,10 +14,15 @@ class GuidelinesPage extends StatelessWidget {
       appBar: CustomAppBar(title: 'Guidelines', showBackButton: false),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(10.0),
-        child: MosaicButtons.buildMosaicGrid(
-          context,
-          ['Cardboard', 'Glass', 'Plastic', 'Material 3', 'Material 4', 'Material 5', 'Material 6', 'Material 7', 'Material 8'],
-          getMaterialPage,
+        child: Column(
+          children: [
+            Text('Guidelines Page'),
+            MosaicButtons.buildMosaicGrid(
+              context,
+              ['Cardboard', 'Glass', 'Plastic', 'Material 3', 'Material 4', 'Material 5', 'Material 6', 'Material 7', 'Material 8'],
+              getMaterialPage,
+            ),
+          ],
         ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(
