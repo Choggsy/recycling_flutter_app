@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import '../component/tile_button.dart' show TileButton;
-import '../helper/get_logo_page.dart' show getLogoPage;
-import '../properties/app_theme.dart' show AppColors;
+import '../../../component/tile_button.dart' show TileButton;
+import '../../../helper/get_logo_page.dart' show getLogoPage;
+import '../../../properties/app_theme.dart' show AppColors;
 
-class LogoGuidePage extends StatelessWidget {
-  const LogoGuidePage({super.key});
+class RecyclableLogoPage extends StatelessWidget {
+  const RecyclableLogoPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Logo Guide'),
+        title: Text('Logos Guide'),
       ),
       body: Column(
         children: [
@@ -18,7 +18,7 @@ class LogoGuidePage extends StatelessWidget {
             children: [
               Expanded(
                 child: TileButton(
-                  label: 'Logo Guide',
+                  label: 'Recyclable Logos',
                   index: 0,
                   getPage: getLogoPage,
                   activeColor: AppColors.darkGreen,
@@ -26,14 +26,14 @@ class LogoGuidePage extends StatelessWidget {
               ),
               Expanded(
                 child: TileButton(
-                  label: 'Second Page',
+                  label: 'Fair trade and Environmental',
                   index: 1,
                   getPage: getLogoPage,
                 ),
               ),
               Expanded(
                 child: TileButton(
-                  label: 'Third Page',
+                  label: 'Non Regulated',
                   index: 2,
                   getPage: getLogoPage,
                 ),

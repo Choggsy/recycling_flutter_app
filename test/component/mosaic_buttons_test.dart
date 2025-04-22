@@ -4,9 +4,9 @@ import 'package:recycling_flutter_app/component/mosaic_buttons.dart' show Mosaic
 import 'package:recycling_flutter_app/component/tile_button.dart';
 import 'package:recycling_flutter_app/helper/get_material_page.dart' show getMaterialPage;
 import 'package:recycling_flutter_app/properties/device_view_vector.dart' show ScreenConfig;
-import 'package:recycling_flutter_app/view/material/cardboard_page.dart';
-import 'package:recycling_flutter_app/view/material/glass_page.dart';
-import 'package:recycling_flutter_app/view/material/plastic_page.dart';
+import 'package:recycling_flutter_app/view/guideline/material/cardboard_page.dart' show CardboardPage;
+import 'package:recycling_flutter_app/view/guideline/material/glass_page.dart' show GlassPage;
+import 'package:recycling_flutter_app/view/guideline/material/plastic_page.dart' show PlasticPage;
 
 void main() {
   final List<String> testData = ['Cardboard', 'Glass', 'Plastic'];

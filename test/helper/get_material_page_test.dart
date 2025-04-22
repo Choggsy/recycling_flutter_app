@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:recycling_flutter_app/helper/get_material_page.dart' show getMaterialPage;
+import 'package:recycling_flutter_app/view/guideline/material/cardboard_page.dart' show CardboardPage;
+import 'package:recycling_flutter_app/view/guideline/material/glass_page.dart' show GlassPage;
+import 'package:recycling_flutter_app/view/guideline/material/plastic_page.dart' show PlasticPage;
 import 'package:recycling_flutter_app/view/guidelines_page.dart';
-import 'package:recycling_flutter_app/view/material/cardboard_page.dart';
-import 'package:recycling_flutter_app/view/material/glass_page.dart';
-import 'package:recycling_flutter_app/view/material/plastic_page.dart';
-import 'package:recycling_flutter_app/view/logo_guide_page.dart';
-import 'package:recycling_flutter_app/view/room_guide_page.dart';
+import 'package:recycling_flutter_app/view/guideline/logo/recycling_logo_page.dart';
+import 'package:recycling_flutter_app/view/guideline/room_guide_page.dart';
 
 void main() {
   test('getMaterialPage returns CardboardPage for index 0', () {
@@ -21,7 +21,7 @@ void main() {
   });
 
   test('getMaterialPage returns LogoGuidePage for index 3', () {
-    expect(getMaterialPage(3), isA<LogoGuidePage>());
+    expect(getMaterialPage(3), isA<RecyclableLogoPage>());
   });
 
   test('getMaterialPage returns RoomSelectionPage for index 9', () { // TODO: indented this way cause of how the list parameter genererates indexes. to be refactored

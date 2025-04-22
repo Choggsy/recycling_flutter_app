@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:recycling_flutter_app/view/material/plastic_page.dart';
+import 'package:recycling_flutter_app/view/guideline/material/plastic_page.dart' show PlasticPage;
 
 void main() {
   testWidgets('Page has a title and body text', (final WidgetTester tester,) async {

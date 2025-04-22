@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart' show Widget;
 import 'package:recycling_flutter_app/view/guidelines_page.dart';
-import 'package:recycling_flutter_app/view/material/cardboard_page.dart' show CardboardPage;
-import 'package:recycling_flutter_app/view/material/glass_page.dart' show GlassPage;
-import 'package:recycling_flutter_app/view/material/plastic_page.dart' show PlasticPage;
-import 'package:recycling_flutter_app/view/logo_guide_page.dart' show LogoGuidePage;
+import 'package:recycling_flutter_app/view/guideline/logo/recycling_logo_page.dart'
+    show RecyclableLogoPage;
 
-import '../view/room_guide_page.dart' show RoomSelectionPage;
+import '../view/guideline/material/cardboard_page.dart' show CardboardPage;
+import '../view/guideline/material/glass_page.dart' show GlassPage;
+import '../view/guideline/material/plastic_page.dart' show PlasticPage;
+import '../view/guideline/room_guide_page.dart' show RoomSelectionPage;
 
 Widget getMaterialPage(int index) {
   switch (index) {
@@ -16,7 +17,7 @@ Widget getMaterialPage(int index) {
     case 2:
       return PlasticPage();
     case 3:
-      return LogoGuidePage();
+      return RecyclableLogoPage();
     case 9:
       return RoomSelectionPage();
     default:
