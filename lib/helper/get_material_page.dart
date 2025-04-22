@@ -17,7 +17,7 @@ Widget getMaterialPage(int index) {
       return PlasticPage();
     case 3:
       return LogoGuidePage();
-    case 4:
+    case 9:
       return RoomSelectionPage();
     default:
       return GuidelinesPage();

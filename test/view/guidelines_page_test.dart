@@ -11,7 +11,7 @@ void main() {
     await tester.pumpWidget(MaterialApp(home: GuidelinesPage()));
     expect(find.widgetWithText(CustomAppBar, 'Guidelines'), findsOneWidget);
 
-    expect(find.text('Guidelines Page'), findsOneWidget);
+    expect(find.text('Material Guidelines'), findsOneWidget);
   });
 
   group('navigation bar', () {

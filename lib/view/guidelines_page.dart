@@ -32,7 +32,7 @@ class GuidelinesPage extends StatelessWidget {
               getMaterialPage,
             ),
             Space.medium.box,
-            buildTileButton("Room Selection", 4, getMaterialPage),
+            buildTileButton("Room Selection", 9, getMaterialPage),
           ],
         ),
       ),
