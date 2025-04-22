@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:recycling_flutter_app/view/guideline/logo/recycling_logo_page.dart';
+import 'package:recycling_flutter_app/view/guideline/logo/non_regulate_logo_page.dart';
 import 'package:recycling_flutter_app/view/guidelines_page.dart';
 import 'package:recycling_flutter_app/component/tile_button.dart';
 
 void main() {
-  testWidgets('RecyclableLogoPage has a title', (final WidgetTester tester) async {
+  testWidgets('NonRegulatedLogoPage has a title', (final WidgetTester tester) async {
     await buildPage(tester);
 
     expect(find.text('Logos Guide'), findsOneWidget);
     expect(find.text('This is the Logo Guide Page'), findsOneWidget);
   });
 
-  testWidgets('RecyclableLogoPage has buttons', (final WidgetTester tester) async {
+  testWidgets('NonRegulatedLogoPage has buttons', (final WidgetTester tester) async {
     await buildPage(tester);
 
     expect(find.widgetWithText(TileButton, 'Recyclable Logos'), findsOneWidget);
@@ -20,7 +20,7 @@ void main() {
     expect(find.widgetWithText(TileButton, 'Non Regulated'), findsOneWidget);
   });
 
-  testWidgets('RecyclableLogoPage navigates back to GuidelinesPage', (final WidgetTester tester) async {
+  testWidgets('NonRegulatedLogoPage navigates back to GuidelinesPage', (final WidgetTester tester) async {
     await buildPage(tester);
     await tester.tap(find.byIcon(Icons.arrow_back));
     await tester.pumpAndSettle();
@@ -32,7 +32,7 @@ void main() {
 Future<void> buildPage(final WidgetTester tester) async {
   await tester.pumpWidget(
     MaterialApp(
-      home: RecyclableLogoPage(),
+      home: NonRegulatedLogoPage(),
     ),
   );
 }
