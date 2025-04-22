@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:recycling_flutter_app/component/tile_button.dart' show TileButton;
+import 'package:recycling_flutter_app/component/tile_button.dart' show TileButton, GetPageCallback;
 import '../helper/grid_helper.dart' show GridHelper;
 import '../properties/device_view_vector.dart' show ScreenConfig, ViewType;
 
 class MosaicButtons {
-  static Widget buildMosaicGrid(final BuildContext context, final List labels, final Function getPage) {
+  static Widget buildMosaicGrid(final BuildContext context, final List<String> labels, final GetPageCallback getPage) {
     final ViewType viewType = ScreenConfig.getViewType(MediaQuery.of(context).size.width);
 
     return StaggeredGrid.count(
@@ -16,7 +16,7 @@ class MosaicButtons {
     );
   }
 
-  static List<Widget> _buildMosaicButtons(final List labels, final Function getPage, final ViewType viewType) {
+  static List<Widget> _buildMosaicButtons(final List<String> labels, final GetPageCallback getPage, final ViewType viewType) {
     return labels.asMap().entries.map((entry) {
       final int index = entry.key;
       final int patternIndex = index % 5;

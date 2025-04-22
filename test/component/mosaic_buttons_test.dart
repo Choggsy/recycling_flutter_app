@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:recycling_flutter_app/component/mosaic_buttons.dart' show MosaicButtons;
+import 'package:recycling_flutter_app/component/tile_button.dart';
 import 'package:recycling_flutter_app/helper/get_material_page.dart' show getMaterialPage;
 import 'package:recycling_flutter_app/properties/device_view_vector.dart' show ScreenConfig;
 import 'package:recycling_flutter_app/view/material/cardboard_page.dart';
@@ -58,7 +59,7 @@ void main() {
   });
 }
 
-Future<void> pumpMosaicGridWidget(final WidgetTester tester,final Size size,final List<String> labels,final Function getPage) async {
+Future<void> pumpMosaicGridWidget(final WidgetTester tester,final Size size,final List<String> labels,final GetPageCallback getPage) async {
   await tester.pumpWidget(MaterialApp(
     home: MediaQuery(
       data: MediaQueryData(size: size),

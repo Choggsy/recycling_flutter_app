@@ -1,41 +1,39 @@
 import 'package:flutter/material.dart';
+import '../helper/button_helper.dart' show TileButtonStyles;
 import '../properties/app_theme.dart' show AppColors;
+
+typedef GetPageCallback = Widget Function(int index);
 
 class TileButton extends StatelessWidget {
   final String label;
   final int index;
-  final Function getPage;
+  final GetPageCallback getPage;
+  final Color activeColor;
 
   const TileButton({
     required this.label,
     required this.index,
     required this.getPage,
+    this.activeColor = AppColors.background,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
+    final bool isActive = activeColor != AppColors.background;
+
     return Container(
-      decoration: BoxDecoration(
-        border: Border.all(color: AppColors.darkBrown, width: 3.0),
-        color: AppColors.background, // Use theme color
-      ),
+      decoration: TileButtonStyles.containerDecoration(isActive, activeColor),
       child: ElevatedButton(
         key: Key(label),
-        style: ElevatedButton.styleFrom(
-          foregroundColor: AppColors.darkBrown,
-          backgroundColor: AppColors.background,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.zero, // No rounded corners
-          ),
-        ),
+        style: TileButtonStyles.buttonStyle(isActive, activeColor),
         onPressed: () {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => getPage(index)),
           );
         },
-        child: Text(label), // TODO : Replace with actual button labels
+        child: Text(label),
       ),
     );
   }
