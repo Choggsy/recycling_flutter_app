@@ -19,7 +19,7 @@ class GuidelinesPage extends StatelessWidget {
         child: Column(
           children: [
             Space.medium.box,
-            buildTileButton("logo guide", 3, getMaterialPage),
+            buildTileButton("logo guide", 10, getMaterialPage),
             Space.large.box,
             Text(
               'Material Guidelines',
@@ -28,7 +28,17 @@ class GuidelinesPage extends StatelessWidget {
             Space.medium.box,
             MosaicButtons.buildMosaicGrid(
               context,
-              ['Cardboard', 'Glass', 'Plastic', 'Material 3', 'Material 4', 'Material 5', 'Material 6', 'Material 7', 'Material 8'],
+              [
+                MapEntry('Cardboard', 0),
+                MapEntry('Glass', 1),
+                MapEntry('Plastic', 2),
+                MapEntry('Electronics', 3),
+                MapEntry('Food Waste', 4),
+                MapEntry('Metal', 5),
+                MapEntry('Textiles', 6),
+                MapEntry('Wood', 7),
+                MapEntry('Flexible Plastic', 8),
+              ],
               getMaterialPage,
             ),
             Space.medium.box,
