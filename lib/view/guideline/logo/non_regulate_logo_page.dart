@@ -4,13 +4,13 @@ import '../../../component/tile_button.dart' show TileButton;
 import '../../../helper/get_logo_page.dart' show getLogoPage;
 import '../../../properties/app_theme.dart' show AppColors;
 
-class RecyclableLogoPage extends StatelessWidget {
-  const RecyclableLogoPage({super.key});
+class NonRegulatedLogoPage extends StatelessWidget {
+  const NonRegulatedLogoPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: AppBar( //TODO: Extract this out to reuse with static pathing for all sub pages
         title: Text('Logos Guide'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -31,7 +31,6 @@ class RecyclableLogoPage extends StatelessWidget {
                   label: 'Recyclable Logos',
                   index: 0,
                   getPage: getLogoPage,
-                  activeColor: AppColors.darkGreen,
                 ),
               ),
               Expanded(
@@ -46,6 +45,7 @@ class RecyclableLogoPage extends StatelessWidget {
                   label: 'Non Regulated',
                   index: 2,
                   getPage: getLogoPage,
+                  activeColor: AppColors.darkGreen,
                 ),
               ),
             ],

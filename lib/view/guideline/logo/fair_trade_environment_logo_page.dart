@@ -4,8 +4,8 @@ import '../../../component/tile_button.dart' show TileButton;
 import '../../../helper/get_logo_page.dart' show getLogoPage;
 import '../../../properties/app_theme.dart' show AppColors;
 
-class RecyclableLogoPage extends StatelessWidget {
-  const RecyclableLogoPage({super.key});
+class FairTradeEnvironmentalLogoPage extends StatelessWidget {
+  const FairTradeEnvironmentalLogoPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,6 @@ class RecyclableLogoPage extends StatelessWidget {
                   label: 'Recyclable Logos',
                   index: 0,
                   getPage: getLogoPage,
-                  activeColor: AppColors.darkGreen,
                 ),
               ),
               Expanded(
@@ -39,6 +38,7 @@ class RecyclableLogoPage extends StatelessWidget {
                   label: 'Fair trade and Environmental',
                   index: 1,
                   getPage: getLogoPage,
+                  activeColor: AppColors.darkGreen,
                 ),
               ),
               Expanded(
