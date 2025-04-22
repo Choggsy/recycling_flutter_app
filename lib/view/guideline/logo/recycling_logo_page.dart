@@ -1,12 +1,33 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:recycling_flutter_app/view/guidelines_page.dart';
 import '../../../component/logo_card.dart';
 import '../../../component/tile_button.dart' show TileButton;
 import '../../../helper/get_logo_page.dart' show getLogoPage;
 import '../../../properties/app_theme.dart' show AppColors;
 
-class RecyclableLogoPage extends StatelessWidget {
+class RecyclableLogoPage extends StatefulWidget {
   const RecyclableLogoPage({super.key});
+
+  @override
+  _RecyclableLogoPageState createState() => _RecyclableLogoPageState();
+}
+
+class _RecyclableLogoPageState extends State<RecyclableLogoPage> {
+  late Future<Map<String, dynamic>> logosData;
+
+  Future<Map<String, dynamic>> loadLogos() async {
+    final String response = await rootBundle.loadString('assets/logos.json');
+    return json.decode(response);
+  }
+
+
+  @override
+  void initState() {
+    super.initState();
+    logosData = loadLogos();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -52,24 +73,36 @@ class RecyclableLogoPage extends StatelessWidget {
             ],
           ),
           Expanded(
-            child: ListView(
-              children: [
-                LogoCard(
-                  imagePath: 'assets/logo/placeholder.jpg',
-                  title: 'Logo 1',
-                  description: 'orem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec p',
-                ),
-                LogoCard(
-                  imagePath: 'assets/logo/placeholder.jpg',
-                  title: 'Logo 2',
-                  description: 'orem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec p',
-                ),
-                LogoCard(
-                  imagePath: 'assets/logo/placeholder.jpg',
-                  title: 'Logo 3',
-                  description: 'orem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec p',
-                ),
-              ],
+            child: FutureBuilder<Map<String, dynamic>>(
+              future: logosData,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error loading logos'));
+                } else {
+                  final logos = snapshot.data!;
+                  return ListView(
+                    children: [
+                      ...logos['recyclable'].map((logo) => LogoCard(
+                        imagePath: logo['imagePath'],
+                        title: logo['title'],
+                        description: logo['description'],
+                      )).toList(),
+                      ...logos['environment'].map((logo) => LogoCard(
+                        imagePath: logo['imagePath'],
+                        title: logo['title'],
+                        description: logo['description'],
+                      )).toList(),
+                      ...logos['non_regulated'].map((logo) => LogoCard(
+                        imagePath: logo['imagePath'],
+                        title: logo['title'],
+                        description: logo['description'],
+                      )).toList(),
+                    ],
+                  );
+                }
+              },
             ),
           ),
         ],
