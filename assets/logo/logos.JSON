@@ -1,0 +1,38 @@
+{
+  "recyclable": [
+    {
+      "title": "Recyclable Logo 1",
+      "imagePath": "assets/logo/placeholder.jpg",
+      "description": "This logo indicates that the product is recyclable."
+    },
+    {
+      "title": "Recyclable Logo 2",
+      "imagePath": "assets/logo/placeholder.jpg",
+      "description": "Another recyclable logo description."
+    }
+  ],
+  "environment": [
+    {
+      "title": "Environment Logo 1",
+      "imagePath": "assets/logo/placeholder.jpg",
+      "description": "This logo represents environmentally friendly products."
+    },
+    {
+      "title": "Environment Logo 2",
+      "imagePath": "assets/logo/placeholder.jpg",
+      "description": "Another environment logo description."
+    }
+  ],
+  "non_regulated": [
+    {
+      "title": "Non Regulated Logo 1",
+      "imagePath": "assets/logo/placeholder.jpg",
+      "description": "This logo is used for non-regulated products."
+    },
+    {
+      "title": "Non Regulated Logo 2",
+      "imagePath": "assets/logo/placeholder.jpg",
+      "description": "Another non-regulated logo description."
+    }
+  ]
+}
