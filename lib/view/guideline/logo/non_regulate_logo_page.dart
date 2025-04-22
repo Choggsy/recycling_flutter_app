@@ -28,14 +28,14 @@ class NonRegulatedLogoPage extends StatelessWidget {
             children: [
               Expanded(
                 child: TileButton(
-                  label: 'Recyclable Logos',
+                  label: 'Recyclable',
                   index: 0,
                   getPage: getLogoPage,
                 ),
               ),
               Expanded(
                 child: TileButton(
-                  label: 'Fair trade and Environmental',
+                  label: 'Environment',
                   index: 1,
                   getPage: getLogoPage,
                 ),

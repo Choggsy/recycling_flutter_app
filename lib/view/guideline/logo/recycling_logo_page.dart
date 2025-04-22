@@ -28,7 +28,7 @@ class RecyclableLogoPage extends StatelessWidget {
             children: [
               Expanded(
                 child: TileButton(
-                  label: 'Recyclable Logos',
+                  label: 'Recyclable',
                   index: 0,
                   getPage: getLogoPage,
                   activeColor: AppColors.darkGreen,
@@ -36,7 +36,7 @@ class RecyclableLogoPage extends StatelessWidget {
               ),
               Expanded(
                 child: TileButton(
-                  label: 'Fair trade and Environmental',
+                  label: 'Environment',
                   index: 1,
                   getPage: getLogoPage,
                 ),

@@ -15,8 +15,8 @@ void main() {
   testWidgets('RecyclableLogoPage has buttons', (final WidgetTester tester) async {
     await buildPage(tester);
 
-    expect(find.widgetWithText(TileButton, 'Recyclable Logos'), findsOneWidget);
-    expect(find.widgetWithText(TileButton, 'Fair trade and Environmental'), findsOneWidget);
+    expect(find.widgetWithText(TileButton, 'Recyclable'), findsOneWidget);
+    expect(find.widgetWithText(TileButton, 'Environment'), findsOneWidget);
     expect(find.widgetWithText(TileButton, 'Non Regulated'), findsOneWidget);
   });
 
