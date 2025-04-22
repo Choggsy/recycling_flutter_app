@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recycling_flutter_app/view/guidelines_page.dart';
+import '../../../component/logo_card.dart';
 import '../../../component/tile_button.dart' show TileButton;
 import '../../../helper/get_logo_page.dart' show getLogoPage;
 import '../../../properties/app_theme.dart' show AppColors;
@@ -51,8 +52,24 @@ class RecyclableLogoPage extends StatelessWidget {
             ],
           ),
           Expanded(
-            child: Center(
-              child: Text('This is the Logo Guide Page'),
+            child: ListView(
+              children: [
+                LogoCard(
+                  imagePath: 'assets/logo/placeholder.jpg',
+                  title: 'Logo 1',
+                  description: 'orem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec p',
+                ),
+                LogoCard(
+                  imagePath: 'assets/logo/placeholder.jpg',
+                  title: 'Logo 2',
+                  description: 'orem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec p',
+                ),
+                LogoCard(
+                  imagePath: 'assets/logo/placeholder.jpg',
+                  title: 'Logo 3',
+                  description: 'orem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec p',
+                ),
+              ],
             ),
           ),
         ],
