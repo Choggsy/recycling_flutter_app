@@ -7,16 +7,16 @@ import 'package:recycling_flutter_app/view/home_page.dart';
 import 'package:recycling_flutter_app/view/upcycle_page.dart';
 
 void main() {
-  testWidgets('UpcyclePage has a title and body text', (final WidgetTester tester) async {
-    await tester.pumpWidget(MaterialApp(home: UpcyclePage()));
-    expect(find.widgetWithText(CustomAppBar, 'Upcycling'), findsOneWidget);
+  testWidgets('GuidelinesPage has a title and body text', (final WidgetTester tester) async {
+    await tester.pumpWidget(MaterialApp(home: GuidelinesPage()));
+    expect(find.widgetWithText(CustomAppBar, 'Guidelines'), findsOneWidget);
 
-    expect(find.text('Upcycle Page'), findsOneWidget);
+    expect(find.text('Material Guidelines'), findsOneWidget);
   });
 
   group('navigation bar', () {
     testWidgets('navigates to UpcyclePage', (final WidgetTester tester) async {
-      await tester.pumpWidget(MaterialApp(home: UpcyclePage()));
+      await tester.pumpWidget(MaterialApp(home: GuidelinesPage()));
       expect(find.byType(CustomBottomNavigationBar), findsOneWidget);
 
       await navigateOnBottomBarTo(tester, 'assets/navigation/reuse.png');
@@ -24,7 +24,7 @@ void main() {
     });
 
     testWidgets('navigates to HomePage', (final WidgetTester tester) async {
-      await tester.pumpWidget(MaterialApp(home: UpcyclePage()));
+      await tester.pumpWidget(MaterialApp(home: GuidelinesPage()));
       expect(find.byType(CustomBottomNavigationBar), findsOneWidget);
 
       await navigateOnBottomBarTo(tester, 'assets/navigation/home.png');
@@ -32,7 +32,7 @@ void main() {
     });
 
     testWidgets('navigates to GuidelinesPage', (final WidgetTester tester) async {
-      await tester.pumpWidget(MaterialApp(home: UpcyclePage()));
+      await tester.pumpWidget(MaterialApp(home: GuidelinesPage()));
       expect(find.byType(CustomBottomNavigationBar), findsOneWidget);
 
       await navigateOnBottomBarTo(tester, 'assets/navigation/guidelines.png');

@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 enum ViewType { phone, tablet }
 
 class ScreenConfig {
@@ -6,9 +8,9 @@ class ScreenConfig {
   static const double phoneIconSizeFactor = 0.08;
   static const double tabletIconSizeFactor = 0.029;
 
-  static const double tabletSmallImageFactor = 0.05;
-  static const double tabletMediumImageFactor = 0.1;
-  static const double tabletLargeImageFactor = 0.15;
+  static const double tabletSmallImageFactor = 0.15;
+  static const double tabletMediumImageFactor = 0.2;
+  static const double tabletLargeImageFactor = 0.25;
 
   static const double phoneSmallImageFactor = 0.1;
   static const double phoneMediumImageFactor = 0.2;

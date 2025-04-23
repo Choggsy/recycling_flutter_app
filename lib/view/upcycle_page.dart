@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:recycling_flutter_app/component/bottom_navigation_bar.dart' show CustomBottomNavigationBar;
+import 'package:recycling_flutter_app/component/top_app_bar.dart' show CustomAppBar;
 import '../helper/get_page.dart' show getPage;
-import '../layout_widgets/bottom_navigation_bar.dart';
-import '../layout_widgets/top_app_bar.dart';
 
 class UpcyclePage extends StatelessWidget {
   const UpcyclePage({super.key});
@@ -9,9 +9,9 @@ class UpcyclePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Reuse'),
+      appBar: CustomAppBar(title: 'Upcycling', showBackButton: false),
       body: Center(
-        child: Text('Reuse Page'),
+        child: Text('Upcycle Page'),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(
         currentIndex: 0,
