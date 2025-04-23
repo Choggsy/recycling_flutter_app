@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../properties/device_view_vector.dart';
 
 class MaterialCard extends StatelessWidget {
@@ -27,9 +28,15 @@ class MaterialCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Center(
+            Image.asset(
+              imagePath,
+              width: imageSize,
+              height: imageSize,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
               child: Text(
                 title,
                 key: Key('materialTitle_$title'), // Add a key to the title Text widget
@@ -39,35 +46,22 @@ class MaterialCard extends StatelessWidget {
                 ),
               ),
             ),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8.0),
-                child: Text(
-                  'Contaminators: ${contaminators.join(', ')}',
-                  style: TextStyle(color: Colors.red, fontSize: fontSize),
-                ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Text(
+                'Contaminators: ${contaminators.join(', ')}',
+                style: TextStyle(color: Colors.red, fontSize: fontSize),
               ),
             ),
-            Row(
-              children: [
-                Image.asset(
-                  imagePath,
-                  width: imageSize,
-                  height: imageSize,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(
+                  description,
+                  style: TextStyle(fontSize: descriptionFontSize), // Adjust the font size as needed
                 ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: Text(
-                        description,
-                        style: TextStyle(fontSize: descriptionFontSize), // Adjust the font size as needed
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+              ),
             ),
           ],
         ),
