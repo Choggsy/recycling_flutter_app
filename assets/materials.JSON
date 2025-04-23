@@ -1,0 +1,14 @@
+[
+  {
+    "title": "Cardboard",
+    "description": "Cardboard is a recyclable material used for packaging.",
+    "image": "assets/logo/placeholder.jpg",
+    "contaminators": ["Food residue", "Plastic tape"]
+  },
+  {
+    "title": "Glass",
+    "description": "Glass can be recycled endlessly without loss in quality.",
+    "image": "assets/logo/placeholder.jpg",
+    "contaminators": ["Ceramics", "Pyrex"]
+  }
+]
