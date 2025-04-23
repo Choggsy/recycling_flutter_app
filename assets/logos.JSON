@@ -11,16 +11,16 @@
       "description": "Another recyclable logo description."
     }
   ],
-  "environment": [
+  "sustainable": [
     {
-      "title": "Environment Logo 1",
+      "title": "Sustainable Logo 1",
       "imagePath": "assets/logo/placeholder.jpg",
       "description": "This logo represents environmentally friendly products."
     },
     {
-      "title": "Environment Logo 2",
+      "title": "Sustainable Logo 2",
       "imagePath": "assets/logo/placeholder.jpg",
-      "description": "Another environment logo description."
+      "description": "Another sustainable logo description."
     }
   ],
   "non_regulated": [

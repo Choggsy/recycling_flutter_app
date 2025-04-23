@@ -85,7 +85,7 @@ class _FairTradeEnvironmentalLogoPageState
                   final logos = snapshot.data!;
                   return ListView(
                     children: [
-                      ...logos['environment'].map((logo) => LogoCard(
+                      ...logos['sustainable'].map((logo) => LogoCard(
                         imagePath: logo['imagePath'],
                         title: logo['title'],
                         description: logo['description'],
