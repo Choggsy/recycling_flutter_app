@@ -1,16 +1,37 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:recycling_flutter_app/view/guidelines_page.dart';
+import '../../../component/logo_card.dart';
 import '../../../component/tile_button.dart' show TileButton;
 import '../../../helper/get_logo_page.dart' show getLogoPage;
 import '../../../properties/app_theme.dart' show AppColors;
 
-class NonRegulatedLogoPage extends StatelessWidget {
+class NonRegulatedLogoPage extends StatefulWidget {
   const NonRegulatedLogoPage({super.key});
+
+  @override
+  _NonRegulatedLogoPageState createState() => _NonRegulatedLogoPageState();
+}
+
+class _NonRegulatedLogoPageState extends State<NonRegulatedLogoPage> {
+  late Future<Map<String, dynamic>> logosData;
+
+  Future<Map<String, dynamic>> loadLogos() async {
+    final String response = await rootBundle.loadString('assets/logos.json');
+    return json.decode(response);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    logosData = loadLogos();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar( //TODO: Extract this out to reuse with static pathing for all sub pages
+      appBar: AppBar(
         title: Text('Logos Guide'),
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
@@ -51,8 +72,36 @@ class NonRegulatedLogoPage extends StatelessWidget {
             ],
           ),
           Expanded(
-            child: Center(
-              child: Text('This is the Logo Guide Page'),
+            child: FutureBuilder<Map<String, dynamic>>(
+              future: logosData,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text('Error loading logos'));
+                } else {
+                  final logos = snapshot.data!;
+                  return ListView(
+                    children: [
+                      ...logos['recyclable'].map((logo) => LogoCard(
+                        imagePath: logo['imagePath'],
+                        title: logo['title'],
+                        description: logo['description'],
+                      )).toList(),
+                      ...logos['environment'].map((logo) => LogoCard(
+                        imagePath: logo['imagePath'],
+                        title: logo['title'],
+                        description: logo['description'],
+                      )).toList(),
+                      ...logos['non_regulated'].map((logo) => LogoCard(
+                        imagePath: logo['imagePath'],
+                        title: logo['title'],
+                        description: logo['description'],
+                      )).toList(),
+                    ],
+                  );
+                }
+              },
             ),
           ),
         ],
