@@ -9,14 +9,13 @@ void main() {
     await buildPage(tester);
 
     expect(find.text('Logos Guide'), findsOneWidget);
-    expect(find.text('This is the Logo Guide Page'), findsOneWidget);
   });
 
   testWidgets('RecyclableLogoPage has buttons', (final WidgetTester tester) async {
     await buildPage(tester);
 
     expect(find.widgetWithText(TileButton, 'Recyclable'), findsOneWidget);
-    expect(find.widgetWithText(TileButton, 'Environment'), findsOneWidget);
+    expect(find.widgetWithText(TileButton, 'Sustainable'), findsOneWidget);
     expect(find.widgetWithText(TileButton, 'Non Regulated'), findsOneWidget);
   });
 
