@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:recycling_flutter_app/helper/get_material_page.dart' show getMaterialPage;
 import 'package:recycling_flutter_app/view/guideline/room_guide_page.dart' show RoomSelectionPage;
 import 'package:recycling_flutter_app/view/guideline/logo/recycling_logo_page.dart' show RecyclableLogoPage;
-import 'package:recycling_flutter_app/view/guidelines_page.dart';
+import 'package:recycling_flutter_app/view/guideline/guidelines_page.dart';
 import 'package:recycling_flutter_app/view/guideline/material/material_page.dart' as recycling_app;
 
 void main() {

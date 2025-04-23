@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:recycling_flutter_app/view/guideline/logo/recycling_logo_page.dart';
-import 'package:recycling_flutter_app/view/guidelines_page.dart';
+import 'package:recycling_flutter_app/view/guideline/guidelines_page.dart';
 import 'package:recycling_flutter_app/component/tile_button.dart';
 
 void main() {

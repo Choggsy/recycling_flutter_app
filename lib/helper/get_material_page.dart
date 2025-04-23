@@ -1,5 +1,5 @@
 import 'package:flutter/cupertino.dart' show Widget;
-import 'package:recycling_flutter_app/view/guidelines_page.dart';
+import 'package:recycling_flutter_app/view/guideline/guidelines_page.dart';
 import 'package:recycling_flutter_app/view/guideline/logo/recycling_logo_page.dart' show RecyclableLogoPage;
 
 import '../view/guideline/material/material_page.dart';

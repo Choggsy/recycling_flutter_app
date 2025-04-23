@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-import '../view/guidelines_page.dart' show GuidelinesPage;
+import '../view/guideline/guidelines_page.dart' show GuidelinesPage;
 import '../view/home_page.dart' show HomePage;
 import '../view/upcycle_page.dart';
 

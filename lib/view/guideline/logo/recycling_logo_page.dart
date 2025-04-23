@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:recycling_flutter_app/view/guidelines_page.dart';
+import 'package:recycling_flutter_app/view/guideline/guidelines_page.dart';
 import '../../../component/logo_card.dart';
 import '../../../component/tile_button.dart' show TileButton;
 import '../../../helper/get_logo_page.dart' show getLogoPage;
