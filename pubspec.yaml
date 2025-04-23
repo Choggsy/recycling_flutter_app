@@ -60,6 +60,10 @@ flutter:
     - assets/navigation/home.png
     - assets/navigation/guidelines.png
     - assets/navigation/reuse.png
+    - assets/upcycle/craft.png
+    - assets/upcycle/garden.png
+    - assets/upcycle/repurpose.png
+    - assets/upcycle/utility.png
     - assets/logo/placeholder.jpg
     - assets/logos.json
     - assets/materials.json

@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 
 import '../view/guideline/guidelines_page.dart' show GuidelinesPage;
 import '../view/home_page.dart' show HomePage;
-import '../view/upcycle_page.dart';
+import '../view/upcycle/upcycle_page.dart';
 
 Widget getPage(final int index) {
   switch (index) {
