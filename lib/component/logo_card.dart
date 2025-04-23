@@ -34,7 +34,7 @@ class LogoCard extends StatelessWidget {
               height: imageSize,
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) {
-                return Icon(Icons.image, size: ScreenConfig.getIconSize(screenWidth));
+                return const Icon(Icons.image, size: 48.0); // Ensure fixed size for comparison
               },
             ),
             SizedBox(width: 10.0),
