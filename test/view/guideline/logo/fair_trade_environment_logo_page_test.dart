@@ -7,7 +7,8 @@ import 'package:recycling_flutter_app/component/tile_button.dart';
 import 'package:mockito/mockito.dart';
 import 'package:mockito/annotations.dart';
 import 'dart:convert';
-import 'fair_trade_environment_logo_page_test.mocks.dart';
+
+import '../../../test_asset_bundle.dart';
 
 @GenerateMocks([AssetBundle])
 void main() {
@@ -43,7 +44,7 @@ void main() {
   testWidgets('FairTradeEnvironmentalLogoPage loads JSON data correctly', (
     final WidgetTester tester,
   ) async {
-    final mockBundle = MockAssetBundle();
+    final mockBundle = TestAssetBundle();
     when(mockBundle.loadString('assets/logos.json')).thenAnswer((_) async => json.encode({
         'sustainable': [
           {
@@ -65,7 +66,7 @@ void main() {
   testWidgets('FairTradeEnvironmentalLogoPage handles JSON loading error', (
     final WidgetTester tester,
   ) async {
-    final mockBundle = MockAssetBundle();
+    final mockBundle = TestAssetBundle();
     when(mockBundle.loadString('assets/logos.json'),).thenThrow(Exception('Error loading JSON'));
     await buildMock(tester);
 
@@ -78,7 +79,7 @@ void main() {
   testWidgets('FairTradeEnvironmentalLogoPage handles empty JSON data', (
     final WidgetTester tester,
   ) async {
-    final mockBundle = MockAssetBundle();
+    final mockBundle = TestAssetBundle();
     when(mockBundle.loadString('assets/logos.json'),).thenAnswer((_) async => json.encode({'sustainable': []}));
     await buildMock(tester);
 
