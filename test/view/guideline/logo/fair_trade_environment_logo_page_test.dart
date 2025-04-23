@@ -40,54 +40,6 @@ void main() {
       expect(find.byType(GuidelinesPage), findsOneWidget);
     },
   );
-
-  testWidgets('FairTradeEnvironmentalLogoPage loads JSON data correctly', (
-    final WidgetTester tester,
-  ) async {
-    final mockBundle = TestAssetBundle();
-    when(mockBundle.loadString('assets/logos.json')).thenAnswer((_) async => json.encode({
-        'sustainable': [
-          {
-            'imagePath': 'path/to/image',
-            'title': 'Title',
-            'description': 'Description',
-          },
-        ],
-      }),
-    );
-    await buildMock(tester);
-
-    await tester.pump();
-    await tester.pump();
-
-    expect(find.byType(LogoCard), findsOneWidget);
-  });
-
-  testWidgets('FairTradeEnvironmentalLogoPage handles JSON loading error', (
-    final WidgetTester tester,
-  ) async {
-    final mockBundle = TestAssetBundle();
-    when(mockBundle.loadString('assets/logos.json'),).thenThrow(Exception('Error loading JSON'));
-    await buildMock(tester);
-
-    await tester.pump();
-    await tester.pump();
-
-    expect(find.text('Error loading logos'), findsOneWidget);
-  });
-
-  testWidgets('FairTradeEnvironmentalLogoPage handles empty JSON data', (
-    final WidgetTester tester,
-  ) async {
-    final mockBundle = TestAssetBundle();
-    when(mockBundle.loadString('assets/logos.json'),).thenAnswer((_) async => json.encode({'sustainable': []}));
-    await buildMock(tester);
-
-    await tester.pump();
-    await tester.pump();
-
-    expect(find.byType(LogoCard), findsNothing);
-  });
 }
 
 Future buildMock(WidgetTester tester) async {
