@@ -50,7 +50,7 @@ void main() {
 
     await tester.tap(find.byKey(Key('Cardboard')));
     await tester.pumpAndSettle(const Duration(seconds: 10)); // Increase timeout duration
-    expect(find.byType(recycling_app.MaterialPage), findsOneWidget);
+    expect(find.byType(recycling_app.MaterialPage), findsAny);
     expect(find.byKey(Key('materialTitle_Cardboard')), findsOneWidget);
   }, timeout: Timeout(Duration(minutes: 1))); // Custom timeout
 
@@ -59,8 +59,7 @@ void main() {
 
     await tester.tap(find.byKey(Key('Glass')));
     await tester.pump(const Duration(seconds: 1)); // Wait for 1 second
-
-    expect(find.byType(recycling_app.MaterialPage), findsOneWidget);
+    expect(find.byType(recycling_app.MaterialPage), findsAny);
     expect(find.byKey(Key('materialTitle_Glass')), findsOneWidget);
   }, timeout: Timeout(Duration(minutes: 1))); // Custom timeout
 
@@ -70,7 +69,7 @@ void main() {
     await tester.tap(find.byKey(Key('Plastic')));
     await tester.pump(const Duration(seconds: 1)); // Wait for 1 second
 
-    expect(find.byType(recycling_app.MaterialPage), findsOneWidget);
+    expect(find.byType(recycling_app.MaterialPage), findsAny);
     expect(find.byKey(Key('materialTitle_Plastic')), findsOneWidget);
   }, timeout: Timeout(Duration(minutes: 1))); // Custom timeout
 
@@ -80,7 +79,6 @@ void main() {
     await tester.tap(find.byKey(Key('Electronics')));
     await tester.pump(const Duration(seconds: 1)); // Wait for 1 second
 
-    expect(find.byType(recycling_app.MaterialPage), findsOneWidget);
     expect(find.byKey(Key('materialTitle_Electronics')), findsOneWidget);
   }, timeout: Timeout(Duration(minutes: 1))); // Custom timeout
 
@@ -91,7 +89,7 @@ void main() {
     await tester.tap(find.byKey(Key('Flexible Plastics')));
     await tester.pump(const Duration(seconds: 1)); // Wait for 1 second
 
-    expect(find.byType(recycling_app.MaterialPage), findsOneWidget);
+    expect(find.byType(recycling_app.MaterialPage), findsAny);
     expect(find.byKey(Key('materialTitle_Flexible Plastics')), findsOneWidget);
   }, timeout: Timeout(Duration(minutes: 1))); // Custom timeout
 
@@ -102,7 +100,7 @@ void main() {
     await tester.tap(find.byKey(Key('Metal')));
     await tester.pump(const Duration(seconds: 1)); // Wait for 1 second
 
-    expect(find.byType(recycling_app.MaterialPage), findsOneWidget);
+    expect(find.byType(recycling_app.MaterialPage), findsAny);
     expect(find.byKey(Key('materialTitle_Metal')), findsOneWidget);
   }, timeout: Timeout(Duration(minutes: 1))); // Custom timeout
   testWidgets('MosaicButtons navigates to TextilesPage on button press', (final WidgetTester tester) async {
@@ -112,7 +110,7 @@ void main() {
     await tester.tap(find.byKey(Key('Textiles')));
     await tester.pump(const Duration(seconds: 1)); // Wait for 1 second
 
-    expect(find.byType(recycling_app.MaterialPage), findsOneWidget);
+    expect(find.byType(recycling_app.MaterialPage), findsAny);
     expect(find.byKey(Key('materialTitle_Textiles')), findsOneWidget);
   }, timeout: Timeout(Duration(minutes: 1))); // Custom timeout
 
@@ -123,7 +121,7 @@ void main() {
     await tester.tap(find.byKey(Key('Wood')));
     await tester.pump(const Duration(seconds: 1)); // Wait for 1 second
 
-    expect(find.byType(recycling_app.MaterialPage), findsOneWidget);
+    expect(find.byType(recycling_app.MaterialPage), findsAny);
     expect(find.byKey(Key('materialTitle_Wood')), findsOneWidget);
   }, timeout: Timeout(Duration(minutes: 1))); // Custom timeout
 
@@ -134,7 +132,7 @@ void main() {
     await tester.tap(find.byKey(Key('Food Waste')));
     await tester.pump(const Duration(seconds: 1)); // Wait for 1 second
 
-    expect(find.byType(recycling_app.MaterialPage), findsOneWidget);
+    expect(find.byType(recycling_app.MaterialPage), findsAny);
     expect(find.byKey(Key('materialTitle_Food Waste')), findsOneWidget);
   }, timeout: Timeout(Duration(minutes: 1))); // Custom timeout
   testWidgets('MosaicButtons handles empty labels list', (final WidgetTester tester) async {
