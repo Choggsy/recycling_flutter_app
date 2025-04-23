@@ -56,7 +56,7 @@ class _NonRegulatedLogoPageState extends State<NonRegulatedLogoPage> {
               ),
               Expanded(
                 child: TileButton(
-                  label: 'Environment',
+                  label: 'Sustainable',
                   index: 1,
                   getPage: getLogoPage,
                 ),
@@ -83,16 +83,6 @@ class _NonRegulatedLogoPageState extends State<NonRegulatedLogoPage> {
                   final logos = snapshot.data!;
                   return ListView(
                     children: [
-                      ...logos['recyclable'].map((logo) => LogoCard(
-                        imagePath: logo['imagePath'],
-                        title: logo['title'],
-                        description: logo['description'],
-                      )).toList(),
-                      ...logos['environment'].map((logo) => LogoCard(
-                        imagePath: logo['imagePath'],
-                        title: logo['title'],
-                        description: logo['description'],
-                      )).toList(),
                       ...logos['non_regulated'].map((logo) => LogoCard(
                         imagePath: logo['imagePath'],
                         title: logo['title'],

@@ -58,7 +58,7 @@ class _RecyclableLogoPageState extends State<RecyclableLogoPage> {
               ),
               Expanded(
                 child: TileButton(
-                  label: 'Environment',
+                  label: 'Sustainable',
                   index: 1,
                   getPage: getLogoPage,
                 ),
@@ -85,16 +85,6 @@ class _RecyclableLogoPageState extends State<RecyclableLogoPage> {
                   return ListView(
                     children: [
                       ...logos['recyclable'].map((logo) => LogoCard(
-                        imagePath: logo['imagePath'],
-                        title: logo['title'],
-                        description: logo['description'],
-                      )).toList(),
-                      ...logos['environment'].map((logo) => LogoCard(
-                        imagePath: logo['imagePath'],
-                        title: logo['title'],
-                        description: logo['description'],
-                      )).toList(),
-                      ...logos['non_regulated'].map((logo) => LogoCard(
                         imagePath: logo['imagePath'],
                         title: logo['title'],
                         description: logo['description'],
