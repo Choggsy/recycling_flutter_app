@@ -2,37 +2,29 @@ import 'package:flutter/cupertino.dart' show Widget;
 import 'package:recycling_flutter_app/view/guidelines_page.dart';
 import 'package:recycling_flutter_app/view/guideline/logo/recycling_logo_page.dart' show RecyclableLogoPage;
 
-import '../view/guideline/material/cardboard_page.dart' show CardboardPage;
-import '../view/guideline/material/electionics_page.dart' show ElectronicsPage;
-import '../view/guideline/material/flexible_plastics.page.dart' show FlexiblePlasticsPage;
-import '../view/guideline/material/glass_page.dart' show GlassPage;
-import '../view/guideline/material/plastic_page.dart' show PlasticPage;
-import '../view/guideline/material/metal_page.dart' show MetalPage;
-import '../view/guideline/material/textiles_page.dart' show TextilesPage;
-import '../view/guideline/material/wood_page.dart' show WoodPage;
-import '../view/guideline/material/food_waste_page.dart' show FoodWastePage;
-import '../view/guideline/room_guide_page.dart' show RoomSelectionPage;
+import '../view/guideline/material/material_page.dart';
+import '../view/guideline/room_guide_page.dart';
 
 Widget getMaterialPage(int index) {
   switch (index) {
     case 0:
-      return CardboardPage();
+      return MaterialPage(materialTitle: 'Cardboard');
     case 1:
-      return GlassPage();
+      return MaterialPage(materialTitle: 'Glass');
     case 2:
-      return PlasticPage();
+      return MaterialPage(materialTitle: 'Plastic');
     case 3:
-      return ElectronicsPage();
+      return MaterialPage(materialTitle: 'Electronics');
     case 4:
-      return FoodWastePage();
+      return MaterialPage(materialTitle: 'Food Waste');
     case 5:
-      return MetalPage();
+      return MaterialPage(materialTitle: 'Metal');
     case 6:
-      return TextilesPage();
+      return MaterialPage(materialTitle: 'Textiles');
     case 7:
-      return WoodPage();
+      return MaterialPage(materialTitle: 'Wood');
     case 8:
-      return FlexiblePlasticsPage();
+      return MaterialPage(materialTitle: 'Flexible Plastics');
     case 9:
       return RoomSelectionPage();
     case 10:

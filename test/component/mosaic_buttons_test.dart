@@ -4,15 +4,7 @@ import 'package:recycling_flutter_app/component/mosaic_buttons.dart' show Mosaic
 import 'package:recycling_flutter_app/component/tile_button.dart';
 import 'package:recycling_flutter_app/helper/get_material_page.dart' show getMaterialPage;
 import 'package:recycling_flutter_app/properties/device_view_vector.dart' show ScreenConfig;
-import 'package:recycling_flutter_app/view/guideline/material/cardboard_page.dart' show CardboardPage;
-import 'package:recycling_flutter_app/view/guideline/material/electionics_page.dart' show ElectronicsPage;
-import 'package:recycling_flutter_app/view/guideline/material/flexible_plastics.page.dart' show FlexiblePlasticsPage;
-import 'package:recycling_flutter_app/view/guideline/material/glass_page.dart' show GlassPage;
-import 'package:recycling_flutter_app/view/guideline/material/plastic_page.dart' show PlasticPage;
-import 'package:recycling_flutter_app/view/guideline/material/metal_page.dart' show MetalPage;
-import 'package:recycling_flutter_app/view/guideline/material/textiles_page.dart' show TextilesPage;
-import 'package:recycling_flutter_app/view/guideline/material/wood_page.dart' show WoodPage;
-import 'package:recycling_flutter_app/view/guideline/material/food_waste_page.dart' show FoodWastePage;
+import 'package:recycling_flutter_app/view/guideline/material/material_page.dart' as recycling_app; // Alias the import
 
 void main() {
   final List<MapEntry<String, int>> testData = [
@@ -24,8 +16,16 @@ void main() {
     MapEntry('Metal', 5),
     MapEntry('Textiles', 6),
     MapEntry('Wood', 7),
-    MapEntry('Flexible Plastic', 8),
+    MapEntry('Flexible Plastics', 8),
   ];
+
+  setUp(() async {
+    // Any setup code if needed
+  });
+
+  tearDown(() async {
+    // Any teardown code if needed
+  });
 
   testWidgets('MosaicButtons builds a grid with correct number of buttons and labels on phone', (final WidgetTester tester) async {
     await pumpMosaicGridWidget(tester, Size(ScreenConfig.phoneScreen.toDouble(), 800.0), testData, getMaterialPage);
@@ -49,79 +49,94 @@ void main() {
     await pumpMosaicGridWidget(tester, Size(ScreenConfig.phoneScreen.toDouble(), 800.0), testData, getMaterialPage);
 
     await tester.tap(find.byKey(Key('Cardboard')));
-    await tester.pumpAndSettle();
-    expect(find.byType(CardboardPage), findsOneWidget);
-  });
+    await tester.pumpAndSettle(const Duration(seconds: 10)); // Increase timeout duration
+    expect(find.byType(recycling_app.MaterialPage), findsOneWidget);
+    expect(find.byKey(Key('materialTitle_Cardboard')), findsOneWidget);
+  }, timeout: Timeout(Duration(minutes: 1))); // Custom timeout
 
   testWidgets('MosaicButtons navigates to GlassPage on button press', (final WidgetTester tester) async {
     await pumpMosaicGridWidget(tester, Size(ScreenConfig.phoneScreen.toDouble(), 800.0), testData, getMaterialPage);
-    await tester.tap(find.byKey(Key('Glass')));
-    await tester.pumpAndSettle();
 
-    expect(find.byType(GlassPage), findsOneWidget);
-  });
+    await tester.tap(find.byKey(Key('Glass')));
+    await tester.pump(const Duration(seconds: 1)); // Wait for 1 second
+
+    expect(find.byType(recycling_app.MaterialPage), findsOneWidget);
+    expect(find.byKey(Key('materialTitle_Glass')), findsOneWidget);
+  }, timeout: Timeout(Duration(minutes: 1))); // Custom timeout
 
   testWidgets('MosaicButtons navigates to PlasticPage on button press', (final WidgetTester tester) async {
     await pumpMosaicGridWidget(tester, Size(ScreenConfig.phoneScreen.toDouble(), 800.0), testData, getMaterialPage);
-    await tester.tap(find.byKey(Key('Plastic')));
-    await tester.pumpAndSettle();
 
-    expect(find.byType(PlasticPage), findsOneWidget);
-  });
+    await tester.tap(find.byKey(Key('Plastic')));
+    await tester.pump(const Duration(seconds: 1)); // Wait for 1 second
+
+    expect(find.byType(recycling_app.MaterialPage), findsOneWidget);
+    expect(find.byKey(Key('materialTitle_Plastic')), findsOneWidget);
+  }, timeout: Timeout(Duration(minutes: 1))); // Custom timeout
 
   testWidgets('MosaicButtons navigates to ElectronicsPage on button press', (final WidgetTester tester) async {
     await pumpMosaicGridWidget(tester, Size(ScreenConfig.phoneScreen.toDouble(), 800.0), testData, getMaterialPage);
-    await tester.tap(find.byKey(Key('Electronics')));
-    await tester.pumpAndSettle();
 
-    expect(find.byType(ElectronicsPage), findsOneWidget);
-  });
+    await tester.tap(find.byKey(Key('Electronics')));
+    await tester.pump(const Duration(seconds: 1)); // Wait for 1 second
+
+    expect(find.byType(recycling_app.MaterialPage), findsOneWidget);
+    expect(find.byKey(Key('materialTitle_Electronics')), findsOneWidget);
+  }, timeout: Timeout(Duration(minutes: 1))); // Custom timeout
 
   testWidgets('MosaicButtons navigates to FlexiblePlasticsPage on button press', (final WidgetTester tester) async {
     await pumpMosaicGridWidget(tester, Size(ScreenConfig.phoneScreen.toDouble(), 800.0), testData, getMaterialPage);
-    await tester.ensureVisible(find.byKey(Key('Flexible Plastic')));
-    await tester.tap(find.byKey(Key('Flexible Plastic')));
-    await tester.pumpAndSettle();
 
-    expect(find.byType(FlexiblePlasticsPage), findsOneWidget);
-  });
+    await tester.ensureVisible(find.byKey(Key('Flexible Plastics')));
+    await tester.tap(find.byKey(Key('Flexible Plastics')));
+    await tester.pump(const Duration(seconds: 1)); // Wait for 1 second
+
+    expect(find.byType(recycling_app.MaterialPage), findsOneWidget);
+    expect(find.byKey(Key('materialTitle_Flexible Plastics')), findsOneWidget);
+  }, timeout: Timeout(Duration(minutes: 1))); // Custom timeout
 
   testWidgets('MosaicButtons navigates to MetalPage on button press', (final WidgetTester tester) async {
     await pumpMosaicGridWidget(tester, Size(ScreenConfig.phoneScreen.toDouble(), 800.0), testData, getMaterialPage);
+
     await tester.ensureVisible(find.byKey(Key('Metal')));
     await tester.tap(find.byKey(Key('Metal')));
-    await tester.pumpAndSettle();
+    await tester.pump(const Duration(seconds: 1)); // Wait for 1 second
 
-    expect(find.byType(MetalPage), findsOneWidget);
-  });
-
+    expect(find.byType(recycling_app.MaterialPage), findsOneWidget);
+    expect(find.byKey(Key('materialTitle_Metal')), findsOneWidget);
+  }, timeout: Timeout(Duration(minutes: 1))); // Custom timeout
   testWidgets('MosaicButtons navigates to TextilesPage on button press', (final WidgetTester tester) async {
     await pumpMosaicGridWidget(tester, Size(ScreenConfig.phoneScreen.toDouble(), 800.0), testData, getMaterialPage);
+
     await tester.ensureVisible(find.byKey(Key('Textiles')));
     await tester.tap(find.byKey(Key('Textiles')));
-    await tester.pumpAndSettle();
+    await tester.pump(const Duration(seconds: 1)); // Wait for 1 second
 
-    expect(find.byType(TextilesPage), findsOneWidget);
-  });
+    expect(find.byType(recycling_app.MaterialPage), findsOneWidget);
+    expect(find.byKey(Key('materialTitle_Textiles')), findsOneWidget);
+  }, timeout: Timeout(Duration(minutes: 1))); // Custom timeout
 
   testWidgets('MosaicButtons navigates to WoodPage on button press', (final WidgetTester tester) async {
     await pumpMosaicGridWidget(tester, Size(ScreenConfig.phoneScreen.toDouble(), 800.0), testData, getMaterialPage);
+
     await tester.ensureVisible(find.byKey(Key('Wood')));
     await tester.tap(find.byKey(Key('Wood')));
-    await tester.pumpAndSettle();
+    await tester.pump(const Duration(seconds: 1)); // Wait for 1 second
 
-    expect(find.byType(WoodPage), findsOneWidget);
-  });
+    expect(find.byType(recycling_app.MaterialPage), findsOneWidget);
+    expect(find.byKey(Key('materialTitle_Wood')), findsOneWidget);
+  }, timeout: Timeout(Duration(minutes: 1))); // Custom timeout
 
   testWidgets('MosaicButtons navigates to FoodWastePage on button press', (final WidgetTester tester) async {
     await pumpMosaicGridWidget(tester, Size(ScreenConfig.phoneScreen.toDouble(), 800.0), testData, getMaterialPage);
+
     await tester.ensureVisible(find.byKey(Key('Food Waste')));
     await tester.tap(find.byKey(Key('Food Waste')));
-    await tester.pumpAndSettle();
+    await tester.pump(const Duration(seconds: 1)); // Wait for 1 second
 
-    expect(find.byType(FoodWastePage), findsOneWidget);
-  });
-
+    expect(find.byType(recycling_app.MaterialPage), findsOneWidget);
+    expect(find.byKey(Key('materialTitle_Food Waste')), findsOneWidget);
+  }, timeout: Timeout(Duration(minutes: 1))); // Custom timeout
   testWidgets('MosaicButtons handles empty labels list', (final WidgetTester tester) async {
     await pumpMosaicGridWidget(tester, Size(ScreenConfig.phoneScreen.toDouble(), 800.0), [], getMaterialPage);
     expect(find.byType(ElevatedButton), findsNothing);

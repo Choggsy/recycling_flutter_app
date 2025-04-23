@@ -1,53 +1,63 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:recycling_flutter_app/helper/get_material_page.dart' show getMaterialPage;
-import 'package:recycling_flutter_app/view/guideline/material/cardboard_page.dart' show CardboardPage;
-import 'package:recycling_flutter_app/view/guideline/material/glass_page.dart' show GlassPage;
-import 'package:recycling_flutter_app/view/guideline/material/plastic_page.dart' show PlasticPage;
-import 'package:recycling_flutter_app/view/guideline/material/electionics_page.dart' show ElectronicsPage;
-import 'package:recycling_flutter_app/view/guideline/material/flexible_plastics.page.dart' show FlexiblePlasticsPage;
-import 'package:recycling_flutter_app/view/guideline/material/metal_page.dart' show MetalPage;
-import 'package:recycling_flutter_app/view/guideline/material/textiles_page.dart' show TextilesPage;
-import 'package:recycling_flutter_app/view/guideline/material/wood_page.dart' show WoodPage;
-import 'package:recycling_flutter_app/view/guideline/material/food_waste_page.dart' show FoodWastePage;
 import 'package:recycling_flutter_app/view/guideline/room_guide_page.dart' show RoomSelectionPage;
 import 'package:recycling_flutter_app/view/guideline/logo/recycling_logo_page.dart' show RecyclableLogoPage;
 import 'package:recycling_flutter_app/view/guidelines_page.dart';
+import 'package:recycling_flutter_app/view/guideline/material/material_page.dart' as recycling_app;
 
 void main() {
-  test('getMaterialPage returns CardboardPage for index 0', () {
-    expect(getMaterialPage(0), isA<CardboardPage>());
+  test('getMaterialPage returns MaterialPage for index 0 with title Cardboard', () {
+    final page = getMaterialPage(0);
+    expect(page, isA<recycling_app.MaterialPage>());
+    expect((page as recycling_app.MaterialPage).materialTitle, 'Cardboard');
   });
 
-  test('getMaterialPage returns GlassPage for index 1', () {
-    expect(getMaterialPage(1), isA<GlassPage>());
+  test('getMaterialPage returns MaterialPage for index 1 with title Glass', () {
+    final page = getMaterialPage(1);
+    expect(page, isA<recycling_app.MaterialPage>());
+    expect((page as recycling_app.MaterialPage).materialTitle, 'Glass');
   });
 
-  test('getMaterialPage returns PlasticPage for index 2', () {
-    expect(getMaterialPage(2), isA<PlasticPage>());
+  test('getMaterialPage returns MaterialPage for index 2 with title Plastic', () {
+    final page = getMaterialPage(2);
+    expect(page, isA<recycling_app.MaterialPage>());
+    expect((page as recycling_app.MaterialPage).materialTitle, 'Plastic');
   });
 
-  test('getMaterialPage returns ElectronicsPage for index 3', () {
-    expect(getMaterialPage(3), isA<ElectronicsPage>());
+  test('getMaterialPage returns MaterialPage for index 3 with title Electronics', () {
+    final page = getMaterialPage(3);
+    expect(page, isA<recycling_app.MaterialPage>());
+    expect((page as recycling_app.MaterialPage).materialTitle, 'Electronics');
   });
 
-  test('getMaterialPage returns FoodWastePage for index 4', () {
-    expect(getMaterialPage(4), isA<FoodWastePage>());
+  test('getMaterialPage returns MaterialPage for index 4 with title Food Waste', () {
+    final page = getMaterialPage(4);
+    expect(page, isA<recycling_app.MaterialPage>());
+    expect((page as recycling_app.MaterialPage).materialTitle, 'Food Waste');
   });
 
-  test('getMaterialPage returns MetalPage for index 5', () {
-    expect(getMaterialPage(5), isA<MetalPage>());
+  test('getMaterialPage returns MaterialPage for index 5 with title Metal', () {
+    final page = getMaterialPage(5);
+    expect(page, isA<recycling_app.MaterialPage>());
+    expect((page as recycling_app.MaterialPage).materialTitle, 'Metal');
   });
 
-  test('getMaterialPage returns TextilesPage for index 6', () {
-    expect(getMaterialPage(6), isA<TextilesPage>());
+  test('getMaterialPage returns MaterialPage for index 6 with title Textiles', () {
+    final page = getMaterialPage(6);
+    expect(page, isA<recycling_app.MaterialPage>());
+    expect((page as recycling_app.MaterialPage).materialTitle, 'Textiles');
   });
 
-  test('getMaterialPage returns WoodPage for index 7', () {
-    expect(getMaterialPage(7), isA<WoodPage>());
+  test('getMaterialPage returns MaterialPage for index 7 with title Wood', () {
+    final page = getMaterialPage(7);
+    expect(page, isA<recycling_app.MaterialPage>());
+    expect((page as recycling_app.MaterialPage).materialTitle, 'Wood');
   });
 
-  test('getMaterialPage returns FlexiblePlasticsPage for index 8', () {
-    expect(getMaterialPage(8), isA<FlexiblePlasticsPage>());
+  test('getMaterialPage returns MaterialPage for index 8 with title Flexible Plastics', () {
+    final page = getMaterialPage(8);
+    expect(page, isA<recycling_app.MaterialPage>());
+    expect((page as recycling_app.MaterialPage).materialTitle, 'Flexible Plastics');
   });
 
   test('getMaterialPage returns RoomSelectionPage for index 9', () {

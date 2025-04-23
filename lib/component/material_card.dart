@@ -26,6 +26,7 @@ class MaterialCard extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               title,
+              key: Key('materialTitle_$title'), // Add a key to the title Text widget
               style: TextStyle(
                 fontSize: 20.0,
                 fontWeight: FontWeight.bold,
