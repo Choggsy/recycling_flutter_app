@@ -2,7 +2,7 @@
   "upcycling_tutorials": [
     {
       "title": "Wine Cork Key Holder",
-      "photo": "wine_cork_key_holder.jpg",
+      "photo": "assets/logo/placeholder.jpg",
       "description": "Transform old wine corks into a stylish and functional key holder.",
       "supplies": [
         "Wine corks",
@@ -23,7 +23,7 @@
     },
     {
       "title": "CD Mosaic Coasters",
-      "photo": "cd_mosaic_coasters.jpg",
+      "photo": "assets/logo/placeholder.jpg",
       "description": "Repurpose old CDs into dazzling coasters with a mosaic effect.",
       "supplies": [
         "Old CDs",
@@ -44,7 +44,7 @@
     },
     {
       "title": "Plastic Bottle Drip Irrigation",
-      "photo": "plastic_bottle_irrigation.jpg",
+      "photo": "assets/logo/placeholder.jpg",
       "description": "Turn empty plastic bottles into an easy and eco-friendly garden irrigation system.",
       "supplies": [
         "Plastic bottle",
@@ -63,7 +63,7 @@
     },
     {
       "title": "Old Drawer to Wall Shelf",
-      "photo": "drawer_wall_shelf.jpg",
+      "photo": "assets/logo/placeholder.jpg",
       "description": "Repurpose an unused drawer into a stylish wall shelf.",
       "supplies": [
         "Old drawer",
@@ -85,7 +85,7 @@
     },
     {
       "title": "Tin Can Lanterns",
-      "photo": "tin_can_lantern.jpg",
+      "photo": "assets/logo/placeholder.jpg",
       "description": "Create beautiful lanterns from recycled tin cans with punched designs.",
       "supplies": [
         "Tin cans",
@@ -110,7 +110,7 @@
     },
     {
       "title": "Old T-Shirt Tote Bag",
-      "photo": "tshirt_tote_bag.jpg",
+      "photo": "assets/logo/placeholder.jpg",
       "description": "Turn an old t-shirt into a reusable tote bag with no sewing required.",
       "supplies": [
         "Old t-shirt",
@@ -131,7 +131,7 @@
     },
     {
       "title": "Pallet Garden Planter",
-      "photo": "pallet_garden_planter.jpg",
+      "photo": "assets/logo/placeholder.jpg",
       "description": "Repurpose wooden pallets into vertical garden planters for herbs and flowers.",
       "supplies": [
         "Wooden pallet",
@@ -156,7 +156,7 @@
     },
     {
       "title": "Glass Jar Herb Garden",
-      "photo": "glass_jar_herb_garden.jpg",
+      "photo": "assets/logo/placeholder.jpg",
       "description": "Transform old glass jars into a charming indoor herb garden.",
       "supplies": [
         "Glass jars",
@@ -180,7 +180,7 @@
     },
     {
       "title": "Denim Pocket Organizer",
-      "photo": "denim_pocket_organizer.jpg",
+      "photo": "assets/logo/placeholder.jpg",
       "description": "Upcycle old jeans into a stylish hanging organizer using denim pockets.",
       "supplies": [
         "Old jeans",
@@ -202,7 +202,7 @@
     },
     {
       "title": "Old Books to Floating Shelves",
-      "photo": "book_floating_shelves.jpg",
+      "photo": "assets/logo/placeholder.jpg",
       "description": "Convert vintage books into stylish floating wall shelves.",
       "supplies": [
         "Old hardcover books",
@@ -222,7 +222,7 @@
     },
     {
       "title": "Bottle Cap Magnets",
-      "photo": "bottle_cap_magnets.jpg",
+      "photo": "assets/logo/placeholder.jpg",
       "description": "Repurpose metal bottle caps into decorative fridge magnets.",
       "supplies": [
         "Bottle caps",
@@ -243,7 +243,7 @@
     },
     {
       "title": "Old Sweater Pillow Covers",
-      "photo": "sweater_pillow_covers.jpg",
+      "photo": "assets/logo/placeholder.jpg",
       "description": "Turn an old sweater into a cozy pillow cover for extra warmth and texture.",
       "supplies": [
         "Old sweater",
@@ -264,7 +264,7 @@
     },
     {
       "title": "Egg Carton Seed Starters",
-      "photo": "egg_carton_seed_starters.jpg",
+      "photo": "assets/logo/placeholder.jpg",
       "description": "Repurpose cardboard egg cartons into biodegradable seed starters.",
       "supplies": [
         "Empty egg carton",
@@ -284,7 +284,7 @@
     },
     {
       "title": "Ladder Bookshelf",
-      "photo": "ladder_bookshelf.jpg",
+      "photo": "assets/logo/placeholder.jpg",
       "description": "Transform an old ladder into a rustic and functional bookshelf.",
       "supplies": [
         "Old ladder",
@@ -307,7 +307,7 @@
     },
     {
       "title": "Cereal Box Desk Organizer",
-      "photo": "cereal_box_organizer.jpg",
+      "photo": "assets/logo/placeholder.jpg",
       "description": "Upcycle empty cereal boxes into a functional desk organizer.",
       "supplies": [
         "Empty cereal boxes",
