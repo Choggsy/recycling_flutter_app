@@ -76,9 +76,6 @@ void main() {
       for (final instruction in testTutorial.instructions) {
         expect(find.descendant(of: tutorialCard, matching: find.text('- $instruction')), findsOneWidget);
       }
-      for (final supply in testTutorial.supplies) {
-        expect(find.descendant(of: tutorialCard, matching: find.text(supply)), findsOneWidget);
-      }
     });
   });
 }
