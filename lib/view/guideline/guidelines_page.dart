@@ -6,6 +6,7 @@ import '../../helper/get_material_page.dart' show getMaterialPage;
 import '../../helper/get_page.dart';
 import '../../component/mosaic_buttons.dart' show MosaicButtons;
 import '../../helper/space_helper.dart' show Space, SpaceExtension;
+import '../../properties/app_theme.dart';
 
 class GuidelinesPage extends StatelessWidget {
   const GuidelinesPage({super.key});
@@ -20,12 +21,17 @@ class GuidelinesPage extends StatelessWidget {
           children: [
             Space.medium.box,
             buildTileButton("logo guide", 10, getMaterialPage),
-            Space.large.box,
+            Space.small.box,
+            Divider(
+                thickness: 4,
+                color: AppColors.darkRedBrown
+            ),
+            Space.medium.box,
             Text(
               'Material Guidelines',
               style: Theme.of(context).textTheme.displayMedium,
             ),
-            Space.medium.box,
+            Space.small.box,
             MosaicButtons.buildMosaicGrid(
               context,
               [

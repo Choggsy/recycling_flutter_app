@@ -4,7 +4,7 @@ import 'package:recycling_flutter_app/component/bottom_navigation_bar.dart' show
 import 'package:recycling_flutter_app/component/top_app_bar.dart' show CustomAppBar;
 import 'package:recycling_flutter_app/view/guideline/guidelines_page.dart';
 import 'package:recycling_flutter_app/view/home_page.dart';
-import 'package:recycling_flutter_app/view/upcycle_page.dart';
+import 'package:recycling_flutter_app/view/upcycle/upcycle_page.dart';
 
 void main() {
   testWidgets('GuidelinesPage has a title and body text', (final WidgetTester tester) async {
