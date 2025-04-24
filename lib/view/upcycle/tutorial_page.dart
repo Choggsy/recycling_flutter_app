@@ -2,19 +2,24 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../../component/tutorial_card.dart';
+import '../../model/tutorial.dart';
 
 class TutorialPage extends StatelessWidget {
   final String tutorialTitle;
-  final Future<Map<String, dynamic>> Function()? tutorialLoader;
+  final Future<Tutorial> Function()? tutorialLoader;
 
   const TutorialPage({
     super.key,
     required this.tutorialTitle,
-    this.tutorialLoader, // Optional parameter for context testing
+    this.tutorialLoader, // Optional parameter for testing with custom loaders
   });
 
-  Future<Map<String, dynamic>> _defaultLoadTutorial() async {
-    return List<Map<String, dynamic>>.from(jsonDecode(await rootBundle.loadString('assets/upcycling.json'))['upcycling_tutorials']).firstWhere(
+  Future<Tutorial> _defaultLoadTutorial() async {
+    final tutorials = List<Map<String, dynamic>>.from(
+      jsonDecode(await rootBundle.loadString('assets/upcycling.json'))['upcycling_tutorials'],
+    );
+
+    final tutorialData = tutorials.firstWhere(
           (tutorial) => tutorial['title'] == tutorialTitle,
       orElse: () => {
         'photo': '',
@@ -22,15 +27,18 @@ class TutorialPage extends StatelessWidget {
         'description': 'No description available.',
         'supplies': [],
         'instructions': [],
+        'categories': [],
       },
     );
+
+    return Tutorial.fromJson(tutorialData);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text(tutorialTitle)),
-      body: FutureBuilder<Map<String, dynamic>>(
+      body: FutureBuilder<Tutorial>(
         future: tutorialLoader?.call() ?? _defaultLoadTutorial(),
         builder: (context, snapshot) => _buildBody(context, snapshot),
       ),
@@ -42,28 +50,22 @@ Widget _buildLoading() => const Center(child: CircularProgressIndicator());
 Widget _buildError() => const Center(child: Text('Error loading tutorial'));
 Widget _buildEmpty() => const Center(child: Text('No tutorial available'));
 
-Widget _buildTutorialList(final Map<String, dynamic> tutorial) {
-  return ListView(
-    children: [
-      TutorialCard(
-        imagePath: tutorial['photo'] ?? '',
-        title: tutorial['title'] ?? 'Unknown Title',
-        description: tutorial['description'] ?? 'No description available.',
-        supplies: List<String>.from(tutorial['supplies'] ?? []),
-        instructions: List<String>.from(tutorial['instructions'] ?? []),
-      ),
-    ],
-  );
-}
-
-Widget _buildBody(BuildContext context, AsyncSnapshot<Map<String, dynamic>> snapshot) {
+Widget _buildBody(BuildContext context, AsyncSnapshot<Tutorial> snapshot) {
   if (snapshot.connectionState == ConnectionState.waiting) {
     return _buildLoading();
   } else if (snapshot.hasError) {
     return _buildError();
-  } else if (!snapshot.hasData || snapshot.data!['title'] == 'Unknown Tutorial') {
+  } else if (!snapshot.hasData || snapshot.data!.title == 'Unknown Tutorial') {
     return _buildEmpty();
   } else {
-    return _buildTutorialList(snapshot.data!);
+    return _buildTutorialCard(snapshot.data!);
   }
+}
+
+Widget _buildTutorialCard(Tutorial tutorial) {
+  return ListView(
+    children: [
+      TutorialCard(tutorial: tutorial),
+    ],
+  );
 }
