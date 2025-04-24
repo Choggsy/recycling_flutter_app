@@ -52,7 +52,7 @@ class TutorialCard extends StatelessWidget {
               ),
               Space.medium.box,
               SizedBox(
-                width: double.infinity, // Make the box span full width
+                width: double.infinity,
                 child: Container(
                   padding: EdgeInsets.all(8),
                   decoration: BoxDecoration(
@@ -71,9 +71,9 @@ class TutorialCard extends StatelessWidget {
                       ),
                       Space.small.box,
                       Text(
-                        supplies.join(',  '), // Join all items into one string
+                        supplies.join(',  '),
                         style: theme.textTheme.bodyMedium,
-                        textAlign: TextAlign.left, // Left-align for readability
+                        textAlign: TextAlign.left,
                       ),
                     ],
                   ),

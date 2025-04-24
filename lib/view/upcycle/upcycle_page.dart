@@ -5,7 +5,7 @@ import 'package:recycling_flutter_app/component/mosaic_buttons.dart' show Mosaic
 import 'package:recycling_flutter_app/helper/space_helper.dart' show Space, SpaceExtension;
 import '../../helper/get_page.dart' show getPage;
 import '../../helper/upcycling_service.dart';
-import 'tutorial_page.dart'; // Import tutorial page for navigation
+import 'tutorial_page.dart';
 
 class UpcyclePage extends StatelessWidget {
   const UpcyclePage({super.key});
