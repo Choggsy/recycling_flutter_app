@@ -5,8 +5,7 @@ import 'package:recycling_flutter_app/model/tutorial.dart';
 import 'package:recycling_flutter_app/view/upcycle/tutorial_page.dart';
 
 void main() {
-  // Sample tutorial data for testing
-  var testTutorial = Tutorial(
+  final testTutorial = Tutorial(
     imagePath: 'assets/logo/placeholder.jpg',
     title: 'Test Tutorial',
     description: 'This is a test tutorial description.',
@@ -34,6 +33,7 @@ void main() {
   );
 
   group('TutorialPage Widget Tests', () {
+
     Widget createTestWidget(Future<Tutorial> Function()? mockLoader) {
       return MaterialApp(
         home: TutorialPage(
@@ -43,46 +43,42 @@ void main() {
       );
     }
 
-    testWidgets('Displays loading indicator during fetch', (WidgetTester tester) async {
+    testWidgets('Displays loading indicator during fetch', (final WidgetTester tester) async {
       await tester.pumpWidget(createTestWidget(mockLoadTutorial));
 
-      // Check for loading indicator
       expect(find.byType(CircularProgressIndicator), findsOneWidget);
       await tester.pumpAndSettle();
     });
 
-    testWidgets('Displays error widget when fetch fails', (WidgetTester tester) async {
+    testWidgets('Displays error widget when fetch fails', (final WidgetTester tester) async {
       await tester.pumpWidget(createTestWidget(mockLoadError));
-
-      // Wait for error to propagate
       await tester.pumpAndSettle();
+
       expect(find.text('Error loading tutorial'), findsOneWidget);
     });
 
-    testWidgets('Displays empty widget when no data is found', (WidgetTester tester) async {
+    testWidgets('Displays empty widget when no data is found', (final WidgetTester tester) async {
       await tester.pumpWidget(createTestWidget(mockLoadEmpty));
-
-      // Check for empty widget
       await tester.pumpAndSettle();
+
       expect(find.text('No tutorial available'), findsOneWidget);
     });
 
-    testWidgets('Renders tutorial card with valid data', (WidgetTester tester) async {
+    testWidgets('Renders tutorial card with valid data', (final WidgetTester tester) async {
       await tester.pumpWidget(createTestWidget(mockLoadTutorial));
       await tester.pumpAndSettle();
+      final tutorialCard = find.byType(TutorialCard);
 
-      // Verify the TutorialCard widget is rendered correctly
+
       expect(find.byType(TutorialCard), findsOneWidget);
-
-      // Verify title, description, and instructions
-      expect(find.text(testTutorial.title), findsOneWidget);
-      expect(find.text(testTutorial.description), findsOneWidget);
+      expect(find.descendant(of: tutorialCard, matching: find.text(testTutorial.title)), findsOneWidget);
+      expect(find.descendant(of: tutorialCard, matching: find.text(testTutorial.description)), findsOneWidget);
       for (final instruction in testTutorial.instructions) {
-        expect(find.text('- $instruction'), findsOneWidget);
+        expect(find.descendant(of: tutorialCard, matching: find.text('- $instruction')), findsOneWidget);
       }
-
-      // Verify supplies
-      expect(find.text(testTutorial.supplies.join(', ')), findsOneWidget);
+      for (final supply in testTutorial.supplies) {
+        expect(find.descendant(of: tutorialCard, matching: find.text(supply)), findsOneWidget);
+      }
     });
   });
 }

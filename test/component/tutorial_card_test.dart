@@ -26,11 +26,9 @@ void main() {
     }
 
     testWidgets(
-      'Renders TutorialCard widget and checks title, description, and image',
-          (WidgetTester tester) async {
+      'Renders TutorialCard widget and checks title, description, and image', (final WidgetTester tester) async {
         await tester.pumpWidget(createTestWidget());
 
-        // Verify title, description, and image are displayed
         expect(find.text(testTutorial.title), findsOneWidget);
         expect(find.text(testTutorial.description), findsOneWidget);
         expect(find.byType(Image), findsOneWidget);
@@ -39,15 +37,13 @@ void main() {
 
     testWidgets(
       'Renders TutorialCard widget and checks supplies and instructions',
-          (WidgetTester tester) async {
-        await tester.pumpWidget(createTestWidget());
+          (final WidgetTester tester) async {await tester.pumpWidget(createTestWidget());
 
-        // Verify supplies are displayed
-        for (final supply in testTutorial.supplies) {
-          expect(find.text(supply), findsOneWidget);
-        }
+        expect(
+          find.text(testTutorial.supplies.join(', ')),
+          findsOneWidget,
+        );
 
-        // Verify instructions are displayed
         for (final instruction in testTutorial.instructions) {
           expect(find.text('- $instruction'), findsOneWidget);
         }

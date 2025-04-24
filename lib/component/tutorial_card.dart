@@ -67,12 +67,11 @@ class TutorialCard extends StatelessWidget {
         children: [
           Text('Supplies:', style: theme.textTheme.bodyLarge),
           Space.small.box,
-          for (final supply in tutorial.supplies)
-            Text(
-              supply,
-              style: theme.textTheme.bodyMedium,
-              textAlign: TextAlign.left,
-            ),
+          Text(
+            tutorial.supplies.join(', '), // Combines supplies into one comma-separated string
+            style: theme.textTheme.bodyMedium,
+            textAlign: TextAlign.left,
+          ),
         ],
       ),
     );
