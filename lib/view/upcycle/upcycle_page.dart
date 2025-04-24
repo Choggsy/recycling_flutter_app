@@ -7,21 +7,27 @@ import 'package:recycling_flutter_app/component/mosaic_buttons.dart'
     show MosaicButtons;
 import 'package:recycling_flutter_app/helper/space_helper.dart'
     show Space, SpaceExtension;
+import 'package:recycling_flutter_app/properties/app_theme.dart';
 import '../../helper/get_page.dart' show getPage;
 import '../../helper/upcycling_service.dart';
 import '../../properties/device_view_vector.dart';
 import 'tutorial_page.dart';
 
-class UpcyclePage extends StatelessWidget {
+class UpcyclePage extends StatefulWidget {
   const UpcyclePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  State<UpcyclePage> createState() => _UpcyclePageState();
+}
+
+class _UpcyclePageState extends State<UpcyclePage> {
+  String selectedCategory = 'all'; // Default to all tutorials
+
+  @override
+  Widget build(final BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
     final restrictedWidth = 0.15;
-    final smallIconSize = ScreenConfig.getIconSize(
-      screenWidth,
-    ); // Smaller size applied
+    final smallIconSize = ScreenConfig.getIconSize(screenWidth);
 
     return Scaffold(
       appBar: CustomAppBar(title: 'Upcycling', showBackButton: false),
@@ -30,71 +36,11 @@ class UpcyclePage extends StatelessWidget {
         child: Column(
           children: [
             Space.medium.box,
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Column(
-                  children: [
-                    SizedBox(
-                      width: screenWidth * restrictedWidth,
-                      height: screenWidth * restrictedWidth,
-                      child: IconButton(
-                        icon: Image.asset('assets/upcycle/craft.png'),
-                        iconSize: smallIconSize,
-                        onPressed: () => print("Crafting button pressed"),
-                      ),
-                    ),
-                    const Text("Crafting"),
-                  ],
-                ),
-                Column(
-                  children: [
-                    SizedBox(
-                      width: screenWidth * restrictedWidth,
-                      height: screenWidth * restrictedWidth,
-                      child: IconButton(
-                        icon: Image.asset('assets/upcycle/garden.png'),
-                        iconSize: smallIconSize,
-                        onPressed: () => print("Utility button pressed"),
-                      ),
-                    ),
-                    const Text("Utility"),
-                  ],
-                ),
-                Column(
-                  children: [
-                    SizedBox(
-                      width: screenWidth * restrictedWidth,
-                      height: screenWidth * restrictedWidth,
-                      child: IconButton(
-                        icon: Image.asset('assets/upcycle/repurpose.png'),
-                        iconSize: smallIconSize,
-                        onPressed: () => print("Garden button pressed"),
-                      ),
-                    ),
-                    const Text("Garden"),
-                  ],
-                ),
-                Column(
-                  children: [
-                    SizedBox(
-                      width: screenWidth * restrictedWidth,
-                      height: screenWidth * restrictedWidth,
-                      child: IconButton(
-                        icon: Image.asset('assets/upcycle/utility.png'),
-                        iconSize: smallIconSize,
-                        onPressed: () => print("Repurpose button pressed"),
-                      ),
-                    ),
-                    const Text("Repurpose"),
-                  ],
-                ),
-              ],
-            ),
+            _buildCategoryButtons(),
             Space.medium.box,
-            Text(
-              'Upcycling Tutorials',
-              style: Theme.of(context).textTheme.displayMedium,
+            Divider(
+              thickness: 4,
+              color: AppColors.darkRedBrown
             ),
             Space.medium.box,
             buildFutureBuilder(),
@@ -114,9 +60,45 @@ class UpcyclePage extends StatelessWidget {
     );
   }
 
+  Widget _buildCategoryButtons() {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final restrictedWidth = 0.15;
+
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        _categoryButton('Craft', 'craft', screenWidth, restrictedWidth),
+        _categoryButton('Utility', 'utility', screenWidth, restrictedWidth),
+        _categoryButton('Garden', 'garden', screenWidth, restrictedWidth),
+        _categoryButton('Repurpose', 'repurpose', screenWidth, restrictedWidth),
+      ],
+    );
+  }
+
+  Widget _categoryButton(final String label,final String category,final double screenWidth,final double restrictedWidth) {
+    return Column(
+      children: [
+        SizedBox(
+          width: screenWidth * restrictedWidth,
+          height: screenWidth * restrictedWidth,
+          child: IconButton(
+            icon: Image.asset('assets/upcycle/$category.png'),
+            iconSize: ScreenConfig.getIconSize(screenWidth),
+            onPressed: () {
+              setState(() {
+                selectedCategory = category; // Update category when clicked
+              });
+            },
+          ),
+        ),
+        Text(label),
+      ],
+    );
+  }
+
   FutureBuilder<List<MapEntry<String, int>>> buildFutureBuilder() {
     return FutureBuilder<List<MapEntry<String, int>>>(
-      future: UpcyclingService.loadTutorialTitles(),
+      future: UpcyclingService.loadTutorialTitlesByCategory(selectedCategory), // Filter by selected category
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return _buildLoading();
@@ -128,7 +110,7 @@ class UpcyclePage extends StatelessWidget {
           return MosaicButtons.buildMosaicGrid(
             context,
             snapshot.data!,
-            (index) => TutorialPage(tutorialTitle: snapshot.data![index].key),
+                (index) => TutorialPage(tutorialTitle: snapshot.data![index].key),
           );
         }
       },
@@ -136,8 +118,6 @@ class UpcyclePage extends StatelessWidget {
   }
 
   Widget _buildLoading() => const Center(child: CircularProgressIndicator());
-
   Widget _buildError() => const Center(child: Text('Error loading tutorials'));
-
   Widget _buildEmpty() => const Center(child: Text('No tutorials available'));
 }

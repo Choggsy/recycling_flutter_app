@@ -1,13 +1,17 @@
 import 'dart:convert';
-import 'package:flutter/services.dart' show rootBundle;
+
+import 'package:flutter/services.dart';
 
 class UpcyclingService {
-  static Future<List<MapEntry<String, int>>> loadTutorialTitles() async {
-    final String response = await rootBundle.loadString('assets/upcycling.json');
-    final Map<String, dynamic> data = jsonDecode(response);
+  static Future<List<MapEntry<String, int>>> loadTutorialTitlesByCategory(final String category) async {
 
-    // Extracting and typing the data correctly
-    final List<Map<String, dynamic>> tutorials = List<Map<String, dynamic>>.from(data['upcycling_tutorials']);
-    return tutorials.asMap().entries.map((entry) => MapEntry(entry.value['title'] as String, entry.key)).toList();
+    return List<Map<String, dynamic>>
+        .from(jsonDecode(await rootBundle.loadString('assets/upcycling.json'))['upcycling_tutorials'])
+        .where((tutorial) => category == 'all' || tutorial['categories'].contains(category))
+        .toList()
+        .asMap()
+        .entries
+        .map((entry) => MapEntry(entry.value['title'] as String, entry.key))
+        .toList();
   }
 }
