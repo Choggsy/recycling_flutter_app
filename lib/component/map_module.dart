@@ -5,11 +5,13 @@ import 'dart:async';
 class CustomMap extends StatefulWidget {
   final LatLng initialPosition;
   final Set<Marker> markers;
+  final bool fullView;
 
   const CustomMap({
     super.key,
     required this.initialPosition,
     required this.markers,
+    this.fullView = true,
   });
 
   @override
@@ -34,18 +36,21 @@ class CustomMapState extends State<CustomMap> {
 
   @override
   Widget build(BuildContext context) {
-    return GoogleMap(
-      initialCameraPosition: CameraPosition(
-        target: widget.initialPosition,
-        zoom: 14.0, //TODO: COULD CHANGE FOR VIEW ON PHONE VS TABLET
+    return SizedBox(
+      height: widget.fullView ? double.infinity : 200.0,
+      child: GoogleMap(
+        initialCameraPosition: CameraPosition(
+          target: widget.initialPosition,
+          zoom: 14.0,
+        ),
+        markers: widget.markers,
+        onMapCreated: (controller) {
+          _controller = controller;
+          if (!_mapCreatedCompleter.isCompleted) {
+            _mapCreatedCompleter.complete();
+          }
+        },
       ),
-      markers: widget.markers,
-      onMapCreated: (controller) {
-        _controller = controller;
-        if (!_mapCreatedCompleter.isCompleted) {
-          _mapCreatedCompleter.complete();
-        }
-      },
     );
   }
 }
