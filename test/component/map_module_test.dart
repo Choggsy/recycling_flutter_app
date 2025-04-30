@@ -7,7 +7,7 @@ import '../google_map_controller_test.mocks.dart';
 void main() {
   var testLatitude = LatLng(0.0, 0.0);
 
-  Future<void> buildMap(final WidgetTester tester,final LatLng initialPosition,final Set<Marker> markers) async {
+  Future<void> buildMap(final WidgetTester tester, final LatLng initialPosition, final Set<Marker> markers) async {
     await tester.pumpWidget(
       MaterialApp(
         home: Scaffold(
@@ -50,5 +50,3 @@ void main() {
     });
   });
 }
-
-
