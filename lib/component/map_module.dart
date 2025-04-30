@@ -65,6 +65,39 @@ class CustomMapState extends State<CustomMap> {
     }
   }
 
+  double _calculateDistance(LatLng start, LatLng end) {
+    return Geolocator.distanceBetween(
+      start.latitude,
+      start.longitude,
+      end.latitude,
+      end.longitude,
+    );
+  }
+
+  void onMarkerTapped(Marker marker) {
+    double distance = _calculateDistance(_currentPosition, marker.position);
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+          padding: EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(marker.infoWindow.title ?? '', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              SizedBox(height: 8),
+              Image.network(marker.infoWindow.snippet ?? ''),
+              SizedBox(height: 8),
+              Text('Distance: ${distance.toStringAsFixed(2)} meters'),
+              SizedBox(height: 8),
+              Text('Category: ${marker.infoWindow.snippet ?? ''}'),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
