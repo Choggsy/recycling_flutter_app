@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:recycling_flutter_app/component/bottom_navigation_bar.dart'
-    show CustomBottomNavigationBar;
-import 'package:recycling_flutter_app/component/top_app_bar.dart'
-    show CustomAppBar;
-import 'package:recycling_flutter_app/component/tile_button.dart'; // Import TileButton
-
+import 'package:recycling_flutter_app/component/bottom_navigation_bar.dart' show CustomBottomNavigationBar;
+import 'package:recycling_flutter_app/component/top_app_bar.dart' show CustomAppBar;
+import 'package:recycling_flutter_app/component/tile_button.dart';
 import '../../helper/get_page.dart';
 import 'map_page.dart';
 
@@ -16,12 +13,14 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppBar(title: 'Home', showBackButton: false),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text('Home Page'),
-            buildTileButton("logo guide", 0, (context) => MapPage())
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Home Page'),
+              buildTileButton("Map Button", 0, (context) => MapPage())
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(

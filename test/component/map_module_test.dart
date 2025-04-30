@@ -5,7 +5,7 @@ import 'package:recycling_flutter_app/component/map_module.dart';
 import '../google_map_controller_test.mocks.dart';
 
 void main() {
-  var testLatitude = LatLng(51.5074, -0.1278);
+  var testLatitude = LatLng(0.0, 0.0);
 
   Future<void> buildMap(final WidgetTester tester,final LatLng initialPosition,final Set<Marker> markers) async {
     await tester.pumpWidget(
