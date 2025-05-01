@@ -56,7 +56,7 @@ class CustomMapState extends State<CustomMap> {
             markerId: MarkerId('currentLocation'),
             position: _currentPosition,
             infoWindow: InfoWindow(title: 'Your Location'),
-            icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueBlue),
+            icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueViolet),
           ),
         );
       });
