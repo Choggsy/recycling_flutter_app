@@ -70,6 +70,7 @@ flutter:
     - assets/logos.json
     - assets/materials.json
     - assets/upcycling.json
+    - assets/markers.json
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

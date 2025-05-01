@@ -5,7 +5,7 @@ double getMarkerColor(final String category) {
     case 'Flexible Plastic':
       return BitmapDescriptor.hueRed;
     case 'Glass':
-      return BitmapDescriptor.hueBlue;
+      return BitmapDescriptor.hueCyan;
     case 'Textiles':
       return BitmapDescriptor.hueYellow;
     case 'Electronic Waste':
