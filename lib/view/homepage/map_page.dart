@@ -10,7 +10,7 @@ class MapPage extends StatelessWidget {
   final String jsonMarkers = '''
   [
     {"id": "recycling_point_1", "lat": 51.5074, "lng": -0.1278, "title": "Recycling Point 1", "category": "Flexible Plastic", "description": "Accepts all types of flexible plastic waste."},
-    {"id": "recycling_point_2", "lat": 51.5075, "lng": -0.1279, "title": "Recycling Point 2", "category": "Glass, "description": "Accepts glass bottles and jars."}
+    {"id": "recycling_point_2", "lat": 51.5075, "lng": -0.1279, "title": "Recycling Point 2", "category": "Glass", "description": "Accepts glass bottles and jars."}
   ]
   ''';
 
@@ -33,7 +33,7 @@ class MapPage extends StatelessWidget {
       body: CustomMap(
         initialPosition: LatLng(51.5074, -0.1278),
         markers: markers,
-        fullView: true, // Change to false for partial view
+        fullView: true,
       ),
     );
   }
