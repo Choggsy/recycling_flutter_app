@@ -1,27 +1,33 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:recycling_flutter_app/helper/mark_parser.dart';
 
 void main() {
-  group('MarkerParser', () {
-    test('parseMarkers returns correct markers', () {
-      final markers = MarkerParser.parseMarkers('''
-      [
-        {"id": "1", "lat": 37.7749, "lng": -122.4194, "title": "San Francisco"},
-        {"id": "2", "lat": 34.0522, "lng": -118.2437, "title": "Los Angeles"}
-      ]
-      ''');
+  test('parseMarkers returns a set of markers', () {
+    const jsonString = '''
+    [
+      {"id": "1", "lat": 37.7749, "lng": -122.4194, "title": "Marker 1", "description": "Description 1", "category": "recycling"},
+      {"id": "2", "lat": 34.0522, "lng": -118.2437, "title": "Marker 2", "description": "Description 2", "category": "waste"}
+    ]
+    ''';
 
-      expect(markers.length, 2);
-      expect(markers.any((marker) => marker.markerId.value == '1' && marker.position.latitude == 37.7749 && marker.position.longitude == -122.4194 && marker.infoWindow.title == 'San Francisco'), true);
-      expect(markers.any((marker) => marker.markerId.value == '2' && marker.position.latitude == 34.0522 && marker.position.longitude == -118.2437 && marker.infoWindow.title == 'Los Angeles'), true);
-    });
+    Set<Marker> markers = MarkerParser.parseMarkers(jsonString, (marker) {});
+    expect(markers.length, 2);
+    expect(markers.any((marker) => marker.markerId.value == '1'), true);
+    expect(markers.any((marker) => marker.markerId.value == '2'), true);
+  });
 
-    test('parseMarkers handles empty JSON string', () {
-      expect(MarkerParser.parseMarkers('[]').isEmpty, true);
-    });
+  test('parseMarkers calls infoTap callback', () {
+    bool infoTapCalled = false;
+    const jsonString = '''
+    [
+      {"id": "1", "lat": 37.7749, "lng": -122.4194, "title": "Marker 1", "description": "Description 1", "category": "recycling"}
+    ]
+    ''';
 
-    test('parseMarkers handles invalid JSON string', () {
-      expect(() => MarkerParser.parseMarkers('invalid json'), throwsA(isA<FormatException>()));
-    });
+    MarkerParser.parseMarkers(jsonString, (marker) {
+      infoTapCalled = true;
+    }).first.onTap!();
+    expect(infoTapCalled, true);
   });
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'dart:async';
-
 import '../helper/location_service.dart';
 
 class CustomMap extends StatefulWidget {
@@ -43,7 +42,7 @@ class CustomMapState extends State<CustomMap> {
     super.dispose();
   }
 
-  void setController(GoogleMapController controller) {
+  void setController(final GoogleMapController controller) {
     _controller = controller;
   }
 
@@ -65,17 +64,7 @@ class CustomMapState extends State<CustomMap> {
     }
   }
 
-  double _calculateDistance(LatLng start, LatLng end) {
-    return Geolocator.distanceBetween(
-      start.latitude,
-      start.longitude,
-      end.latitude,
-      end.longitude,
-    );
-  }
-
-  void onMarkerTapped(Marker marker) {
-    double distance = _calculateDistance(_currentPosition, marker.position);
+  void onMarkerTapped(final Marker marker) {
     showModalBottomSheet(
       context: context,
       builder: (context) {
@@ -83,15 +72,6 @@ class CustomMapState extends State<CustomMap> {
           padding: EdgeInsets.all(16.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(marker.infoWindow.title ?? '', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
-              SizedBox(height: 8),
-              Image.network(marker.infoWindow.snippet ?? ''),
-              SizedBox(height: 8),
-              Text('Distance: ${distance.toStringAsFixed(2)} meters'),
-              SizedBox(height: 8),
-              Text('Category: ${marker.infoWindow.snippet ?? ''}'),
-            ],
           ),
         );
       },
