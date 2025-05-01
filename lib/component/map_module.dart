@@ -72,6 +72,11 @@ class CustomMapState extends State<CustomMap> {
           padding: EdgeInsets.all(16.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(marker.infoWindow.title ?? 'No Title', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              SizedBox(height: 8.0),
+              Text(marker.infoWindow.snippet ?? 'No Description'),
+            ],
           ),
         );
       },
