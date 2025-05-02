@@ -25,10 +25,6 @@ class _UpcyclePageState extends State<UpcyclePage> {
 
   @override
   Widget build(final BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final restrictedWidth = 0.15;
-    final smallIconSize = ScreenConfig.getIconSize(screenWidth);
-
     return Scaffold(
       appBar: CustomAppBar(title: 'Upcycling', showBackButton: false),
       body: SingleChildScrollView(

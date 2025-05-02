@@ -3,7 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:recycling_flutter_app/component/bottom_navigation_bar.dart' show CustomBottomNavigationBar;
 import 'package:recycling_flutter_app/component/top_app_bar.dart' show CustomAppBar;
 import 'package:recycling_flutter_app/view/guideline/guidelines_page.dart';
-import 'package:recycling_flutter_app/view/home_page.dart' show HomePage;
+import 'package:recycling_flutter_app/view/homepage/home_page.dart' show HomePage;
 import 'package:recycling_flutter_app/view/upcycle/upcycle_page.dart';
 
 void main() {

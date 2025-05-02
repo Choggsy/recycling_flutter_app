@@ -2,7 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:recycling_flutter_app/helper/get_page.dart' show getPage;
 import 'package:recycling_flutter_app/view/guideline/guidelines_page.dart'
     show GuidelinesPage;
-import 'package:recycling_flutter_app/view/home_page.dart' show HomePage;
+import 'package:recycling_flutter_app/view/homepage/home_page.dart' show HomePage;
 import 'package:recycling_flutter_app/view/upcycle/upcycle_page.dart' show UpcyclePage;
 
 void main() {

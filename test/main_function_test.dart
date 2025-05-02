@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart' show runApp;
 import 'package:flutter_test/flutter_test.dart';
 import 'package:recycling_flutter_app/main.dart';
-import 'package:recycling_flutter_app/view/home_page.dart';
+import 'package:recycling_flutter_app/view/homepage/home_page.dart';
 
 void main() {
   testWidgets('main function runs App', (final WidgetTester tester) async {
