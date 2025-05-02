@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:recycling_flutter_app/helper/button_helper.dart';
+import '../../component/map_filter_buttons.dart';
 import '../../component/map_module.dart';
 import '../../helper/mark_parser.dart';
-
 
 class MapPage extends StatelessWidget {
   const MapPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Map'),
@@ -20,39 +19,38 @@ class MapPage extends StatelessWidget {
           },
         ),
       ),
-      body: Column(
+      body: Stack(
         children: [
-          Expanded(
-            child: FutureBuilder<Set<Marker>>(
-              future: MarkerParser.parseMarkers('assets/markers.json', (marker) {
-                CustomMapState().onMarkerTapped(marker);
-              }),
-              builder: (context, snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasError) {
-                  return Center(child: Text('Error loading markers'));
-                } else {
-                  return CustomMap(
-                    initialPosition: LatLng(51.5074, -0.1278),
-                    markers: snapshot.data!,
-                    fullView: true,
-                  );
-                }
-              },
-            ),
+          FutureBuilder<Set<Marker>>(
+            future: MarkerParser.parseMarkers('assets/markers.json', (marker) {
+              CustomMapState().onMarkerTapped(marker);
+            }),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(child: CircularProgressIndicator());
+              } else if (snapshot.hasError) {
+                return Center(child: Text('Error loading markers'));
+              } else {
+                return CustomMap(
+                  initialPosition: LatLng(51.5074, -0.1278),
+                  markers: snapshot.data!,
+                  fullView: true,
+                );
+              }
+            },
           ),
-          SizedBox(
-            height: 80.0, // Increased height for larger buttons
+          Positioned(
+            bottom: 20.0,
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  _buildCategoryButton(context, 'Flexible Plastic', BitmapDescriptor.hueRed),
-                  _buildCategoryButton(context, 'Glass', BitmapDescriptor.hueCyan),
-                  _buildCategoryButton(context, 'Textiles', BitmapDescriptor.hueYellow),
-                  _buildCategoryButton(context, 'Electronic Waste', BitmapDescriptor.hueBlue),
-                  _buildCategoryButton(context, 'Garden Waste', BitmapDescriptor.hueGreen),
+                  buildFilterButton(context, 'Flexible Plastic'),
+                  buildFilterButton(context, 'Glass'),
+                  buildFilterButton(context, 'Textiles'),
+                  buildFilterButton(context, 'Electronic Waste'),
+                  buildFilterButton(context, 'Garden Waste'),
                 ],
               ),
             ),
@@ -61,24 +59,4 @@ class MapPage extends StatelessWidget {
       ),
     );
   }
-
-  Widget _buildCategoryButton(BuildContext context, String category, double hue) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 2.0),
-      child: ElevatedButton(
-        onPressed: () {
-          // TODO: Handle button press
-        },
-        style: TileButtonStyles.buttonStyle(false, Color.fromRGBO((hue * 255).toInt(), 0, 0, 1)), // Use the buttonStyle method
-        child: Container(
-          width: 140,
-          height: 80,
-          decoration: TileButtonStyles.containerDecoration(false, Color.fromRGBO((hue * 255).toInt(), 0, 0, 1)), // Use the containerDecoration method
-          alignment: Alignment.center,
-          child: Text(category),
-        ),
-      ),
-    );
-  }
 }
-
