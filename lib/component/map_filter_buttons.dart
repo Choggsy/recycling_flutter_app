@@ -11,7 +11,7 @@ Widget buildFilterButton(final BuildContext context, final String filterCategory
       style: ElevatedButton.styleFrom(
         foregroundColor: AppColors.darkBrown,
         backgroundColor: AppColors.background,
-        minimumSize: Size(120, 80), //TODO : use vector sizing to make visiable on tablets
+        minimumSize: Size(120, 80),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.zero,
           side: BorderSide(color: AppColors.darkBrown, width: 2),
