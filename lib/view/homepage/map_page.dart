@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:recycling_flutter_app/view/homepage/home_page.dart';
 import '../../component/map_filter_buttons.dart';
 import '../../component/map_module.dart';
 import '../../helper/mark_parser.dart';
@@ -15,7 +16,10 @@ class MapPage extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HomePage()),
+            );
           },
         ),
       ),
