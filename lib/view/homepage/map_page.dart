@@ -25,31 +25,15 @@ class MapPage extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          FutureBuilder<Set<Marker>>(
-            future: MarkerParser.parseMarkers('assets/markers.json', (marker) {
-              CustomMapState().onMarkerTapped(marker);
-            }),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return Center(child: CircularProgressIndicator());
-              } else if (snapshot.hasError) {
-                return Center(child: Text('Error loading markers'));
-              } else {
-                return CustomMap(
-                  initialPosition: LatLng(51.5074, -0.1278),
-                  markers: snapshot.data!,
-                  fullView: true,
-                );
-              }
-            },
-          ),
+          buildFutureBuilder(),
           Positioned(
-            bottom: 20.0,
+            top: 20.0,
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  buildFilterButton(context, 'All'),
                   buildFilterButton(context, 'Flexible Plastic'),
                   buildFilterButton(context, 'Glass'),
                   buildFilterButton(context, 'Textiles'),
@@ -62,5 +46,26 @@ class MapPage extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  FutureBuilder<Set<Marker>> buildFutureBuilder() {
+    return FutureBuilder<Set<Marker>>(
+          future: MarkerParser.parseMarkers('assets/markers.json', (marker) {
+            CustomMapState().onMarkerTapped(marker);
+          }),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(child: CircularProgressIndicator());
+            } else if (snapshot.hasError) {
+              return Center(child: Text('Error loading markers'));
+            } else {
+              return CustomMap(
+                initialPosition: LatLng(51.5074, -0.1278),
+                markers: snapshot.data!,
+                fullView: true,
+              );
+            }
+          },
+        );
   }
 }

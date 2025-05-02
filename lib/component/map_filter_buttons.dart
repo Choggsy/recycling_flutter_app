@@ -6,7 +6,7 @@ Widget buildFilterButton(final BuildContext context, final String filterCategory
     margin: EdgeInsets.symmetric(horizontal: 4.0),
     child: ElevatedButton(
       onPressed: () {
-        // Handle button press
+        //TODO: Add filtering logic (could)
       },
       style: ElevatedButton.styleFrom(
         foregroundColor: AppColors.darkBrown,
@@ -20,7 +20,7 @@ Widget buildFilterButton(final BuildContext context, final String filterCategory
       ),
       child: Text(
         filterCategory,
-        style: TextStyle(color: AppColors.darkBrown), // Text color
+        style: TextStyle(color: AppColors.darkBrown),
       ),
     ),
   );
