@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
         padding: const EdgeInsets.all(12.0),
         child: Column(
           children: [
-            buildTileButton("Map Button", 0, (context) => MapPage()),
+            buildTileButton("Map Button", 0, (index) => const MapPage()),
             const SizedBox(height: 20),
             Expanded(
               child: StaggeredGrid.count(
@@ -31,9 +31,9 @@ class HomePage extends StatelessWidget {
                 mainAxisSpacing: 12,
                 crossAxisSpacing: 12,
                 children: [
-                  buildIconTileButton(context, 1, (index) => const RecyclableLogoPage(), "Sorting Guide"),
-                  buildIconTileButton(context, 2, (index) => const BinCollectionPage(), "Bin Collection Days"),
-                  buildIconTileButton(context, 3, (index) => const NewsPage(), "Recycling News"),
+                  buildTextTile("Sorting Guide"),
+                  buildIconTileButton(context, 2, (index) => const BinCollectionPage(), "Bin Collection Days", 'assets/logo/placeholder.jpg'),
+                  buildIconTileButton(context, 3, (index) => const NewsPage(), "Recycling News", 'assets/logo/placeholder.jpg'),
                 ],
               ),
             ),
@@ -52,10 +52,10 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget buildTileButton(final String label, final int index, final GetPageCallback getPage) {
+  Widget buildTileButton(String label, int index, GetPageCallback getPage) {
     return SizedBox(
       width: double.infinity,
-      height: 110.0, // Adjust the height as needed
+      height: 110.0,
       child: TileButton(
         label: label,
         index: index,
@@ -64,7 +64,33 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget buildIconTileButton(BuildContext context, int index, GetPageCallback getPage, String label) {
+  Widget buildTextTile(String label) {
+    return StaggeredGridTile.count(
+      crossAxisCellCount: 4,
+      mainAxisCellCount: 1,
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: AppColors.background,
+          border: Border.all(color: AppColors.darkBrown, width: 3.0),
+        ),
+        child: Center(
+          child: Text(
+            label,
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget buildIconTileButton(
+      BuildContext context,
+      int index,
+      GetPageCallback getPage,
+      String label,
+      String assetPath,
+      ) {
     return StaggeredGridTile.count(
       crossAxisCellCount: 2,
       mainAxisCellCount: 2,
@@ -85,7 +111,7 @@ class HomePage extends StatelessWidget {
             child: Semantics(
               label: label,
               child: Image.asset(
-                'assets/logo/placeholder.jpg',
+                assetPath,
                 width: 50,
                 height: 50,
                 fit: BoxFit.contain,
