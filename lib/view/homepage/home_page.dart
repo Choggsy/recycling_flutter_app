@@ -6,11 +6,14 @@ import 'package:recycling_flutter_app/view/homepage/bin_collection_page.dart';
 import 'package:recycling_flutter_app/view/homepage/map_page.dart';
 import 'package:recycling_flutter_app/view/homepage/news_page.dart';
 import 'package:recycling_flutter_app/view/homepage/sustainable_page.dart';
+import '../../component/fact_card.dart';
 import '../../helper/get_page.dart';
 import '../../helper/space_helper.dart';
+import '../../model/fact.dart';
 import '../../properties/app_theme.dart' show AppColors;
 import '../../properties/button_style.dart';
 import '../guideline/logo/recycling_logo_page.dart';
+import 'fact_page.dart';
 import 'involvement_page.dart';
 
 typedef GetPageCallback = Widget Function(int index);
@@ -20,6 +23,30 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(final BuildContext context) {
+    final List<RecyclingFact> facts = [
+      RecyclingFact(
+        id: 1,
+        title: "Don't recycle anything smaller than a tennis ball",
+        description: "Small items can jam the recycling machinery, causing delays and potential damage.",
+      ),
+      RecyclingFact(
+        id: 2,
+        title: "Rinse out containers before recycling",
+        description: "Food residue can contaminate other recyclables, making them unsuitable for recycling.",
+      ),
+      RecyclingFact(
+        id: 3,
+        title: "Do not recycle plastic bags",
+        description: "Plastic bags can get tangled in the machinery, causing operational issues.",
+      ),
+      RecyclingFact(
+        id: 4,
+        title: "Flatten cardboard boxes",
+        description: "Flattening boxes saves space and makes the recycling process more efficient.",
+      ),
+    ];
+
+
     return Scaffold(
       appBar: CustomAppBar(title: 'Home', showBackButton: false),
       body: SingleChildScrollView(
@@ -64,8 +91,9 @@ class HomePage extends StatelessWidget {
               ],
             ),
             Space.large.box,
+            // Text('Recycling Facts', style: Theme.of(context).textTheme.titleLarge),
             buildDivider(4),
-            Text('Recycling Facts'), //todo :: implement two recycling fact cards under here. add a see all text link that opens the 'fact page'
+            buildRecyclingFactsSection(context, facts),
             Space.large.box,
             buildDivider(4),
             Space.large.box,
@@ -89,6 +117,29 @@ class HomePage extends StatelessWidget {
     return Divider(
       thickness: thickness,
       color: AppColors.darkRedBrown,
+    );
+  }
+
+  Widget buildRecyclingFactsSection(final BuildContext context, final List<RecyclingFact> facts) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Recycling Facts',
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.black)),
+            TextButton(
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (_) => RecyclingFactPage(facts: facts)));
+              },
+              child: Text('See All'),
+            ),
+          ],
+        ),
+        ...facts.take(2).toList().map((fact) => RecyclingFactCard(fact: fact)).toList(),
+      ],
     );
   }
 }
