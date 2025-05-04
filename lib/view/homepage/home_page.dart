@@ -41,7 +41,7 @@ class HomePage extends StatelessWidget {
                 children: [
                   buildDivider(2),
                   Space.medium.box,
-                  ButtonStyles.buildTileButton("Map Button", 0, (index) => const MapPage(), context),
+                  ButtonStyles.buildTileButton("Map Button", 0, (index) => MapPage(), context),
                   Space.medium.box,
                   buildDivider(2),
                   Space.small.box,

@@ -1,15 +1,18 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:recycling_flutter_app/view/homepage/home_page.dart';
-import '../../component/map_filter_buttons.dart';
+
 import '../../component/map_module.dart';
 import '../../helper/mark_parser.dart';
+import 'home_page.dart';
 
 class MapPage extends StatelessWidget {
-  const MapPage({super.key});
+  MapPage({super.key});
+
+  final GlobalKey<CustomMapState> _mapKey = GlobalKey<CustomMapState>();
 
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Map'),
@@ -25,7 +28,25 @@ class MapPage extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          buildFutureBuilder(),
+          FutureBuilder<Set<Marker>>(
+            future: MarkerParser.parseMarkers('assets/markers.json', (marker) {
+              _mapKey.currentState?.onMarkerTapped(marker);
+            }),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(child: CircularProgressIndicator());
+              } else if (snapshot.hasError) {
+                return Center(child: Text('Error loading markers'));
+              } else {
+                return CustomMap(
+                  key: _mapKey,
+                  initialPosition: LatLng(50.7200, -1.8800), // Bournemouth
+                  markers: snapshot.data!,
+                  fullView: true,
+                );
+              }
+            },
+          ),
           Positioned(
             top: 20.0,
             child: SingleChildScrollView(
@@ -33,12 +54,23 @@ class MapPage extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  buildFilterButton(context, 'All'),
-                  buildFilterButton(context, 'Flexible Plastic'),
-                  buildFilterButton(context, 'Glass'),
-                  buildFilterButton(context, 'Textiles'),
-                  buildFilterButton(context, 'Electronic Waste'),
-                  buildFilterButton(context, 'Garden Waste'),
+                  for (final category in [
+                    'All',
+                    'Flexible Plastic',
+                    'Glass',
+                    'Textiles',
+                    'Electronic Waste',
+                    'Garden Waste'
+                  ])
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          _mapKey.currentState?.filterMarkers(category);
+                        },
+                        child: Text(category),
+                      ),
+                    ),
                 ],
               ),
             ),
@@ -46,26 +78,5 @@ class MapPage extends StatelessWidget {
         ],
       ),
     );
-  }
-
-  FutureBuilder<Set<Marker>> buildFutureBuilder() {
-    return FutureBuilder<Set<Marker>>(
-          future: MarkerParser.parseMarkers('assets/markers.json', (marker) {
-            CustomMapState().onMarkerTapped(marker);
-          }),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: CircularProgressIndicator());
-            } else if (snapshot.hasError) {
-              return Center(child: Text('Error loading markers'));
-            } else {
-              return CustomMap(
-                initialPosition: LatLng(51.5074, -0.1278),
-                markers: snapshot.data!,
-                fullView: true,
-              );
-            }
-          },
-        );
   }
 }

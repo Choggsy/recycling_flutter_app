@@ -22,16 +22,17 @@ class CustomMap extends StatefulWidget {
 
 class CustomMapState extends State<CustomMap> {
   GoogleMapController? _controller;
-  final Completer<void> _mapCreatedCompleter = Completer<void>();
-  LatLng _currentPosition = LatLng(0, 0);
-  Set<Marker> _markers = {};
-  final LocationService _locationService = LocationService();
-
   GoogleMapController? get controller => _controller;
+  final Completer<void> _mapCreatedCompleter = Completer<void>();
+  LatLng _currentPosition = LatLng(50.7200, -1.8800); // Bournemouth
+  Set<Marker> _markers = {};
+  List<Marker> _allMarkers = [];
+  final LocationService _locationService = LocationService();
 
   @override
   void initState() {
     super.initState();
+    _allMarkers = widget.markers.toList();
     _markers = widget.markers;
     _getCurrentLocation();
   }
@@ -44,6 +45,25 @@ class CustomMapState extends State<CustomMap> {
 
   void setController(final GoogleMapController controller) {
     _controller = controller;
+  }
+
+  void updateMarkers(List<Marker> markers) {
+    setState(() {
+      _allMarkers = markers;
+      _markers = markers.toSet();
+    });
+  }
+
+  void filterMarkers(String category) {
+    setState(() {
+      if (category == 'All') {
+        _markers = _allMarkers.toSet();
+      } else {
+        _markers = _allMarkers
+            .where((marker) => marker.infoWindow.title?.contains(category) ?? false)
+            .toSet();
+      }
+    });
   }
 
   void _getCurrentLocation() async {
