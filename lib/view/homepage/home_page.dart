@@ -6,12 +6,12 @@ import 'package:recycling_flutter_app/view/homepage/bin_collection_page.dart';
 import 'package:recycling_flutter_app/view/homepage/map_page.dart';
 import 'package:recycling_flutter_app/view/homepage/news_page.dart';
 import 'package:recycling_flutter_app/view/homepage/sustainable_page.dart';
-import '../../component/tile_button.dart';
 import '../../helper/get_page.dart';
 import '../../helper/space_helper.dart';
 import '../../properties/app_theme.dart' show AppColors;
-import '../../properties/device_view_vector.dart';
+import '../../properties/button_style.dart';
 import '../guideline/logo/recycling_logo_page.dart';
+import 'involvement_page.dart';
 
 typedef GetPageCallback = Widget Function(int index);
 
@@ -27,42 +27,48 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Divider(
-                thickness: 2,
-                color: AppColors.darkRedBrown
-            ),
+            buildDivider(2),
             Space.medium.box,
-            buildTileButton("Map Button", 0, (index) => const MapPage()),
+            ButtonStyles.buildTileButton("Map Button", 0, (index) => const MapPage(), context),
             Space.medium.box,
-            Divider(
-                thickness: 2,
-                color: AppColors.darkRedBrown
-            ),
+            buildDivider(2),
             Space.small.box,
-            buildTileButton("Sorting Guide", 1, (index) => const RecyclableLogoPage()),
+            ButtonStyles.buildTileButton("Sorting Guide", 1, (index) => const RecyclableLogoPage(), context),
             Space.small.box,
             StaggeredGrid.count(
               crossAxisCount: 4,
               mainAxisSpacing: 12,
               crossAxisSpacing: 12,
               children: [
-                buildIconTileButton(context, 2, (index) => const BinCollectionPage(), "Bin Collection Days", 'assets/logo/placeholder.jpg'),
-                buildIconTileButton(context, 3, (index) => const NewsPage(), "Recycling News", 'assets/logo/placeholder.jpg'),
-                buildWideIconTileButton(context, 4, (index) => const SustainabilityPage(), "Sustainability Page", 'assets/logo/placeholder.jpg'),
+                ButtonStyles.iconTile(
+                  context: context,
+                  index: 2,
+                  getPage: (index) => const BinCollectionPage(),
+                  label: "Bin Collection Days",
+                  assetPath: 'assets/logo/placeholder.jpg',
+                ),
+                ButtonStyles.iconTile(
+                  context: context,
+                  index: 3,
+                  getPage: (index) => const SustainabilityPage(),
+                  label: "Sustainability Page",
+                  assetPath: 'assets/logo/placeholder.jpg',
+                ),
+                ButtonStyles.wideIconTile(
+                  context: context,
+                  index: 4,
+                  getPage: (index) => const InvolvementPage(),
+                  label: "Involvement Page",
+                  assetPath: 'assets/logo/placeholder.jpg',
+                ),
               ],
             ),
             Space.large.box,
-            Divider(
-                thickness: 4,
-                color: AppColors.darkRedBrown
-            ),
+            buildDivider(4),
             Space.large.box,
-            Divider(
-                thickness: 4,
-                color: AppColors.darkRedBrown
-            ),
+            buildDivider(4),
             Space.large.box,
-            buildTileButton("Recycling News", 1, (index) => const NewsPage())
+            ButtonStyles.buildTileButton("Recycling News", 5, (index) => const NewsPage(), context)
           ],
         ),
       ),
@@ -78,101 +84,10 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget buildTileButton(final String label, final int index, final GetPageCallback getPage) {
-    return SizedBox(
-      width: double.infinity,
-      height: 110.0,
-      child: TileButton(
-        label: label,
-        index: index,
-        getPage: getPage,
-      ),
-    );
-  }
-
-  Widget buildIconTileButton(
-      final BuildContext context,
-      final int index,
-      final GetPageCallback getPage,
-      final String label,
-      final String assetPath,
-      ) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final imageSize = ScreenConfig.getImageSize(screenWidth, 'large');
-    final isTablet = ScreenConfig.getViewType(screenWidth) == ViewType.tablet;
-
-    return StaggeredGridTile.count(
-      crossAxisCellCount: 2,
-      mainAxisCellCount: isTablet ? 0.6 : 2,
-      child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => getPage(index)),
-          );
-        },
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: AppColors.darkBrown, width: 3.0),
-            color: AppColors.background,
-          ),
-          child: Center(
-            child: Semantics(
-              label: label,
-              child: Image.asset(
-                assetPath,
-                width: imageSize,
-                height: imageSize,
-                fit: BoxFit.contain,
-              ),
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget buildWideIconTileButton(
-      final BuildContext context,
-      final int index,
-      final GetPageCallback getPage,
-      final String label,
-      final String assetPath,
-      ) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final imageSize = ScreenConfig.getImageSize(screenWidth, 'large');
-    final isTablet = ScreenConfig.getViewType(screenWidth) == ViewType.tablet;
-
-    return StaggeredGridTile.count(
-      crossAxisCellCount: 4,
-      mainAxisCellCount: isTablet ? 0.6 : 2,
-      child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => getPage(index)),
-          );
-        },
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: AppColors.darkBrown, width: 3.0),
-            color: AppColors.background,
-          ),
-          child: Center(
-            child: Semantics(
-              label: label,
-              child: Image.asset(
-                assetPath,
-                width: imageSize,
-                height: imageSize,
-                fit: BoxFit.contain,
-              ),
-            ),
-          ),
-        ),
-      ),
+  Divider buildDivider(final double thickness) {
+    return Divider(
+      thickness: thickness,
+      color: AppColors.darkRedBrown,
     );
   }
 }

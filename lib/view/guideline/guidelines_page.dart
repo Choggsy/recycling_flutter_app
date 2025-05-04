@@ -7,6 +7,7 @@ import '../../helper/get_page.dart';
 import '../../component/mosaic_buttons.dart' show MosaicButtons;
 import '../../helper/space_helper.dart' show Space, SpaceExtension;
 import '../../properties/app_theme.dart';
+import '../../properties/button_style.dart';
 
 class GuidelinesPage extends StatelessWidget {
   const GuidelinesPage({super.key});
@@ -20,7 +21,7 @@ class GuidelinesPage extends StatelessWidget {
         child: Column(
           children: [
             Space.medium.box,
-            buildTileButton("logo guide", 10, getMaterialPage),
+            ButtonStyles.buildTileButton("logo guide", 10, getMaterialPage,context),
             Space.small.box,
             Divider(
                 thickness: 4,
@@ -59,18 +60,6 @@ class GuidelinesPage extends StatelessWidget {
             MaterialPageRoute(builder: (context) => getPage(index)),
           );
         },
-      ),
-    );
-  }
-
-  Widget buildTileButton(final String label, final int index, final GetPageCallback getPage) {
-    return SizedBox(
-      width: double.infinity,
-      height: 110.0, // Adjust the height as needed
-      child: TileButton(
-        label: label,
-        index: index,
-        getPage: getPage,
       ),
     );
   }
