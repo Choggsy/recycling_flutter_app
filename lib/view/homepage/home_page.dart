@@ -9,6 +9,7 @@ import 'package:recycling_flutter_app/view/homepage/sustainable_page.dart';
 import '../../component/tile_button.dart';
 import '../../helper/get_page.dart';
 import '../../properties/app_theme.dart' show AppColors;
+import '../guideline/logo/recycling_logo_page.dart';
 
 typedef GetPageCallback = Widget Function(int index);
 
@@ -26,12 +27,13 @@ class HomePage extends StatelessWidget {
           children: [
             buildTileButton("Map Button", 0, (index) => const MapPage()),
             const SizedBox(height: 40),
+            buildTileButton("Sorting Guide", 1, (index) => const RecyclableLogoPage()),
+            const SizedBox(height: 20),
             StaggeredGrid.count(
               crossAxisCount: 4,
               mainAxisSpacing: 12,
               crossAxisSpacing: 12,
               children: [
-                buildTextTile("Sorting Guide"),
                 buildIconTileButton(context, 2, (index) => const BinCollectionPage(), "Bin Collection Days", 'assets/logo/placeholder.jpg'),
                 buildIconTileButton(context, 3, (index) => const NewsPage(), "Recycling News", 'assets/logo/placeholder.jpg'),
                 buildIconTileButton(context, 4, (index) => const SustainabilityPage(), "Sustainability Page", 'assets/logo/placeholder.jpg'),
@@ -60,26 +62,6 @@ class HomePage extends StatelessWidget {
         label: label,
         index: index,
         getPage: getPage,
-      ),
-    );
-  }
-
-  Widget buildTextTile(String label) {
-    return StaggeredGridTile.count(
-      crossAxisCellCount: 4,
-      mainAxisCellCount: 1,
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: AppColors.background,
-          border: Border.all(color: AppColors.darkBrown, width: 3.0),
-        ),
-        child: Center(
-          child: Text(
-            label,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-        ),
       ),
     );
   }
