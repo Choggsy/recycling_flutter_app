@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:recycling_flutter_app/component/bottom_navigation_bar.dart' show CustomBottomNavigationBar;
 import 'package:recycling_flutter_app/component/top_app_bar.dart' show CustomAppBar;
-import 'package:recycling_flutter_app/view/homepage/bin_collection_page.dart';
+import 'package:recycling_flutter_app/view/homepage/subpages/bin_collection_page.dart';
 import 'package:recycling_flutter_app/view/homepage/map_page.dart';
-import 'package:recycling_flutter_app/view/homepage/news_page.dart';
-import 'package:recycling_flutter_app/view/homepage/sustainable_page.dart';
+import 'package:recycling_flutter_app/view/homepage/subpages/news_page.dart';
+import 'package:recycling_flutter_app/view/homepage/subpages/sustainable_page.dart';
 
 import '../../component/fact_highlight_module.dart';
 import '../../helper/fact_parser.dart';
@@ -15,7 +15,7 @@ import '../../model/fact.dart';
 import '../../properties/app_theme.dart' show AppColors;
 import '../../properties/button_style.dart';
 import '../guideline/logo/recycling_logo_page.dart';
-import 'involvement_page.dart';
+import 'subpages/involvement_page.dart';
 
 typedef GetPageCallback = Widget Function(int index);
 

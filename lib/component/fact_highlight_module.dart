@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../model/fact.dart';
 import 'fact_card.dart';
-import '../view/homepage/fact_page.dart';
+import '../view/homepage/subpages/fact_page.dart';
 
 class RecyclingFactsSection extends StatelessWidget {
   final List<RecyclingFact> facts;

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:recycling_flutter_app/component/bottom_navigation_bar.dart' show CustomBottomNavigationBar;
-import 'package:recycling_flutter_app/component/tile_button.dart' show TileButton, GetPageCallback;
 import 'package:recycling_flutter_app/component/top_app_bar.dart' show CustomAppBar;
+
+import '../../component/mosaic_buttons.dart' show MosaicButtons;
 import '../../helper/get_material_page.dart' show getMaterialPage;
 import '../../helper/get_page.dart';
-import '../../component/mosaic_buttons.dart' show MosaicButtons;
 import '../../helper/space_helper.dart' show Space, SpaceExtension;
 import '../../properties/app_theme.dart';
 import '../../properties/button_style.dart';
