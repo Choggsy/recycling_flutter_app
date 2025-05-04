@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:recycling_flutter_app/component/bottom_navigation_bar.dart' show CustomBottomNavigationBar;
 import 'package:recycling_flutter_app/component/top_app_bar.dart' show CustomAppBar;
-import 'package:recycling_flutter_app/view/guideline/logo/recycling_logo_page.dart';
 import 'package:recycling_flutter_app/view/homepage/bin_collection_page.dart';
 import 'package:recycling_flutter_app/view/homepage/map_page.dart';
 import 'package:recycling_flutter_app/view/homepage/news_page.dart';
+import 'package:recycling_flutter_app/view/homepage/sustainable_page.dart';
 import '../../component/tile_button.dart';
 import '../../helper/get_page.dart';
 import '../../properties/app_theme.dart' show AppColors;
@@ -19,23 +19,23 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(title: 'Home', showBackButton: false),
-      body: Padding(
+      body: SingleChildScrollView(
         padding: const EdgeInsets.all(12.0),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             buildTileButton("Map Button", 0, (index) => const MapPage()),
-            const SizedBox(height: 20),
-            Expanded(
-              child: StaggeredGrid.count(
-                crossAxisCount: 4,
-                mainAxisSpacing: 12,
-                crossAxisSpacing: 12,
-                children: [
-                  buildTextTile("Sorting Guide"),
-                  buildIconTileButton(context, 2, (index) => const BinCollectionPage(), "Bin Collection Days", 'assets/logo/placeholder.jpg'),
-                  buildIconTileButton(context, 3, (index) => const NewsPage(), "Recycling News", 'assets/logo/placeholder.jpg'),
-                ],
-              ),
+            const SizedBox(height: 40),
+            StaggeredGrid.count(
+              crossAxisCount: 4,
+              mainAxisSpacing: 12,
+              crossAxisSpacing: 12,
+              children: [
+                buildTextTile("Sorting Guide"),
+                buildIconTileButton(context, 2, (index) => const BinCollectionPage(), "Bin Collection Days", 'assets/logo/placeholder.jpg'),
+                buildIconTileButton(context, 3, (index) => const NewsPage(), "Recycling News", 'assets/logo/placeholder.jpg'),
+                buildIconTileButton(context, 4, (index) => const SustainabilityPage(), "Sustainability Page", 'assets/logo/placeholder.jpg'),
+              ],
             ),
           ],
         ),
