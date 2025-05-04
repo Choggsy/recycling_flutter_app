@@ -10,6 +10,7 @@ import '../../component/tile_button.dart';
 import '../../helper/get_page.dart';
 import '../../helper/space_helper.dart';
 import '../../properties/app_theme.dart' show AppColors;
+import '../../properties/device_view_vector.dart';
 import '../guideline/logo/recycling_logo_page.dart';
 
 typedef GetPageCallback = Widget Function(int index);
@@ -18,7 +19,7 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(title: 'Home', showBackButton: false),
       body: SingleChildScrollView(
@@ -77,7 +78,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget buildTileButton(String label, int index, GetPageCallback getPage) {
+  Widget buildTileButton(final String label, final int index, final GetPageCallback getPage) {
     return SizedBox(
       width: double.infinity,
       height: 110.0,
@@ -90,15 +91,19 @@ class HomePage extends StatelessWidget {
   }
 
   Widget buildIconTileButton(
-      BuildContext context,
-      int index,
-      GetPageCallback getPage,
-      String label,
-      String assetPath,
+      final BuildContext context,
+      final int index,
+      final GetPageCallback getPage,
+      final String label,
+      final String assetPath,
       ) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final imageSize = ScreenConfig.getImageSize(screenWidth, 'large');
+    final isTablet = ScreenConfig.getViewType(screenWidth) == ViewType.tablet;
+
     return StaggeredGridTile.count(
       crossAxisCellCount: 2,
-      mainAxisCellCount: 2,
+      mainAxisCellCount: isTablet ? 0.6 : 2,
       child: GestureDetector(
         onTap: () {
           Navigator.push(
@@ -117,8 +122,8 @@ class HomePage extends StatelessWidget {
               label: label,
               child: Image.asset(
                 assetPath,
-                width: 50,
-                height: 50,
+                width: imageSize,
+                height: imageSize,
                 fit: BoxFit.contain,
               ),
             ),
@@ -129,15 +134,19 @@ class HomePage extends StatelessWidget {
   }
 
   Widget buildWideIconTileButton(
-      BuildContext context,
-      int index,
-      GetPageCallback getPage,
-      String label,
-      String assetPath,
+      final BuildContext context,
+      final int index,
+      final GetPageCallback getPage,
+      final String label,
+      final String assetPath,
       ) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final imageSize = ScreenConfig.getImageSize(screenWidth, 'large');
+    final isTablet = ScreenConfig.getViewType(screenWidth) == ViewType.tablet;
+
     return StaggeredGridTile.count(
-      crossAxisCellCount: 4, // Full width
-      mainAxisCellCount: 2,  // Taller height
+      crossAxisCellCount: 4,
+      mainAxisCellCount: isTablet ? 0.6 : 2,
       child: GestureDetector(
         onTap: () {
           Navigator.push(
@@ -156,8 +165,8 @@ class HomePage extends StatelessWidget {
               label: label,
               child: Image.asset(
                 assetPath,
-                width: 50,
-                height: 50,
+                width: imageSize,
+                height: imageSize,
                 fit: BoxFit.contain,
               ),
             ),
