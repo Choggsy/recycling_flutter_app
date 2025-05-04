@@ -65,6 +65,7 @@ class HomePage extends StatelessWidget {
             ),
             Space.large.box,
             buildDivider(4),
+            Text('Recycling Facts'), //todo :: implement two recycling fact cards under here. add a see all text link that opens the 'fact page'
             Space.large.box,
             buildDivider(4),
             Space.large.box,
