@@ -1,6 +1,4 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:recycling_flutter_app/component/bottom_navigation_bar.dart' show CustomBottomNavigationBar;
 import 'package:recycling_flutter_app/component/top_app_bar.dart' show CustomAppBar;
@@ -8,26 +6,21 @@ import 'package:recycling_flutter_app/view/homepage/bin_collection_page.dart';
 import 'package:recycling_flutter_app/view/homepage/map_page.dart';
 import 'package:recycling_flutter_app/view/homepage/news_page.dart';
 import 'package:recycling_flutter_app/view/homepage/sustainable_page.dart';
-import '../../component/fact_card.dart';
+
+import '../../component/fact_highlight_module.dart';
+import '../../helper/fact_parser.dart';
 import '../../helper/get_page.dart';
 import '../../helper/space_helper.dart';
 import '../../model/fact.dart';
 import '../../properties/app_theme.dart' show AppColors;
 import '../../properties/button_style.dart';
 import '../guideline/logo/recycling_logo_page.dart';
-import 'fact_page.dart';
 import 'involvement_page.dart';
 
 typedef GetPageCallback = Widget Function(int index);
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
-  Future<List<RecyclingFact>> loadRecyclingFacts() async {
-    final String jsonString = await rootBundle.loadString('assets/facts.json');
-    final List<dynamic> jsonData = json.decode(jsonString);
-    return jsonData.map((item) => RecyclingFact.fromJson(item)).toList();
-  }
 
   @override
   Widget build(final BuildContext context) {
@@ -41,7 +34,6 @@ class HomePage extends StatelessWidget {
           } else if (snapshot.hasError) {
             return Center(child: Text('Error loading facts'));
           } else {
-            final facts = snapshot.data!;
             return SingleChildScrollView(
               padding: const EdgeInsets.all(12.0),
               child: Column(
@@ -85,7 +77,7 @@ class HomePage extends StatelessWidget {
                   ),
                   Space.large.box,
                   buildDivider(4),
-                  buildRecyclingFactsSection(context, facts),
+                  RecyclingFactsSection(facts: snapshot.data!),
                   Space.large.box,
                   buildDivider(4),
                   Space.large.box,
@@ -112,30 +104,6 @@ class HomePage extends StatelessWidget {
     return Divider(
       thickness: thickness,
       color: AppColors.darkRedBrown,
-    );
-  }
-
-  Widget buildRecyclingFactsSection(final BuildContext context, final List<RecyclingFact> facts) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              'Recycling Facts',
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.black),
-            ),
-            TextButton(
-              onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (_) => RecyclingFactPage(facts: facts)));
-              },
-              child: Text('See All'),
-            ),
-          ],
-        ),
-        ...facts.take(2).map((fact) => RecyclingFactCard(fact: fact)).toList(),
-      ],
     );
   }
 }

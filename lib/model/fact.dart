@@ -5,7 +5,7 @@ class RecyclingFact {
 
   RecyclingFact({required this.id, required this.title, required this.description});
 
-  factory RecyclingFact.fromJson(Map<String, dynamic> json) {
+  factory RecyclingFact.fromJson(final Map<String, dynamic> json) {
     return RecyclingFact(
       id: json['ID'],
       title: json['Title'],
