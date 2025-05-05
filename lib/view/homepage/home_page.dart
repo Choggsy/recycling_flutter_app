@@ -112,7 +112,7 @@ class HomePage extends StatelessWidget {
   Center mapButton(BuildContext context) {
     final isTablet = ScreenConfig.getViewType(
         MediaQuery.of(context).size.width) == ViewType.tablet;
-    final double size = isTablet ? 800 : 400;
+    final double size = isTablet ? 450 : 400;
 
     return Center(
       child: GestureDetector(

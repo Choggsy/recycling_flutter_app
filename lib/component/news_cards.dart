@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../view/homepage/subpages/article_page.dart'; // Adjust path as needed
+import '../helper/space_helper.dart';
+import '../view/homepage/subpages/article_page.dart';
 
 class NewsStoryCard extends StatelessWidget {
   final String imageUrl;
@@ -15,10 +16,10 @@ class NewsStoryCard extends StatelessWidget {
     required this.fullArticleUrl,
   });
 
-  String _truncateDescription(String text, int wordLimit) {
+  String _truncateDescription(final String text, final int wordLimit) {
     final words = text.split(' ');
     if (words.length <= wordLimit) return text;
-    return words.take(wordLimit).join(' ') + '...';
+    return '${words.take(wordLimit).join(' ')}...';
   }
 
   @override
@@ -39,16 +40,7 @@ class NewsStoryCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.vertical(top: Radius.circular(12.0)),
-              child: Image.network(
-                imageUrl,
-                width: double.infinity,
-                height: 180,
-                fit: BoxFit.cover,
-                errorBuilder: (context, error, stackTrace) => const Icon(Icons.broken_image, size: 100),
-              ),
-            ),
+            buildClipRRect(),
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Column(
@@ -59,12 +51,12 @@ class NewsStoryCard extends StatelessWidget {
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
                       )),
-                  const SizedBox(height: 8.0),
+                  Space.medium.box,
                   Text(
                     _truncateDescription(description, 150),
                     style: const TextStyle(fontSize: 14.0),
                   ),
-                  const SizedBox(height: 8.0),
+                  Space.large.box,
                   const Text(
                     'Tap to read more',
                     style: TextStyle(color: Colors.blue),
@@ -76,5 +68,18 @@ class NewsStoryCard extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  ClipRRect buildClipRRect() {
+    return ClipRRect(
+            borderRadius: const BorderRadius.vertical(top: Radius.circular(12.0)),
+            child: Image.network(
+              imageUrl,
+              width: double.infinity,
+              height: 180,
+              fit: BoxFit.cover,
+              errorBuilder: (context, error, stackTrace) => const Icon(Icons.broken_image, size: 100),
+            ),
+          );
   }
 }
