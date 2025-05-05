@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import '../view/homepage/subpages/article_page.dart';
+import '../view/homepage/subpages/article_page.dart'; // Adjust path as needed
 
 class NewsStoryCard extends StatelessWidget {
-  final String imagePath;
+  final String imageUrl;
   final String title;
   final String description;
   final String fullArticleUrl;
 
   const NewsStoryCard({
     super.key,
-    required this.imagePath,
+    required this.imageUrl,
     required this.title,
     required this.description,
     required this.fullArticleUrl,
   });
 
-  String _truncateDescription(final String text, final int wordLimit) {
+  String _truncateDescription(String text, int wordLimit) {
     final words = text.split(' ');
     if (words.length <= wordLimit) return text;
     return words.take(wordLimit).join(' ') + '...';
@@ -41,11 +41,12 @@ class NewsStoryCard extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: const BorderRadius.vertical(top: Radius.circular(12.0)),
-              child: Image.asset(
-                imagePath,
+              child: Image.network(
+                imageUrl,
                 width: double.infinity,
                 height: 180,
                 fit: BoxFit.cover,
+                errorBuilder: (context, error, stackTrace) => const Icon(Icons.broken_image, size: 100),
               ),
             ),
             Padding(

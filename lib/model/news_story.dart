@@ -1,11 +1,11 @@
 class NewsStory {
-  final String imagePath;
+  final String imageUrl;
   final String title;
   final String description;
   final String fullArticleUrl;
 
   NewsStory({
-    required this.imagePath,
+    required this.imageUrl,
     required this.title,
     required this.description,
     required this.fullArticleUrl,
@@ -13,7 +13,7 @@ class NewsStory {
 
   factory NewsStory.fromJson(Map<String, dynamic> json) {
     return NewsStory(
-      imagePath: json['imagePath'],
+      imageUrl: json['imageUrl'],
       title: json['title'],
       description: json['description'],
       fullArticleUrl: json['fullArticleUrl'],

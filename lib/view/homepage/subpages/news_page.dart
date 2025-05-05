@@ -53,7 +53,7 @@ class _NewsPageState extends State<NewsPage> {
             itemBuilder: (context, index) {
               final story = stories[index];
               return NewsStoryCard(
-                imagePath: story.imagePath,
+                imageUrl: story.imageUrl,
                 title: story.title,
                 description: story.description,
                 fullArticleUrl: story.fullArticleUrl,
