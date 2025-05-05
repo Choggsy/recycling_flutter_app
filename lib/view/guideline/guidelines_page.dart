@@ -23,10 +23,7 @@ class GuidelinesPage extends StatelessWidget {
             Space.medium.box,
             ButtonStyles.buildTileButton("logo guide", 10, getMaterialPage,context),
             Space.small.box,
-            Divider(
-                thickness: 4,
-                color: AppColors.darkRedBrown
-            ),
+            buildDivider(),
             Space.medium.box,
             Text(
               'Material Guidelines',
@@ -62,5 +59,9 @@ class GuidelinesPage extends StatelessWidget {
         },
       ),
     );
+  }
+
+  Divider buildDivider() {
+    return Divider(thickness: 4, color: AppColors.darkRedBrown);
   }
 }

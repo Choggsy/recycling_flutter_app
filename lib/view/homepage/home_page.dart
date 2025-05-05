@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:recycling_flutter_app/component/bottom_navigation_bar.dart'
-    show CustomBottomNavigationBar;
-import 'package:recycling_flutter_app/component/top_app_bar.dart'
-    show CustomAppBar;
+import 'package:recycling_flutter_app/component/bottom_navigation_bar.dart';
+import 'package:recycling_flutter_app/component/top_app_bar.dart';
 import 'package:recycling_flutter_app/view/homepage/map_page.dart';
 import 'package:recycling_flutter_app/view/homepage/subpages/bin_collection_page.dart';
 import 'package:recycling_flutter_app/view/homepage/subpages/news_page.dart';
 import 'package:recycling_flutter_app/view/homepage/subpages/sustainable_page.dart';
-
 import '../../component/fact_highlight_module.dart';
 import '../../helper/fact_parser.dart';
 import '../../helper/get_page.dart';
 import '../../helper/space_helper.dart';
 import '../../model/fact.dart';
-import '../../properties/app_theme.dart' show AppColors;
+import '../../properties/app_theme.dart';
 import '../../properties/button_style.dart';
 import '../../properties/device_view_vector.dart';
 import '../guideline/logo/recycling_logo_page.dart';
@@ -26,7 +23,7 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
-  Widget build(final BuildContext context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(title: 'Home', showBackButton: false),
       body: FutureBuilder<List<RecyclingFact>>(
@@ -48,7 +45,12 @@ class HomePage extends StatelessWidget {
                   Space.medium.box,
                   buildDivider(2),
                   Space.small.box,
-                  ButtonStyles.buildTileButton("Sorting Guide", 1, (index) => const RecyclableLogoPage(), context),
+                  ButtonStyles.buildTileButton(
+                    "Sorting Guide",
+                    1,
+                        (index) => const RecyclableLogoPage(),
+                    context,
+                  ),
                   Space.small.box,
                   StaggeredGrid.count(
                     crossAxisCount: 4,
@@ -61,7 +63,7 @@ class HomePage extends StatelessWidget {
                         getPage: (index) => const BinCollectionPage(),
                         label: "Bin Collection Days",
                         assetPath: 'assets/logo/placeholder.jpg',
-                        showLabel: false
+                        showLabel: false,
                       ),
                       ButtonStyles.iconTile(
                         context: context,
@@ -69,7 +71,7 @@ class HomePage extends StatelessWidget {
                         getPage: (index) => const SustainabilityPage(),
                         label: "Sustainability Page",
                         assetPath: 'assets/logo/placeholder.jpg',
-                        showLabel: false
+                        showLabel: false,
                       ),
                       ButtonStyles.wideIconTile(
                         context: context,
@@ -86,14 +88,14 @@ class HomePage extends StatelessWidget {
                   Space.large.box,
                   buildDivider(4),
                   Space.large.box,
-                  ButtonStyles.wideIconTile(
+                  // ✅ Use tileContent instead of wideIconTile outside of StaggeredGrid
+                  ButtonStyles.tileContent(
                     context: context,
                     index: 5,
                     getPage: (index) => const NewsPage(),
                     label: "Recycling News",
                     assetPath: 'assets/logo/placeholder.jpg',
                     textPosition: 'left',
-
                   ),
                 ],
               ),
@@ -116,7 +118,7 @@ class HomePage extends StatelessWidget {
   Center mapButton(BuildContext context) {
     final isTablet = ScreenConfig.getViewType(
         MediaQuery.of(context).size.width) == ViewType.tablet;
-    final double size = isTablet ? 800 : 400 ;
+    final double size = isTablet ? 800 : 400;
 
     return Center(
       child: GestureDetector(
@@ -142,7 +144,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Divider buildDivider(final double thickness) {
+  Divider buildDivider(double thickness) {
     return Divider(thickness: thickness, color: AppColors.darkRedBrown);
   }
 }

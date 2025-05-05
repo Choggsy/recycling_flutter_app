@@ -68,6 +68,26 @@ class ButtonStyles {
     );
   }
 
+  static Widget tileContent({
+    required BuildContext context,
+    required int index,
+    required GetPageCallback getPage,
+    required String label,
+    required String assetPath,
+    bool showLabel = true,
+    String textPosition = 'right',
+  }) {
+    _init(context);
+    return _buildTile(
+      context,
+      index,
+      getPage,
+      label,
+      assetPath,
+      showLabel: showLabel,
+      textPosition: textPosition,
+    );
+  }
 
   static Widget buildTileButton(
       String label,
