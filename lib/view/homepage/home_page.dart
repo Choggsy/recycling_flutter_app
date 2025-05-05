@@ -45,12 +45,7 @@ class HomePage extends StatelessWidget {
                   Space.medium.box,
                   buildDivider(2),
                   Space.small.box,
-                  ButtonStyles.buildTileButton(
-                    "Sorting Guide",
-                    1,
-                        (index) => const RecyclableLogoPage(),
-                    context,
-                  ),
+                  ButtonStyles.buildTileButton("Sorting Guide", 1, (index) => const RecyclableLogoPage(), context,),
                   Space.small.box,
                   StaggeredGrid.count(
                     crossAxisCount: 4,
@@ -88,7 +83,6 @@ class HomePage extends StatelessWidget {
                   Space.large.box,
                   buildDivider(4),
                   Space.large.box,
-                  // ✅ Use tileContent instead of wideIconTile outside of StaggeredGrid
                   ButtonStyles.tileContent(
                     context: context,
                     index: 5,
