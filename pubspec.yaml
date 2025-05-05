@@ -59,6 +59,7 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
+    - assets/home/map_screenshot.png
     - assets/navigation/home.png
     - assets/navigation/guidelines.png
     - assets/navigation/reuse.png

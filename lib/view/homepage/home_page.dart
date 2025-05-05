@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:recycling_flutter_app/component/bottom_navigation_bar.dart' show CustomBottomNavigationBar;
-import 'package:recycling_flutter_app/component/top_app_bar.dart' show CustomAppBar;
-import 'package:recycling_flutter_app/view/homepage/subpages/bin_collection_page.dart';
+import 'package:recycling_flutter_app/component/bottom_navigation_bar.dart'
+    show CustomBottomNavigationBar;
+import 'package:recycling_flutter_app/component/top_app_bar.dart'
+    show CustomAppBar;
 import 'package:recycling_flutter_app/view/homepage/map_page.dart';
+import 'package:recycling_flutter_app/view/homepage/subpages/bin_collection_page.dart';
 import 'package:recycling_flutter_app/view/homepage/subpages/news_page.dart';
 import 'package:recycling_flutter_app/view/homepage/subpages/sustainable_page.dart';
 
@@ -14,6 +16,7 @@ import '../../helper/space_helper.dart';
 import '../../model/fact.dart';
 import '../../properties/app_theme.dart' show AppColors;
 import '../../properties/button_style.dart';
+import '../../properties/device_view_vector.dart';
 import '../guideline/logo/recycling_logo_page.dart';
 import 'subpages/involvement_page.dart';
 
@@ -41,7 +44,7 @@ class HomePage extends StatelessWidget {
                 children: [
                   buildDivider(2),
                   Space.medium.box,
-                  ButtonStyles.buildTileButton("Map Button", 0, (index) => MapPage(), context),
+                  mapButton(context),
                   Space.medium.box,
                   buildDivider(2),
                   Space.small.box,
@@ -58,6 +61,7 @@ class HomePage extends StatelessWidget {
                         getPage: (index) => const BinCollectionPage(),
                         label: "Bin Collection Days",
                         assetPath: 'assets/logo/placeholder.jpg',
+                        showLabel: false
                       ),
                       ButtonStyles.iconTile(
                         context: context,
@@ -65,6 +69,7 @@ class HomePage extends StatelessWidget {
                         getPage: (index) => const SustainabilityPage(),
                         label: "Sustainability Page",
                         assetPath: 'assets/logo/placeholder.jpg',
+                        showLabel: false
                       ),
                       ButtonStyles.wideIconTile(
                         context: context,
@@ -81,7 +86,15 @@ class HomePage extends StatelessWidget {
                   Space.large.box,
                   buildDivider(4),
                   Space.large.box,
-                  ButtonStyles.buildTileButton("Recycling News", 5, (index) => const NewsPage(), context)
+                  ButtonStyles.wideIconTile(
+                    context: context,
+                    index: 5,
+                    getPage: (index) => const NewsPage(),
+                    label: "Recycling News",
+                    assetPath: 'assets/logo/placeholder.jpg',
+                    textPosition: 'left',
+
+                  ),
                 ],
               ),
             );
@@ -100,10 +113,36 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Divider buildDivider(final double thickness) {
-    return Divider(
-      thickness: thickness,
-      color: AppColors.darkRedBrown,
+  Center mapButton(BuildContext context) {
+    final isTablet = ScreenConfig.getViewType(
+        MediaQuery.of(context).size.width) == ViewType.tablet;
+    final double size = isTablet ? 800 : 400 ;
+
+    return Center(
+      child: GestureDetector(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => MapPage()),
+          );
+        },
+        child: Container(
+          width: size,
+          height: size,
+          decoration: BoxDecoration(
+            border: Border.all(color: AppColors.darkBrown, width: 2),
+            borderRadius: BorderRadius.zero,
+            image: const DecorationImage(
+              image: AssetImage('assets/home/map_screenshot.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+      ),
     );
+  }
+
+  Divider buildDivider(final double thickness) {
+    return Divider(thickness: thickness, color: AppColors.darkRedBrown);
   }
 }

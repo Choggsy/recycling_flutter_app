@@ -23,13 +23,23 @@ class ButtonStyles {
     required GetPageCallback getPage,
     required String label,
     required String assetPath,
+    bool showLabel = true,
+    String textPosition = 'right',
   }) {
     _init(context);
 
     return StaggeredGridTile.count(
       crossAxisCellCount: 2,
       mainAxisCellCount: _isTablet ? 0.6 : 2,
-      child: _buildTile(context, index, getPage, label, assetPath),
+      child: _buildTile(
+        context,
+        index,
+        getPage,
+        label,
+        assetPath,
+        showLabel: showLabel,
+        textPosition: textPosition,
+      ),
     );
   }
 
@@ -39,14 +49,25 @@ class ButtonStyles {
     required GetPageCallback getPage,
     required String label,
     required String assetPath,
+    bool showLabel = true,
+    String textPosition = 'right',
   }) {
     _init(context);
     return StaggeredGridTile.count(
       crossAxisCellCount: 4,
       mainAxisCellCount: _isTablet ? 0.6 : 2,
-      child: _buildTile(context, index, getPage, label, assetPath),
+      child: _buildTile(
+        context,
+        index,
+        getPage,
+        label,
+        assetPath,
+        showLabel: showLabel,
+        textPosition: textPosition,
+      ),
     );
   }
+
 
   static Widget buildTileButton(
       String label,
@@ -71,8 +92,17 @@ class ButtonStyles {
       int index,
       GetPageCallback getPage,
       String label,
-      String assetPath,
-      ) {
+      String assetPath, {
+        bool showLabel = true,
+        String textPosition = 'right',
+      }) {
+
+    Widget content = positioningConditions(
+        textPosition,
+        showLabel,
+        Text(label, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold), textAlign: TextAlign.center,),
+        Image.asset(assetPath, width: _imageSize, height: _imageSize, fit: BoxFit.contain));
+
     return GestureDetector(
       onTap: () {
         Navigator.push(
@@ -86,18 +116,41 @@ class ButtonStyles {
           border: Border.all(color: AppColors.darkBrown, width: 3.0),
           color: AppColors.background,
         ),
-        child: Center(
-          child: Semantics(
-            label: label,
-            child: Image.asset(
-              assetPath,
-              width: _imageSize,
-              height: _imageSize,
-              fit: BoxFit.contain,
-            ),
-          ),
-        ),
+        padding: const EdgeInsets.all(8.0),
+        child: content,
       ),
     );
+  }
+
+  static Widget positioningConditions(String textPosition, bool showLabel, Text text, Image image) {
+     Widget content;
+
+    if (textPosition == 'left') {
+      content = Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          if (showLabel) Expanded(child: text),
+          image,
+        ],
+      );
+    } else if (textPosition == 'right') {
+      content = Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          image,
+          if (showLabel) Expanded(child: text),
+        ],
+      );
+    } else {
+      // Fallback to right if invalid value is passed
+      content = Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          image,
+          if (showLabel) Expanded(child: text),
+        ],
+      );
+    }
+    return content;
   }
 }
