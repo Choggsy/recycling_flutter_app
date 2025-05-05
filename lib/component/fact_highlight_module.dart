@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recycling_flutter_app/properties/app_theme.dart';
 import '../model/fact.dart';
 import 'fact_card.dart';
 import '../view/homepage/subpages/fact_page.dart';
@@ -18,7 +19,7 @@ class RecyclingFactsSection extends StatelessWidget {
           children: [
             Text(
               'Recycling Facts',
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.black),
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(color: AppColors.black),
             ),
             TextButton(
               onPressed: () {
