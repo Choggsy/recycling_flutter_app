@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../view/homepage/subpages/article_page.dart';
 
 class NewsStoryCard extends StatelessWidget {
@@ -25,7 +24,7 @@ class NewsStoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.all(12.0),
+      margin: const EdgeInsets.symmetric(vertical: 10.0),
       elevation: 4.0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.0)),
       child: InkWell(
