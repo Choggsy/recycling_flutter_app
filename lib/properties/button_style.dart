@@ -120,7 +120,7 @@ class ButtonStyles {
     Widget content = positioningConditions(
         textPosition,
         showLabel,
-        Text(label, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold), textAlign: TextAlign.center,),
+        Text(label, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold), textAlign: TextAlign.center,),
         Image.asset(assetPath, width: _imageSize, height: _imageSize, fit: BoxFit.contain));
 
     return GestureDetector(
