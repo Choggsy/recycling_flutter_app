@@ -66,7 +66,7 @@ class _FairTradeEnvironmentalLogoPageState
               ),
               Expanded(
                 child: TileButton(
-                  label: 'Non Regulated',
+                  label: 'Other Logos',
                   index: 2,
                   getPage: getLogoPage,
                 ),

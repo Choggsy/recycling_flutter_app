@@ -65,7 +65,7 @@ class _RecyclableLogoPageState extends State<RecyclableLogoPage> {
               ),
               Expanded(
                 child: TileButton(
-                  label: 'Non Regulated',
+                  label: 'Other Logos',
                   index: 2,
                   getPage: getLogoPage,
                 ),

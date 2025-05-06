@@ -63,7 +63,7 @@ class _NonRegulatedLogoPageState extends State<NonRegulatedLogoPage> {
               ),
               Expanded(
                 child: TileButton(
-                  label: 'Non Regulated',
+                  label: 'Other Logos',
                   index: 2,
                   getPage: getLogoPage,
                   activeColor: AppColors.darkGreen,

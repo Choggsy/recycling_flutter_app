@@ -65,7 +65,7 @@ class LogoCard extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Space.large.box,
+                  Space.small.box,
                   Text(description),
                 ],
               ),

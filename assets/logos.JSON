@@ -6,9 +6,9 @@
       "description": "This symbol indicates that the packaging is widely accepted for recycling by most local councils in the UK and can be effectively processed into new materials."
     },
     {
-      "title": "Don't Recycle",
-      "imageUrl": "https://www.recyclenow.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Ft5gtctpjc8ne%2F1qeZYTKb1rmHj2MRau2v1Y%2Fa273a20744e8fbe9319c5601a72c9b90%2FDont-Recycle.jpg&w=384&q=75",
-      "description": "This label is used for packaging that is either not collected by most local authorities or cannot be effectively recycled due to sorting or processing limitations./or is not able to be sorted, processed and recycled into new packaging or products."
+      "title": "Widely Recycled",
+      "imageUrl": "https://www.hants.gov.uk/-/media/Images/wasteandrecycling/widelyrecycled.jpg?h=258&iar=0&w=190&hash=CFEFC41D3E17CDF76257FDD2AFCADE30",
+      "description": "TBC"
     },
     {
       "title": "Recycle | Rinse",
@@ -26,33 +26,83 @@
       "description": "Found on soft plastics like bread bags or crisp packets, this label means the item can’t be recycled at home but can be taken to designated supermarket collection points."
     },
     {
-      "title": "Recycle | Bottle Cap on | Don't Recycle | Remove Sleeve",
-      "imageUrl": "https://www.recyclenow.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Ft5gtctpjc8ne%2F1v8zZJYe9Imif9i8E3obkb%2F8f81a293e2c11c2987b2576e70cfe395%2FCap-On-and-Remove-Sleeve.jpg&w=640&q=75",
-      "description": "Some packaging has mixed materials. This label advises separating parts—like removing a plastic sleeve from a bottle—so the recyclable portion can be processed correctly."
+      "title": "Don't Recycle",
+      "imageUrl": "https://www.recyclenow.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Ft5gtctpjc8ne%2F1qeZYTKb1rmHj2MRau2v1Y%2Fa273a20744e8fbe9319c5601a72c9b90%2FDont-Recycle.jpg&w=384&q=75",
+      "description": "This label is used for packaging that is either not collected by most local authorities or cannot be effectively recycled due to sorting or processing limitations./or is not able to be sorted, processed and recycled into new packaging or products."
+    },
+    {
+      "title": "Not Currently Recycled",
+      "imageUrl": "https://www.hants.gov.uk/-/media/Images/wasteandrecycling/notcurrentlyrecycled.jpg?h=258&iar=0&w=190&hash=F25571DEE186F806DD19C7DBB0771875",
+      "description": "Put anything with this label on in with the general rubbish."
+    },
+    {
+      "title": "Check Locally",
+      "imageUrl": "https://www.hants.gov.uk/-/media/Images/wasteandrecycling/checklocally.jpg?h=258&iar=0&w=190&hash=24112A5BCF61CEC7331F74DE71C3CEF9",
+      "description": "TBC"
     }
   ],
   "sustainable": [
     {
-      "title": "Sustainable Logo 1",
-      "imageUrl": "https://images.unsplash.com/photo-1587334274328-64186a80aeee?q=80&w=2081&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "description": "This logo represents environmentally friendly products."
+      "title": "Paper, card and wood",
+      "imageUrl": "https://www.recycle-more.co.uk/images/forest-stewardship-v9re1e.jpg",
+      "description": "This logo from the Forest Stewardship Council (FSC) indicates that the wood or paper used comes from responsibly managed forests that meet strict environmental and social standards."
     },
     {
-      "title": "Sustainable Logo 2",
-      "imageUrl": "https://images.unsplash.com/photo-1587334274328-64186a80aeee?q=80&w=2081&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "description": "Another sustainable logo description."
+      "title": "RESY",
+      "imageUrl": "https://www.recycle-more.co.uk/images/resy-w1l2qo.jpg",
+      "description": "The RESY symbol confirms that the cardboard packaging is recyclable and meets the standards required by cardboard recycling facilities."
+    },
+    {
+      "title": "Compostable Packaging",
+      "imageUrl": "https://www.recycle-more.co.uk/images/compostable-seedling-logo-8e9woh.png",
+      "description": "This symbol shows that the packaging is suitable for composting through local council garden waste collections, breaking down naturally under industrial composting conditions."
+    },
+    {
+      "title": "Home Compostable Packaging",
+      "imageUrl": "https://www.recycle-more.co.uk/images/ok-compost-home-symbol-g96dy7.png",
+      "description": "This label means the packaging can be composted at home in a garden compost bin, or alternatively through local authority garden waste services."
+    },
+    {
+      "title": "Plastic Resin Codes",
+      "imageUrl": "https://www.recycle-more.co.uk/images/plastic-resin-codes-small-ggssp6.jpg",
+      "description": "These numbered symbols (1–7) identify the type of plastic resin used in a product, helping consumers and recyclers sort plastics correctly."
+    },
+    {
+      "title": "Green Dot",
+      "imageUrl": "https://www.recycle-more.co.uk/images/greendot_col_cmyk--use-clu412.jpg",
+      "description": "Common in Europe, this symbol means the producer has contributed to a recycling scheme. It doesn’t indicate that the packaging itself is recyclable in the UK."
+    },
+    {
+      "title": "Mobius Loop",
+      "imageUrl": "https://www.recycle-more.co.uk/images/mobius-loop-x40lb8.jpg",
+      "description": "This symbol shows that the item can be recycled. If a percentage is shown inside the loop, it indicates how much of the product is made from recycled materials. Always check local recycling guidelines."
+    },
+    {
+      "title": "Tidyman",
+      "imageUrl": "https://www.recycle-more.co.uk/images/tidyman-66w1hd.png",
+      "description": "This icon is a reminder to dispose of waste responsibly. It’s not a recycling symbol but promotes anti-littering, supported by the charity Keep Britain Tidy."
+    },
+    {
+      "title": "Waste Electricals and Batteries",
+      "imageUrl": "https://www.recycle-more.co.uk/images/wheelie-bin-dogmtj.jpg",
+      "description": "A crossed-out wheelie bin symbol found on electronics and batteries, indicating they must be recycled separately at designated collection points or through retailer take-back schemes."
+    },
+    {
+      "title": "Recyclable Aluminium",
+      "imageUrl": "https://www.recycle-more.co.uk/images/aluminium-recycling-logo-3s2rvm.jpg",
+      "description": "This symbol shows that the item, such as a drink can, is made from aluminium and can be recycled repeatedly without losing quality."
+    },
+    {
+      "title": "Glass",
+      "imageUrl": "https://www.recycle-more.co.uk/images/glass-recycling-sp72l0.jpg",
+      "description": "A reminder to recycle glass containers like bottles and jars, either through household recycling or at bottle banks."
     }
   ],
   "non_regulated": [
     {
-      "title": "Non Regulated Logo 1",
-      "imageUrl": "https://images.unsplash.com/photo-1587334274328-64186a80aeee?q=80&w=2081&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "description": "This logo is used for non-regulated products."
-    },
-    {
-      "title": "Non Regulated Logo 2",
-      "imageUrl": "https://images.unsplash.com/photo-1587334274328-64186a80aeee?q=80&w=2081&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "description": "Another non-regulated logo description."
+      "title": "Triman",
+      "imageUrl": "https://www.recycle-more.co.uk/images/triman-n3069n.png",
+      "description": "TBC"
     }
   ]
 }
