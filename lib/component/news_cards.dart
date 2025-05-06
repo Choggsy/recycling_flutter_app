@@ -8,12 +8,18 @@ class NewsStoryCard extends StatelessWidget {
   final String description;
   final String fullArticleUrl;
 
+  //testing classes
+  final Widget Function(BuildContext)? pageBuilder;
+  final ImageProvider? imageProvider;
+
   const NewsStoryCard({
     super.key,
     required this.imageUrl,
     required this.title,
     required this.description,
     required this.fullArticleUrl,
+    this.pageBuilder,
+    this.imageProvider,
   });
 
   String _truncateDescription(final String text, final int wordLimit) {
@@ -33,7 +39,10 @@ class NewsStoryCard extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (_) => FullArticlePage(url: fullArticleUrl),
+              builder:
+                  (_) =>
+                      pageBuilder?.call(context) ??
+                      FullArticlePage(url: fullArticleUrl),
             ),
           );
         },
@@ -46,11 +55,13 @@ class NewsStoryCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title,
-                      style: const TextStyle(
-                        fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                      )),
+                  Text(
+                    title,
+                    style: const TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   Space.medium.box,
                   Text(
                     _truncateDescription(description, 150),
@@ -72,14 +83,15 @@ class NewsStoryCard extends StatelessWidget {
 
   ClipRRect buildClipRRect() {
     return ClipRRect(
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(12.0)),
-            child: Image.network(
-              imageUrl,
-              width: double.infinity,
-              height: 180,
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) => const Icon(Icons.broken_image, size: 100),
-            ),
-          );
+      borderRadius: const BorderRadius.vertical(top: Radius.circular(12.0)),
+      child: Image(
+        image: imageProvider ?? NetworkImage(imageUrl),
+        width: double.infinity,
+        height: 180,
+        fit: BoxFit.cover,
+        errorBuilder: (context, error, stackTrace) =>
+        const Icon(Icons.broken_image, size: 100),
+      ),
+    );
   }
 }
