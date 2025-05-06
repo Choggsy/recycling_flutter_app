@@ -86,7 +86,7 @@ class _FairTradeEnvironmentalLogoPageState
                   return ListView(
                     children: [
                       ...logos['sustainable'].map((logo) => LogoCard(
-                        imagePath: logo['imagePath'],
+                        imageUrl: logo['imageUrl'],
                         title: logo['title'],
                         description: logo['description'],
                       )).toList(),

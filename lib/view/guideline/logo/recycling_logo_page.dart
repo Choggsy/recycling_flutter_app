@@ -85,7 +85,7 @@ class _RecyclableLogoPageState extends State<RecyclableLogoPage> {
                   return ListView(
                     children: [
                       ...logos['recyclable'].map((logo) => LogoCard(
-                        imagePath: logo['imagePath'],
+                        imageUrl: logo['imageUrl'],
                         title: logo['title'],
                         description: logo['description'],
                       )).toList(),
