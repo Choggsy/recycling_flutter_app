@@ -4,14 +4,14 @@ import '../properties/app_theme.dart' show AppColors;
 
 typedef GetPageCallback = Widget Function(int index);
 
-class TileButton extends StatelessWidget {
-  final String imagePath;
+class LogoButton extends StatelessWidget {
+  final String label;
   final int index;
   final GetPageCallback getPage;
   final Color activeColor;
 
-  const TileButton({
-    required this.imagePath,
+  const LogoButton({
+    required this.label,
     required this.index,
     required this.getPage,
     this.activeColor = AppColors.background,
@@ -25,6 +25,7 @@ class TileButton extends StatelessWidget {
     return Container(
       decoration: TileButtonStyles.containerDecoration(isActive, activeColor),
       child: ElevatedButton(
+        key: Key(label),
         style: TileButtonStyles.buttonStyle(isActive, activeColor),
         onPressed: () {
           Navigator.push(
@@ -32,13 +33,7 @@ class TileButton extends StatelessWidget {
             MaterialPageRoute(builder: (context) => getPage(index)),
           );
         },
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Image.asset(
-            imagePath,
-            fit: BoxFit.contain,
-          ),
-        ),
+        child: Text(label),
       ),
     );
   }

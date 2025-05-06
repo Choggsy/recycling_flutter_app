@@ -1,9 +1,11 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:recycling_flutter_app/view/guideline/guidelines_page.dart';
+
+import '../../../component/logo_button.dart';
 import '../../../component/logo_card.dart';
-import '../../../component/tile_button.dart' show TileButton;
 import '../../../helper/get_logo_page.dart' show getLogoPage;
 import '../../../properties/app_theme.dart' show AppColors;
 
@@ -49,7 +51,7 @@ class _RecyclableLogoPageState extends State<RecyclableLogoPage> {
           Row(
             children: [
               Expanded(
-                child: TileButton(
+                child: LogoButton(
                   label: 'Recyclable',
                   index: 0,
                   getPage: getLogoPage,
@@ -57,14 +59,14 @@ class _RecyclableLogoPageState extends State<RecyclableLogoPage> {
                 ),
               ),
               Expanded(
-                child: TileButton(
+                child: LogoButton(
                   label: 'Sustainable',
                   index: 1,
                   getPage: getLogoPage,
                 ),
               ),
               Expanded(
-                child: TileButton(
+                child: LogoButton(
                   label: 'Other Logos',
                   index: 2,
                   getPage: getLogoPage,

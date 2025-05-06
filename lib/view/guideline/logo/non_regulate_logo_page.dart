@@ -1,9 +1,11 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:recycling_flutter_app/view/guideline/guidelines_page.dart';
+
+import '../../../component/logo_button.dart';
 import '../../../component/logo_card.dart';
-import '../../../component/tile_button.dart' show TileButton;
 import '../../../helper/get_logo_page.dart' show getLogoPage;
 import '../../../properties/app_theme.dart' show AppColors;
 
@@ -48,21 +50,21 @@ class _NonRegulatedLogoPageState extends State<NonRegulatedLogoPage> {
           Row(
             children: [
               Expanded(
-                child: TileButton(
+                child: LogoButton(
                   label: 'Recyclable',
                   index: 0,
                   getPage: getLogoPage,
                 ),
               ),
               Expanded(
-                child: TileButton(
+                child: LogoButton(
                   label: 'Sustainable',
                   index: 1,
                   getPage: getLogoPage,
                 ),
               ),
               Expanded(
-                child: TileButton(
+                child: LogoButton(
                   label: 'Other Logos',
                   index: 2,
                   getPage: getLogoPage,
@@ -83,11 +85,15 @@ class _NonRegulatedLogoPageState extends State<NonRegulatedLogoPage> {
                   final logos = snapshot.data!;
                   return ListView(
                     children: [
-                      ...logos['non_regulated'].map((logo) => LogoCard(
-                        imageUrl: logo['imageUrl'],
-                        title: logo['title'],
-                        description: logo['description'],
-                      )).toList(),
+                      ...logos['non_regulated']
+                          .map(
+                            (logo) => LogoCard(
+                              imageUrl: logo['imageUrl'],
+                              title: logo['title'],
+                              description: logo['description'],
+                            ),
+                          )
+                          .toList(),
                     ],
                   );
                 }

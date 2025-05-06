@@ -24,7 +24,7 @@ class MosaicButtons {
         crossAxisCellCount: GridHelper.getCrossAxisCellCount(patternIndex),
         mainAxisCellCount: viewType == ViewType.tablet ? GridHelper.getMainAxisCellCount(patternIndex) / 1.5 : GridHelper.getMainAxisCellCount(patternIndex),
         child: TileButton(
-          label: entry.key,
+          imagePath: entry.key,
           index: entry.value,
           getPage: getPage,
         ),

@@ -7,7 +7,9 @@ import 'package:recycling_flutter_app/view/homepage/subpages/bin_collection_page
 import 'package:recycling_flutter_app/view/homepage/subpages/news_page.dart';
 import 'package:recycling_flutter_app/view/homepage/subpages/sustainable_page.dart';
 import '../../component/fact_highlight_module.dart';
+import '../../component/logo_button.dart';
 import '../../helper/fact_parser.dart';
+import '../../helper/get_material_page.dart';
 import '../../helper/get_page.dart';
 import '../../helper/space_helper.dart';
 import '../../model/fact.dart';
@@ -45,7 +47,15 @@ class HomePage extends StatelessWidget {
                   Space.medium.box,
                   buildDivider(2),
                   Space.small.box,
-                  ButtonStyles.buildTileButton("Sorting Guide", 1, (index) => const RecyclableLogoPage(), context,),
+                  SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height / 10,
+                    child: LogoButton(
+                      label: 'Logo Guide',
+                      index: 9,
+                      getPage: (context) => getMaterialPage(9),
+                    ),
+                  ),
                   Space.small.box,
                   StaggeredGrid.count(
                     crossAxisCount: 4,

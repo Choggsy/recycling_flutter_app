@@ -90,7 +90,7 @@ class ButtonStyles {
   }
 
   static Widget buildTileButton(
-      String label,
+      String imagePath,
       int index,
       GetPageCallback getPage,
       BuildContext context,
@@ -100,7 +100,7 @@ class ButtonStyles {
       width: double.infinity,
       height: _isTablet ? 150.0 : 110.0,
       child: TileButton(
-        label: label,
+        imagePath: imagePath,
         index: index,
         getPage: getPage,
       ),
