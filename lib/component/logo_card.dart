@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import '../helper/space_helper.dart';
 import '../properties/device_view_vector.dart';
@@ -31,25 +32,28 @@ class LogoCard extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Row(
           children: [
-            imageWidget ??
-                Image.network(
-                  imageUrl,
-                  width: imageSize,
-                  height: imageSize,
-                  fit: BoxFit.cover,
-                  errorBuilder: (context, error, stackTrace) {
-                    return const Icon(Icons.broken_image, size: 48.0);
-                  },
-                  loadingBuilder: (context, child, loadingProgress) {
-                    if (loadingProgress == null) return child;
-                    return SizedBox(
-                      width: imageSize,
-                      height: imageSize,
-                      child: Center(child: CircularProgressIndicator()),
-                    );
-                  },
-                ),
-            SizedBox(width: 10.0),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: imageWidget ??
+                  Image.network(
+                    imageUrl,
+                    width: imageSize,
+                    height: imageSize,
+                    fit: BoxFit.contain, // Ensures the whole image fits
+                    errorBuilder: (context, error, stackTrace) {
+                      return const Icon(Icons.broken_image, size: 48.0);
+                    },
+                    loadingBuilder: (context, child, loadingProgress) {
+                      if (loadingProgress == null) return child;
+                      return SizedBox(
+                        width: imageSize,
+                        height: imageSize,
+                        child: Center(child: CircularProgressIndicator()),
+                      );
+                    },
+                  ),
+            ),
+            Space.medium.box,
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -57,11 +61,11 @@ class LogoCard extends StatelessWidget {
                   Text(
                     title,
                     style: TextStyle(
-                      fontSize: 20.0,
+                      fontSize: 25.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Space.medium.box,
+                  Space.large.box,
                   Text(description),
                 ],
               ),

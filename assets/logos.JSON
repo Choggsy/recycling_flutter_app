@@ -1,14 +1,34 @@
 {
   "recyclable": [
     {
-      "title": "Recyclable Logo 1",
-      "imageUrl": "https://images.unsplash.com/photo-1587334274328-64186a80aeee?q=80&w=2081&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "description": "This logo indicates that the product is recyclable."
+      "title": "Recycle",
+      "imageUrl": "https://www.recyclenow.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Ft5gtctpjc8ne%2F2mHKN6BQlq48CmQ8TrI7fL%2F887f43e1f28099851d3a51b50a8274cf%2FRecycle.jpg&w=384&q=75",
+      "description": "This symbol indicates that the packaging is widely accepted for recycling by most local councils in the UK and can be effectively processed into new materials."
     },
     {
-      "title": "Recyclable Logo 2",
-      "imageUrl": "https://images.unsplash.com/photo-1587334274328-64186a80aeee?q=80&w=2081&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-      "description": "Another recyclable logo description."
+      "title": "Don't Recycle",
+      "imageUrl": "https://www.recyclenow.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Ft5gtctpjc8ne%2F1qeZYTKb1rmHj2MRau2v1Y%2Fa273a20744e8fbe9319c5601a72c9b90%2FDont-Recycle.jpg&w=384&q=75",
+      "description": "This label is used for packaging that is either not collected by most local authorities or cannot be effectively recycled due to sorting or processing limitations./or is not able to be sorted, processed and recycled into new packaging or products."
+    },
+    {
+      "title": "Recycle | Rinse",
+      "imageUrl": "https://www.recyclenow.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Ft5gtctpjc8ne%2F2w4X4CvED59yi03MfUU5G8%2F275cd6a6d50e88f7808e8c5e452d87b8%2FRinse-Recycle.jpg&w=384&q=75",
+      "description": "This symbol encourages rinsing containers like food container trays or yogurt pots before recycling to prevent food residue from contaminating other recyclables, especially paper./or is not able to be sorted, processed and recycled into new packaging or products."
+    },
+    {
+      "title": "Recycle | Rinse | Lid on",
+      "imageUrl": "https://www.recyclenow.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Ft5gtctpjc8ne%2F1moeUZqvaIw9a2miHBwZZX%2Fd9d3ce26f01df8e2ef6a79a13e6a107d%2FLid-On-recycle.jpg&w=384&q=75",
+      "description": "Small lids (under 40mm) can fall through sorting machinery. Keeping them attached to bottles helps ensure they are captured and recycled properly."
+    },
+    {
+      "title": "Recycle with bags at large supermarkets",
+      "imageUrl": "https://www.recyclenow.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Ft5gtctpjc8ne%2F4QLgB2llVM0iQnyNmSIqcW%2F38e1537f99b231907a1b6d066b5d03b0%2FDont-Recycle-at-Home.jpg&w=384&q=75",
+      "description": "Found on soft plastics like bread bags or crisp packets, this label means the item can’t be recycled at home but can be taken to designated supermarket collection points."
+    },
+    {
+      "title": "Recycle | Bottle Cap on | Don't Recycle | Remove Sleeve",
+      "imageUrl": "https://www.recyclenow.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Ft5gtctpjc8ne%2F1v8zZJYe9Imif9i8E3obkb%2F8f81a293e2c11c2987b2576e70cfe395%2FCap-On-and-Remove-Sleeve.jpg&w=640&q=75",
+      "description": "Some packaging has mixed materials. This label advises separating parts—like removing a plastic sleeve from a bottle—so the recyclable portion can be processed correctly."
     }
   ],
   "sustainable": [
