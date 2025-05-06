@@ -23,6 +23,7 @@ class CustomMap extends StatefulWidget {
 class CustomMapState extends State<CustomMap> {
   GoogleMapController? _controller;
   GoogleMapController? get controller => _controller;
+  Set<Marker> get markers => _markers;
 
   LatLng _currentPosition = LatLng(50.7200, -1.8800); // Bournemouth Placeholder
   Set<Marker> _markers = {};
