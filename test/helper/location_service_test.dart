@@ -27,58 +27,61 @@ void main() {
   late LocationService locationService;
   late MockGeolocatorPlatform mockGeolocator;
 
+  Position createMockPosition() => Position(
+    latitude: 10.0,
+    longitude: 20.0,
+    timestamp: DateTime.now(),
+    accuracy: 1.0,
+    altitude: 0.0,
+    heading: 0.0,
+    speed: 0.0,
+    speedAccuracy: 0.0,
+    altitudeAccuracy: 0.0,
+    headingAccuracy: 0.0,
+  );
+
+  Future<void> expectNullLocation() async {
+    final result = await locationService.getCurrentLocation();
+    expect(result, isNull);
+  }
+
   setUp(() {
     mockGeolocator = MockGeolocatorPlatform();
     GeolocatorPlatform.instance = mockGeolocator;
     locationService = LocationService();
   });
 
-  test('returns position when permissions are granted and service is enabled', () async {
-    mockGeolocator.serviceEnabled = true;
-    mockGeolocator.permission = LocationPermission.always;
-    mockGeolocator.position = Position(
-      latitude: 10.0,
-      longitude: 20.0,
-      timestamp: DateTime.now(),
-      accuracy: 1.0,
-      altitude: 0.0,
-      heading: 0.0,
-      speed: 0.0,
-      speedAccuracy: 0.0,
-      altitudeAccuracy: 0.0,
-      headingAccuracy: 0.0,
-    );
+  group('Location Tests', (){
+    test('returns position when permissions are granted and service is enabled', () async {
+      mockGeolocator
+        ..serviceEnabled = true
+        ..permission = LocationPermission.always
+        ..position = createMockPosition();
 
-    final result = await locationService.getCurrentLocation();
+      final result = await locationService.getCurrentLocation();
 
-    expect(result, isNotNull);
-    expect(result!.latitude, 10.0);
-    expect(result.longitude, 20.0);
-  });
+      expect(result, isNotNull);
+      expect(result!.latitude, 10.0);
+      expect(result.longitude, 20.0);
+    });
 
-  test('returns null when location service is disabled', () async {
-    mockGeolocator.serviceEnabled = false;
+    test('returns null when location service is disabled', () async {
+      mockGeolocator.serviceEnabled = false;
+      await expectNullLocation();
+    });
 
-    final result = await locationService.getCurrentLocation();
+    test('returns null when permission is denied', () async {
+      mockGeolocator
+        ..serviceEnabled = true
+        ..permission = LocationPermission.denied;
+      await expectNullLocation();
+    });
 
-    expect(result, isNull);
-  });
-
-  test('returns null when permission is denied', () async {
-    mockGeolocator.serviceEnabled = true;
-    mockGeolocator.permission = LocationPermission.denied;
-
-    final result = await locationService.getCurrentLocation();
-
-    expect(result, isNull);
-  });
-
-  test('returns null when permission is denied forever', () async {
-    mockGeolocator.serviceEnabled = true;
-    mockGeolocator.permission = LocationPermission.deniedForever;
-
-    final result = await locationService.getCurrentLocation();
-
-    expect(result, isNull);
+    test('returns null when permission is denied forever', () async {
+      mockGeolocator
+        ..serviceEnabled = true
+        ..permission = LocationPermission.deniedForever;
+      await expectNullLocation();
+    });
   });
 }
