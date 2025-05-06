@@ -36,7 +36,7 @@ void main() {
     );
   }
 
-  group('CustomMap Widget Tests', () {
+  group('Map Widget Tests', () {
     testWidgets('renders GoogleMap with correct initial position and markers', (tester) async {
       final markers = buildMarkers();
       await pumpMapWidget(tester, initialPosition: testLatitude, markers: markers);
@@ -56,7 +56,9 @@ void main() {
       state.setController(mockController);
       expect(state.controller, equals(mockController));
     });
+  });
 
+  group('Filter Tests', () {
     testWidgets('updates markers using updateMarkers()', (tester) async {
       await pumpMapWidget(tester, initialPosition: testLatitude, markers: {});
 
@@ -92,6 +94,16 @@ void main() {
 
       expect(state.markers.any((m) => m.infoWindow.title == 'Plastic'), isTrue);
       expect(state.markers.any((m) => m.infoWindow.title == 'Glass'), isFalse);
+    });
+
+    testWidgets('adds fallback marker when no category matches', (tester) async {
+      await pumpMapWidget(tester, initialPosition: testLatitude, markers: {});
+
+      final CustomMapState state = tester.state(find.byType(CustomMap));
+      state.filterMarkers('Nonexistent Category');
+      await tester.pump();
+
+      expect(state.markers.any((m) => m.infoWindow.title == 'Your Location'), isTrue);
     });
   });
 }
