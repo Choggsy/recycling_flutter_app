@@ -142,7 +142,7 @@ class ButtonStyles {
     );
   }
 
-  static Widget positioningConditions(String textPosition, bool showLabel, Text text, Image image) {
+  static Widget positioningConditions(final String textPosition, final bool showLabel, final Text text, final Image image) {
      Widget content;
 
     if (textPosition == 'left') {
@@ -162,7 +162,6 @@ class ButtonStyles {
         ],
       );
     } else {
-      // Fallback to right if invalid value is passed
       content = Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
