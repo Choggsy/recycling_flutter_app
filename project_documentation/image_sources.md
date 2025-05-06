@@ -13,6 +13,7 @@ All photos and icons used in this Flutter app are copyright-free or used under f
 - **assets/upcycle/garden.png**: [Original Source](https://www.flaticon.com/free-icon/gardening_1973857)
 - **assets/upcycle/repurpose.png**: [Original Source](https://www.flaticon.com/free-icon/recycle-bottle_4229097)
 - **assets/upcycle/utility.png**: [Original Source](https://www.flaticon.com/free-icon/drill_2670523)
+- **assets/home/bin_icon.png**: [Original Source](https://www.flaticon.com/free-icon/recycle-bin_2514438)
 - **assets/home/map_screenshot.png**: Screenshot from local emulator
 
 ## Image URLs

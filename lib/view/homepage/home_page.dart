@@ -57,7 +57,7 @@ class HomePage extends StatelessWidget {
                         index: 2,
                         getPage: (index) => const BinCollectionPage(),
                         label: "Bin Collection Days",
-                        assetPath: 'assets/logo/placeholder.jpg',
+                        assetPath: 'assets/home/bin_icon.png',
                         showLabel: false,
                       ),
                       ButtonStyles.iconTile(
