@@ -4,6 +4,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:recycling_flutter_app/helper/map_marker_color.dart';
 
 class MarkerParser {
+  //fixme: use google_maps_cluster_manager to improve performance and usability on markers.
   static Future<Set<Marker>> parseMarkers(final String jsonFilePath, final Function(Marker) infoTap) async {
     final String jsonString = await rootBundle.loadString(jsonFilePath);
     final List jsonList = json.decode(jsonString);

@@ -22,16 +22,22 @@ class CustomMap extends StatefulWidget {
 
 class CustomMapState extends State<CustomMap> {
   GoogleMapController? _controller;
-  final Completer<void> _mapCreatedCompleter = Completer<void>();
-  LatLng _currentPosition = LatLng(0, 0);
-  Set<Marker> _markers = {};
-  final LocationService _locationService = LocationService();
-
   GoogleMapController? get controller => _controller;
+  Set<Marker> get markers => _markers;
+
+  LatLng _currentPosition = LatLng(50.7200, -1.8800); // Bournemouth Placeholder
+  Set<Marker> _markers = {};
+  List<Marker> _allMarkers = [];
+
+  final Completer<void> _mapCreatedCompleter = Completer<void>();
+  final LocationService _locationService = LocationService();
+  final String currentLocation = 'currentLocation';
+  final String yourLocation = 'Your Location';
 
   @override
   void initState() {
     super.initState();
+    _allMarkers = widget.markers.toList();
     _markers = widget.markers;
     _getCurrentLocation();
   }
@@ -46,6 +52,34 @@ class CustomMapState extends State<CustomMap> {
     _controller = controller;
   }
 
+  void updateMarkers(final List<Marker> markers) {
+    setState(() {
+      _allMarkers = markers;
+      _markers = markers.toSet();
+    });
+  }
+
+  void filterMarkers(final String category) {
+    setState(() {
+      final filtered = category == 'All'
+          ? _allMarkers
+          : _allMarkers.where((marker) => marker.infoWindow.title?.contains(category) ?? false).toList();
+
+      _markers = {...filtered, (_markers.firstWhere(
+            (marker) => marker.markerId.value == currentLocation,
+        orElse: () {
+          return Marker(
+          markerId: MarkerId(currentLocation),
+          position: _currentPosition,
+          infoWindow: InfoWindow(title: yourLocation),
+          icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueViolet),
+        );
+        },
+      ))};
+    });
+  }
+
+
   void _getCurrentLocation() async {
     Position? position = await _locationService.getCurrentLocation();
     if (position != null) {
@@ -53,9 +87,9 @@ class CustomMapState extends State<CustomMap> {
         _currentPosition = LatLng(position.latitude, position.longitude);
         _markers.add(
           Marker(
-            markerId: MarkerId('currentLocation'),
+            markerId: MarkerId(currentLocation),
             position: _currentPosition,
-            infoWindow: InfoWindow(title: 'Your Location'),
+            infoWindow: InfoWindow(title: yourLocation),
             icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueViolet),
           ),
         );
@@ -84,7 +118,7 @@ class CustomMapState extends State<CustomMap> {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(final BuildContext context) {
     return SizedBox(
       height: widget.fullView ? double.infinity : 200.0,
       child: GoogleMap(

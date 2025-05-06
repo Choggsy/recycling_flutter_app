@@ -32,7 +32,10 @@ dependencies:
     sdk: flutter
   flutter_staggered_grid_view: ^0.7.0
   google_maps_flutter: ^2.0.6
-  geolocator: ^9.0.2
+  geolocator: ^14.0.0
+  webview_flutter: ^4.0.7
+  url_launcher: ^6.2.5
+
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -44,6 +47,7 @@ dev_dependencies:
     sdk: flutter
   mockito: ^5.0.0
   build_runner: ^2.1.0
+  url_launcher_platform_interface: ^2.1.0 # Needed for mocking url_launcher
 
 
   # The "flutter_lints" package below contains a set of recommended lints to
@@ -59,6 +63,7 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
+    - assets/home/map_screenshot.png
     - assets/navigation/home.png
     - assets/navigation/guidelines.png
     - assets/navigation/reuse.png
@@ -71,6 +76,8 @@ flutter:
     - assets/materials.json
     - assets/upcycling.json
     - assets/markers.json
+    - assets/facts.json
+    - assets/news_stories.json
 
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in

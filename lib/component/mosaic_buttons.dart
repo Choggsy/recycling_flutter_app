@@ -22,8 +22,7 @@ class MosaicButtons {
 
       return StaggeredGridTile.count(
         crossAxisCellCount: GridHelper.getCrossAxisCellCount(patternIndex),
-        mainAxisCellCount: viewType == ViewType.tablet ? GridHelper.getMainAxisCellCount(patternIndex) / 1.5
-            : GridHelper.getMainAxisCellCount(patternIndex),
+        mainAxisCellCount: viewType == ViewType.tablet ? GridHelper.getMainAxisCellCount(patternIndex) / 1.5 : GridHelper.getMainAxisCellCount(patternIndex),
         child: TileButton(
           label: entry.key,
           index: entry.value,

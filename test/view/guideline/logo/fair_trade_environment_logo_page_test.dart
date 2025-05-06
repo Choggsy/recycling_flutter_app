@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:recycling_flutter_app/component/logo_card.dart';
-import 'package:recycling_flutter_app/view/guideline/logo/fair_trade_environment_logo_page.dart';
-import 'package:recycling_flutter_app/view/guideline/guidelines_page.dart';
-import 'package:recycling_flutter_app/component/tile_button.dart';
-import 'package:mockito/mockito.dart';
 import 'package:mockito/annotations.dart';
-import 'dart:convert';
-
-import '../../../test_asset_bundle.dart';
+import 'package:recycling_flutter_app/component/tile_button.dart';
+import 'package:recycling_flutter_app/view/guideline/guidelines_page.dart';
+import 'package:recycling_flutter_app/view/guideline/logo/fair_trade_environment_logo_page.dart';
 
 @GenerateMocks([AssetBundle])
 void main() {
