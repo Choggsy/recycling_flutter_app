@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
+import 'package:recycling_flutter_app/component/logo_button.dart';
 import 'package:recycling_flutter_app/component/tile_button.dart';
 import 'package:recycling_flutter_app/view/guideline/guidelines_page.dart';
 import 'package:recycling_flutter_app/view/guideline/logo/fair_trade_environment_logo_page.dart';
@@ -20,9 +21,9 @@ void main() {
   ) async {
     await buildPage(tester);
 
-    expect(find.widgetWithText(TileButton, 'Recyclable Logos'), findsOneWidget);
-    expect(find.widgetWithText(TileButton, 'Sustainable'), findsOneWidget);
-    expect(find.widgetWithText(TileButton, 'Non Regulated'), findsOneWidget);
+    expect(find.widgetWithText(LogoButton, 'Recyclable Logos'), findsOneWidget);
+    expect(find.widgetWithText(LogoButton, 'Sustainable'), findsOneWidget);
+    expect(find.widgetWithText(LogoButton, 'Non Regulated'), findsOneWidget);
   });
 
   testWidgets(

@@ -1,33 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:recycling_flutter_app/component/tile_button.dart' show TileButton;
+import 'package:recycling_flutter_app/component/tile_button.dart';
 
 void main() {
-  final String label = 'Cardboard';
+  const String imagePath = 'assets/logo/placeholder.jpg';
 
-  testWidgets('TileButton displays the correct label', (final WidgetTester tester) async {
-    await testApp(tester, label, 0);
-    expect(find.text(label), findsOneWidget);
-  });
-
-  testWidgets('TileButton navigates to correct page on button press', (WidgetTester tester) async {
-    final int index = 0;
-    await testApp(tester, label, index);
-
-    await tester.tap(find.byKey(Key(label)));
-    await tester.pumpAndSettle();
-    expect(find.text('Page $index'), findsOneWidget);
-  });
-}
-
-Future<void> testApp(final WidgetTester tester, final String label, final int index) async {
-  await tester.pumpWidget(MaterialApp(
-    home: Scaffold(
-      body: TileButton(
-        label: label,
-        index: index,
-        getPage: (int index) => Text('Page $index'),
+  testWidgets('TileButton displays the image', (WidgetTester tester) async {
+    await tester.pumpWidget(MaterialApp(
+      home: Scaffold(
+        body: TileButton(
+          imagePath: imagePath,
+          index: 0,
+          getPage: (index) => Text('Page $index'),
+        ),
       ),
-    ),
-  ));
+    ));
+
+    expect(find.byType(Image), findsOneWidget);
+  });
+
+  testWidgets('TileButton navigates to correct page on tap', (WidgetTester tester) async {
+    await tester.pumpWidget(MaterialApp(
+      home: Scaffold(
+        body: TileButton(
+          imagePath: imagePath,
+          index: 1,
+          getPage: (index) => Text('Page $index'),
+        ),
+      ),
+    ));
+
+    await tester.tap(find.byType(TileButton));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Page 1'), findsOneWidget);
+  });
 }

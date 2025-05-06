@@ -9,11 +9,11 @@ void main() {
   const double phoneWidth = 400;
   const double tabletWidth = 900;
   const int testIndex = 4;
-  const String testLabel = 'Recycle';
+  const String testImagePath = 'assets/logo/placeholder.jpg';
 
   Widget createTestWidget({
     required double width,
-    required List<MapEntry<String, int>> labelIndexPairs,
+    required List<MapEntry<String, int>> imageIndexPairs,
     required GetPageCallback getPage,
   }) {
     return MaterialApp(
@@ -23,7 +23,7 @@ void main() {
           builder: (context) => Scaffold(
             body: MosaicButtons.buildMosaicGrid(
               context,
-              labelIndexPairs,
+              imageIndexPairs,
               getPage,
             ),
           ),
@@ -37,36 +37,36 @@ void main() {
   group('MosaicButtons Widget Tests', () {
     testWidgets('makes correct number of TileButtons', (tester) async {
       final entries = [
-        MapEntry('Recycle', 0),
-        MapEntry('Compost', 1),
-        MapEntry('Reuse', 2),
+        MapEntry('assets/logo/placeholder.jpg', 0),
+        MapEntry('assets/logo/placeholder.jpg', 1),
+        MapEntry('assets/logo/placeholder.jpg', 2),
       ];
 
       await tester.pumpWidget(createTestWidget(
         width: phoneWidth,
-        labelIndexPairs: entries,
+        imageIndexPairs: entries,
         getPage: getPageStub,
       ));
 
       expect(find.byType(TileButton), findsNWidgets(entries.length));
     });
 
-    testWidgets('TileButton receives correct label and index', (tester) async {
+    testWidgets('TileButton receives correct imagePath and index', (tester) async {
       await tester.pumpWidget(createTestWidget(
         width: phoneWidth,
-        labelIndexPairs: [MapEntry(testLabel, 42)],
+        imageIndexPairs: [MapEntry(testImagePath, 42)],
         getPage: getPageStub,
       ));
 
       final tileButton = tester.widget<TileButton>(find.byType(TileButton));
-      expect(tileButton.label, testLabel);
+      expect(tileButton.imagePath, testImagePath);
       expect(tileButton.index, 42);
     });
 
     testWidgets('uses correct layout for phone view', (tester) async {
       await tester.pumpWidget(createTestWidget(
         width: phoneWidth,
-        labelIndexPairs: [MapEntry(testLabel, testIndex)],
+        imageIndexPairs: [MapEntry(testImagePath, testIndex)],
         getPage: getPageStub,
       ));
 
@@ -78,7 +78,7 @@ void main() {
     testWidgets('uses correct layout for tablet view', (tester) async {
       await tester.pumpWidget(createTestWidget(
         width: tabletWidth,
-        labelIndexPairs: [MapEntry(testLabel, testIndex)],
+        imageIndexPairs: [MapEntry(testImagePath, testIndex)],
         getPage: getPageStub,
       ));
 

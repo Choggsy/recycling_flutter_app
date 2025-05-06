@@ -96,11 +96,10 @@ void main() {
     testWidgets('buildTileButton renders and navigates on tap', (tester) async {
       await tester.pumpWidget(MaterialApp(
         home: Builder(
-          builder: (context) => ButtonStyles.buildTileButton('Test Button', 1, mockPage, context),
+          builder: (context) => ButtonStyles.buildTileButton('assets/logo/placeholder.jpg', 1, mockPage, context),
         ),
       ));
 
-      expect(find.text('Test Button'), findsOneWidget);
       await tester.tap(find.byType(TileButton));
       await tester.pumpAndSettle();
 
