@@ -21,7 +21,7 @@ class GuidelinesPage extends StatelessWidget {
         child: Column(
           children: [
             Space.medium.box,
-            ButtonStyles.buildTileButton("logo guide", 10, getMaterialPage,context),
+            ButtonStyles.buildTileButton("logo guide", 9, getMaterialPage,context),
             Space.small.box,
             buildDivider(),
             Space.medium.box,

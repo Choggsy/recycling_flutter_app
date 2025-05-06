@@ -3,7 +3,6 @@ import 'package:recycling_flutter_app/view/guideline/guidelines_page.dart';
 import 'package:recycling_flutter_app/view/guideline/logo/recycling_logo_page.dart' show RecyclableLogoPage;
 
 import '../view/guideline/material/material_page.dart';
-import '../view/guideline/room_guide_page.dart';
 
 Widget getMaterialPage(int index) {
   switch (index) {
@@ -26,8 +25,6 @@ Widget getMaterialPage(int index) {
     case 8:
       return MaterialPage(materialTitle: 'Flexible Plastics');
     case 9:
-      return RoomSelectionPage();
-    case 10:
       return RecyclableLogoPage();
     default:
       return GuidelinesPage();

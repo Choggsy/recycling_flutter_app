@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:recycling_flutter_app/helper/get_material_page.dart' show getMaterialPage;
-import 'package:recycling_flutter_app/view/guideline/room_guide_page.dart' show RoomSelectionPage;
 import 'package:recycling_flutter_app/view/guideline/logo/recycling_logo_page.dart' show RecyclableLogoPage;
 import 'package:recycling_flutter_app/view/guideline/guidelines_page.dart';
 import 'package:recycling_flutter_app/view/guideline/material/material_page.dart' as recycling_app;
@@ -60,15 +59,11 @@ void main() {
     expect((page as recycling_app.MaterialPage).materialTitle, 'Flexible Plastics');
   });
 
-  test('getMaterialPage returns RoomSelectionPage for index 9', () {
-    expect(getMaterialPage(9), isA<RoomSelectionPage>());
+  test('getMaterialPage returns RecyclableLogoPage for index 9', () {
+    expect(getMaterialPage(9), isA<RecyclableLogoPage>());
   });
 
-  test('getMaterialPage returns RecyclableLogoPage for index 10', () {
-    expect(getMaterialPage(10), isA<RecyclableLogoPage>());
-  });
-
-  for (var index in [11, 999, -1]) {
+  for (var index in [10, 999, -1]) {
     test('getMaterialPage returns GuidelinesPage for outOfBounds index $index', () {
       expect(getMaterialPage(index), isA<GuidelinesPage>());
     });

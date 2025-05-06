@@ -47,6 +47,7 @@ dev_dependencies:
     sdk: flutter
   mockito: ^5.0.0
   build_runner: ^2.1.0
+  network_image_mock: ^2.1.1
   url_launcher_platform_interface: ^2.1.0 # Needed for mocking url_launcher
 
 
