@@ -6,17 +6,25 @@ import '../google_map_controller_test.mocks.dart';
 
 void main() {
   const LatLng testLatLng = LatLng(50.72, -1.88);
-  const String defaultMarkerId = 'recycling_point_1';
-  const String defaultMarkerTitle = 'Recycling Point 1';
-  const String plastic = 'Plastic';
-  const String glass = 'Glass';
+
+  Marker createMarker({
+    required String id,
+    required String title,
+    String? snippet,
+    LatLng position = testLatLng,
+  }) {
+    return Marker(
+      markerId: MarkerId(id),
+      position: position,
+      infoWindow: InfoWindow(title: title, snippet: snippet),
+    );
+  }
 
   Set<Marker> buildMarkers({String? id, String? title}) {
     return {
-      Marker(
-        markerId: MarkerId(id ?? defaultMarkerId),
-        position: testLatLng,
-        infoWindow: InfoWindow(title: title ?? defaultMarkerTitle),
+      createMarker(
+        id: id ?? 'recycling_point_1',
+        title: title ?? 'Recycling Point 1',
       ),
     };
   }
@@ -40,6 +48,10 @@ void main() {
     );
   }
 
+  Future<CustomMapState> getMapState(WidgetTester tester) async {
+    return tester.state(find.byType(CustomMap));
+  }
+
   group('Map Widget Tests', () {
     testWidgets('renders GoogleMap with correct initial position and markers', (tester) async {
       final markers = buildMarkers();
@@ -54,7 +66,7 @@ void main() {
     testWidgets('sets and retrieves GoogleMapController', (tester) async {
       await pumpMapWidget(tester, initialPosition: testLatLng, markers: buildMarkers());
 
-      final CustomMapState state = tester.state(find.byType(CustomMap));
+      final state = await getMapState(tester);
       final mockController = MockGoogleMapController();
 
       state.setController(mockController);
@@ -63,7 +75,7 @@ void main() {
 
     testWidgets('dispose cleans up controller', (tester) async {
       await pumpMapWidget(tester, initialPosition: testLatLng, markers: buildMarkers());
-      final CustomMapState state = tester.state(find.byType(CustomMap));
+      final state = await getMapState(tester);
       state.setController(MockGoogleMapController());
 
       await tester.pumpWidget(Container());
@@ -86,10 +98,9 @@ void main() {
   group('Marker & Filter Logic Tests', () {
     testWidgets('updates markers using updateMarkers()', (tester) async {
       await pumpMapWidget(tester, initialPosition: testLatLng, markers: {});
+      final state = await getMapState(tester);
 
-      final CustomMapState state = tester.state(find.byType(CustomMap));
       final newMarkers = buildMarkers().toList();
-
       state.updateMarkers(newMarkers);
       await tester.pump();
 
@@ -99,32 +110,24 @@ void main() {
 
     testWidgets('filters markers by category', (tester) async {
       final markers = {
-        Marker(
-          markerId: MarkerId('1'),
-          position: testLatLng,
-          infoWindow: InfoWindow(title: plastic),
-        ),
-        Marker(
-          markerId: MarkerId('2'),
-          position: testLatLng,
-          infoWindow: InfoWindow(title: glass),
-        ),
+        createMarker(id: '1', title: 'Plastic'),
+        createMarker(id: '2', title: 'Glass'),
       };
 
       await pumpMapWidget(tester, initialPosition: testLatLng, markers: markers);
+      final state = await getMapState(tester);
 
-      final CustomMapState state = tester.state(find.byType(CustomMap));
-      state.filterMarkers(plastic);
+      state.filterMarkers('Plastic');
       await tester.pump();
 
-      expect(state.markers.any((m) => m.infoWindow.title == plastic), isTrue);
-      expect(state.markers.any((m) => m.infoWindow.title == glass), isFalse);
+      expect(state.markers.any((m) => m.infoWindow.title == 'Plastic'), isTrue);
+      expect(state.markers.any((m) => m.infoWindow.title == 'Glass'), isFalse);
     });
 
     testWidgets('adds fallback marker when no category matches', (tester) async {
       await pumpMapWidget(tester, initialPosition: testLatLng, markers: {});
+      final state = await getMapState(tester);
 
-      final CustomMapState state = tester.state(find.byType(CustomMap));
       state.filterMarkers('Nonexistent Category');
       await tester.pump();
 
@@ -132,15 +135,15 @@ void main() {
     });
 
     testWidgets('onMarkerTapped shows bottom sheet with marker info', (tester) async {
-      final marker = Marker(
-        markerId: MarkerId('test'),
-        position: testLatLng,
-        infoWindow: InfoWindow(title: 'Test Title', snippet: 'Test Description'),
+      final marker = createMarker(
+        id: 'test',
+        title: 'Test Title',
+        snippet: 'Test Description',
       );
 
       await pumpMapWidget(tester, initialPosition: testLatLng, markers: {marker});
+      final state = await getMapState(tester);
 
-      final CustomMapState state = tester.state(find.byType(CustomMap));
       state.onMarkerTapped(marker);
       await tester.pumpAndSettle();
 
