@@ -10,42 +10,71 @@ void main() {
 
   Widget mockPage(int index) => Scaffold(body: Text('Page $index'));
 
-  Widget createTestWidget(Widget child) {
-    return MaterialApp(home: Scaffold(body: child));
+  Widget wrapInMaterial(Widget child) => MaterialApp(home: Scaffold(body: child));
+
+  Widget buildPositionedTile({
+    required String position,
+    required bool showLabel,
+    required String label,
+  }) {
+    return ButtonStyles.positioningConditions(
+      position,
+      showLabel,
+      Text(label),
+      Image.asset(testAsset),
+    );
   }
 
-  Future<void> pumpIconTile(WidgetTester tester) async {
+  Future<void> pumpTile({
+    required WidgetTester tester,
+    required Widget Function(BuildContext) tileBuilder,
+  }) async {
     await tester.pumpWidget(MaterialApp(
       home: Scaffold(
         body: Builder(
-          builder: (context) {
-            return StaggeredGrid.count(
-              crossAxisCount: 4,
-              children: [
-                ButtonStyles.iconTile(
-                  context: context,
-                  index: 0,
-                  getPage: mockPage,
-                  label: testLabel,
-                  assetPath: testAsset,
-                ),
-              ],
-            );
-          },
+          builder: (context) => StaggeredGrid.count(
+            crossAxisCount: 4,
+            children: [tileBuilder(context)],
+          ),
         ),
       ),
     ));
   }
 
-  group('ButtonStyles Tests', () {
+  group('ButtonStyles Widget Tests', () {
     testWidgets('iconTile renders with label and image', (tester) async {
-      await pumpIconTile(tester);
+      await pumpTile(
+        tester: tester,
+        tileBuilder: (context) => ButtonStyles.iconTile(
+          context: context,
+          index: 0,
+          getPage: mockPage,
+          label: testLabel,
+          assetPath: testAsset,
+        ),
+      );
 
       expect(find.text(testLabel), findsOneWidget);
       expect(find.byType(Image), findsOneWidget);
     });
 
-    testWidgets('tileContent navigates to correct page on tap', (tester) async {
+    testWidgets('wideIconTile renders with label and image', (tester) async {
+      await pumpTile(
+        tester: tester,
+        tileBuilder: (context) => ButtonStyles.wideIconTile(
+          context: context,
+          index: 0,
+          getPage: mockPage,
+          label: testLabel,
+          assetPath: testAsset,
+        ),
+      );
+
+      expect(find.text(testLabel), findsOneWidget);
+      expect(find.byType(Image), findsOneWidget);
+    });
+
+    testWidgets('tileContent renders and navigates on tap', (tester) async {
       await tester.pumpWidget(MaterialApp(
         home: Builder(
           builder: (context) => ButtonStyles.tileContent(
@@ -64,7 +93,6 @@ void main() {
       expect(find.text('Page 2'), findsOneWidget);
     });
 
-
     testWidgets('buildTileButton renders and navigates on tap', (tester) async {
       await tester.pumpWidget(MaterialApp(
         home: Builder(
@@ -78,92 +106,34 @@ void main() {
 
       expect(find.text('Page 1'), findsOneWidget);
     });
+  });
 
+  group('ButtonStyles Layout Logic', () {
     testWidgets('positioningConditions renders label on the left', (tester) async {
-      await tester.pumpWidget(createTestWidget(
-        ButtonStyles.positioningConditions(
-          'left',
-          true,
-          const Text('Label'),
-          Image.asset(testAsset),
-        ),
+      await tester.pumpWidget(wrapInMaterial(
+        buildPositionedTile(position: 'left', showLabel: true, label: 'Left Label'),
       ));
 
-      expect(find.text('Label'), findsOneWidget);
+      expect(find.text('Left Label'), findsOneWidget);
       expect(find.byType(Image), findsOneWidget);
     });
 
     testWidgets('positioningConditions defaults to right on invalid position', (tester) async {
-      await tester.pumpWidget(createTestWidget(
-        ButtonStyles.positioningConditions(
-          'invalid',
-          true,
-          const Text('Fallback Label'),
-          Image.asset(testAsset),
-        ),
+      await tester.pumpWidget(wrapInMaterial(
+        buildPositionedTile(position: 'invalid', showLabel: true, label: 'Fallback Label'),
       ));
 
       expect(find.text('Fallback Label'), findsOneWidget);
       expect(find.byType(Image), findsOneWidget);
     });
 
-    testWidgets('tileContent renders correctly', (tester) async {
-      await tester.pumpWidget(MaterialApp(
-        home: Builder(
-          builder: (context) => ButtonStyles.tileContent(
-            context: context,
-            index: 0,
-            getPage: mockPage,
-            label: testLabel,
-            assetPath: testAsset,
-          ),
-        ),
-      ));
-
-      expect(find.text(testLabel), findsOneWidget);
-      expect(find.byType(Image), findsOneWidget);
-    });
-
-    testWidgets('wideIconTile renders with correct layout', (tester) async {
-      await tester.pumpWidget(MaterialApp(
-        home: Scaffold(
-          body: Builder(
-            builder: (context) => StaggeredGrid.count(
-              crossAxisCount: 4,
-              children: [
-                ButtonStyles.wideIconTile(
-                  context: context,
-                  index: 0,
-                  getPage: mockPage,
-                  label: testLabel,
-                  assetPath: testAsset,
-                ),
-              ],
-            ),
-          ),
-        ),
-      ));
-
-      expect(find.text(testLabel), findsOneWidget);
-      expect(find.byType(Image), findsOneWidget);
-    });
-
-  });
-
-  group('Edge & Optional Tests', (){
     testWidgets('positioningConditions hides label when showLabel is false', (tester) async {
-      await tester.pumpWidget(createTestWidget(
-        ButtonStyles.positioningConditions(
-          'left',
-          false,
-          const Text('Hidden Label'),
-          Image.asset(testAsset),
-        ),
+      await tester.pumpWidget(wrapInMaterial(
+        buildPositionedTile(position: 'left', showLabel: false, label: 'Hidden Label'),
       ));
 
       expect(find.text('Hidden Label'), findsNothing);
       expect(find.byType(Image), findsOneWidget);
     });
-
   });
 }
