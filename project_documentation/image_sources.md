@@ -14,6 +14,9 @@ All photos and icons used in this Flutter app are copyright-free or used under f
 - **assets/upcycle/repurpose.png**: [Original Source](https://www.flaticon.com/free-icon/recycle-bottle_4229097)
 - **assets/upcycle/utility.png**: [Original Source](https://www.flaticon.com/free-icon/drill_2670523)
 - **assets/home/bin_icon.png**: [Original Source](https://www.flaticon.com/free-icon/recycle-bin_2514438)
+- **assets/home/sustainability.png**: [Original Source](https://www.flaticon.com/free-icon/planet-earth_1598431)
+- **assets/home/sprout.png**: [Original Source](https://www.flaticon.com/free-icon/epidemiology_9819536?term=community&page=1&position=43&origin=search&related_id=9819536)
+- **assets/home/news.png**: [Original Source](https://www.flaticon.com/free-icon/newspaper_9453185?term=news&related_id=9453185)
 - **assets/home/map_screenshot.png**: Screenshot from local emulator
 
 ## Image URLs

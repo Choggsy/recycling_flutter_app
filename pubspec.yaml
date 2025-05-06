@@ -66,6 +66,9 @@ flutter:
   assets:
     - assets/home/map_screenshot.png
     - assets/home/bin_icon.png
+    - assets/home/sustainability.png
+    - assets/home/sprout.png
+    - assets/home/news.png
     - assets/navigation/home.png
     - assets/navigation/guidelines.png
     - assets/navigation/reuse.png
