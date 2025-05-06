@@ -54,10 +54,9 @@ class GuidelinesPage extends StatelessWidget {
         child: Column(
           children: [
             Space.medium.box,
-            // Logo guide button
             SizedBox(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height / 10,
+              height: MediaQuery.of(context).size.height / 5,
               child: LogoButton(
                 label: 'Logo Guide',
                 index: 9,

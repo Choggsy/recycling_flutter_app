@@ -21,7 +21,7 @@ class UpcyclePage extends StatefulWidget {
 }
 
 class _UpcyclePageState extends State<UpcyclePage> {
-  String selectedCategory = 'all'; // Default to all tutorials
+  String selectedCategory = 'all';
 
   @override
   Widget build(final BuildContext context) {
@@ -34,10 +34,7 @@ class _UpcyclePageState extends State<UpcyclePage> {
             Space.medium.box,
             _buildCategoryButtons(),
             Space.medium.box,
-            Divider(
-              thickness: 4,
-              color: AppColors.darkRedBrown
-            ),
+            Divider(thickness: 4, color: AppColors.darkRedBrown),
             Space.medium.box,
             buildFutureBuilder(),
             Space.medium.box,
@@ -71,7 +68,12 @@ class _UpcyclePageState extends State<UpcyclePage> {
     );
   }
 
-  Widget _categoryButton(final String label,final String category,final double screenWidth,final double restrictedWidth) {
+  Widget _categoryButton(
+      final String label,
+      final String category,
+      final double screenWidth,
+      final double restrictedWidth,
+      ) {
     return Column(
       children: [
         SizedBox(
@@ -82,7 +84,7 @@ class _UpcyclePageState extends State<UpcyclePage> {
             iconSize: ScreenConfig.getIconSize(screenWidth),
             onPressed: () {
               setState(() {
-                selectedCategory = category; // Update category when clicked
+                selectedCategory = category;
               });
             },
           ),
@@ -94,7 +96,7 @@ class _UpcyclePageState extends State<UpcyclePage> {
 
   FutureBuilder<List<MapEntry<String, int>>> buildFutureBuilder() {
     return FutureBuilder<List<MapEntry<String, int>>>(
-      future: UpcyclingService.loadTutorialTitlesByCategory(selectedCategory), // Filter by selected category
+      future: UpcyclingService.loadTutorialImagesByCategory(selectedCategory),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return _buildLoading();
@@ -103,10 +105,23 @@ class _UpcyclePageState extends State<UpcyclePage> {
         } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
           return _buildEmpty();
         } else {
-          return MosaicButtons.buildMosaicGrid(
-            context,
-            snapshot.data!,
-                (index) => TutorialPage(tutorialTitle: snapshot.data![index].key),
+          final entries = snapshot.data!;
+          return FutureBuilder<List<Map<String, dynamic>>>(
+            future: UpcyclingService.loadAllTutorials(),
+            builder: (context, tutorialSnapshot) {
+              if (tutorialSnapshot.connectionState == ConnectionState.waiting) {
+                return _buildLoading();
+              } else if (tutorialSnapshot.hasError || !tutorialSnapshot.hasData) {
+                return _buildError();
+              }
+
+              final tutorials = tutorialSnapshot.data!;
+              return MosaicButtons.buildMosaicGrid(
+                context,
+                entries,
+                    (index) => TutorialPage(tutorialTitle: tutorials[index]['title']),
+              );
+            },
           );
         }
       },

@@ -6,6 +6,7 @@ import 'package:recycling_flutter_app/view/homepage/map_page.dart';
 import 'package:recycling_flutter_app/view/homepage/subpages/bin_collection_page.dart';
 import 'package:recycling_flutter_app/view/homepage/subpages/news_page.dart';
 import 'package:recycling_flutter_app/view/homepage/subpages/sustainable_page.dart';
+
 import '../../component/fact_highlight_module.dart';
 import '../../component/logo_button.dart';
 import '../../helper/fact_parser.dart';
@@ -16,7 +17,6 @@ import '../../model/fact.dart';
 import '../../properties/app_theme.dart';
 import '../../properties/button_style.dart';
 import '../../properties/device_view_vector.dart';
-import '../guideline/logo/recycling_logo_page.dart';
 import 'subpages/involvement_page.dart';
 
 typedef GetPageCallback = Widget Function(int index);
@@ -49,7 +49,7 @@ class HomePage extends StatelessWidget {
                   Space.small.box,
                   SizedBox(
                     width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.height / 10,
+                    height: MediaQuery.of(context).size.height / 5,
                     child: LogoButton(
                       label: 'Logo Guide',
                       index: 9,
