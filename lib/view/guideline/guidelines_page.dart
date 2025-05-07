@@ -59,7 +59,7 @@ class GuidelinesPage extends StatelessWidget {
               height: MediaQuery.of(context).size.height / 5,
               child: LogoButton(
                 label: 'Logo Guide',
-                index: 9,
+                index: 10,
                 getPage: (context) => getMaterialPage(9),
               ),
             ),

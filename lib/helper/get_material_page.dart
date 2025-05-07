@@ -11,20 +11,22 @@ Widget getMaterialPage(int index) {
     case 1:
       return MaterialPage(materialTitle: 'Glass');
     case 2:
-      return MaterialPage(materialTitle: 'Plastic');
+      return MaterialPage(materialTitle: 'Aluminium');
     case 3:
-      return MaterialPage(materialTitle: 'Electronics');
+      return MaterialPage(materialTitle: 'Plastic');
     case 4:
-      return MaterialPage(materialTitle: 'Food Waste');
+      return MaterialPage(materialTitle: 'Electronics');
     case 5:
-      return MaterialPage(materialTitle: 'Metal');
+      return MaterialPage(materialTitle: 'Food Waste');
     case 6:
-      return MaterialPage(materialTitle: 'Textiles');
+      return MaterialPage(materialTitle: 'Metal');
     case 7:
-      return MaterialPage(materialTitle: 'Wood');
+      return MaterialPage(materialTitle: 'Textiles');
     case 8:
-      return MaterialPage(materialTitle: 'Flexible Plastics');
+      return MaterialPage(materialTitle: 'Wood');
     case 9:
+      return MaterialPage(materialTitle: 'Flexible Plastics');
+    case 10:
       return RecyclableLogoPage();
     default:
       return GuidelinesPage();

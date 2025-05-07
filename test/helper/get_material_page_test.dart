@@ -23,47 +23,53 @@ void main() {
     expect((page as recycling_app.MaterialPage).materialTitle, 'Plastic');
   });
 
-  test('getMaterialPage returns MaterialPage for index 3 with title Electronics', () {
+  test('getMaterialPage returns MaterialPage for index 3 with title Aluminium', () {
     final page = getMaterialPage(3);
+    expect(page, isA<recycling_app.MaterialPage>());
+    expect((page as recycling_app.MaterialPage).materialTitle, 'Aluminium');
+  });
+
+  test('getMaterialPage returns MaterialPage for index 4 with title Electronics', () {
+    final page = getMaterialPage(4);
     expect(page, isA<recycling_app.MaterialPage>());
     expect((page as recycling_app.MaterialPage).materialTitle, 'Electronics');
   });
 
-  test('getMaterialPage returns MaterialPage for index 4 with title Food Waste', () {
-    final page = getMaterialPage(4);
+  test('getMaterialPage returns MaterialPage for index 5 with title Food Waste', () {
+    final page = getMaterialPage(5);
     expect(page, isA<recycling_app.MaterialPage>());
     expect((page as recycling_app.MaterialPage).materialTitle, 'Food Waste');
   });
 
-  test('getMaterialPage returns MaterialPage for index 5 with title Metal', () {
-    final page = getMaterialPage(5);
+  test('getMaterialPage returns MaterialPage for index 6 with title Metal', () {
+    final page = getMaterialPage(6);
     expect(page, isA<recycling_app.MaterialPage>());
     expect((page as recycling_app.MaterialPage).materialTitle, 'Metal');
   });
 
-  test('getMaterialPage returns MaterialPage for index 6 with title Textiles', () {
-    final page = getMaterialPage(6);
+  test('getMaterialPage returns MaterialPage for index 7 with title Textiles', () {
+    final page = getMaterialPage(7);
     expect(page, isA<recycling_app.MaterialPage>());
     expect((page as recycling_app.MaterialPage).materialTitle, 'Textiles');
   });
 
-  test('getMaterialPage returns MaterialPage for index 7 with title Wood', () {
-    final page = getMaterialPage(7);
+  test('getMaterialPage returns MaterialPage for index 8 with title Wood', () {
+    final page = getMaterialPage(8);
     expect(page, isA<recycling_app.MaterialPage>());
     expect((page as recycling_app.MaterialPage).materialTitle, 'Wood');
   });
 
-  test('getMaterialPage returns MaterialPage for index 8 with title Flexible Plastics', () {
-    final page = getMaterialPage(8);
+  test('getMaterialPage returns MaterialPage for index 9 with title Flexible Plastics', () {
+    final page = getMaterialPage(9);
     expect(page, isA<recycling_app.MaterialPage>());
     expect((page as recycling_app.MaterialPage).materialTitle, 'Flexible Plastics');
   });
 
-  test('getMaterialPage returns RecyclableLogoPage for index 9', () {
-    expect(getMaterialPage(9), isA<RecyclableLogoPage>());
+  test('getMaterialPage returns RecyclableLogoPage for index 10', () {
+    expect(getMaterialPage(10), isA<RecyclableLogoPage>());
   });
 
-  for (var index in [10, 999, -1]) {
+  for (var index in [11, 999, -1]) {
     test('getMaterialPage returns GuidelinesPage for outOfBounds index $index', () {
       expect(getMaterialPage(index), isA<GuidelinesPage>());
     });

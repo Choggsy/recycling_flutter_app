@@ -1,21 +1,26 @@
 [
   {
     "ID": 1,
+    "Title": "Have a Pizza that Recycling Pie \uD83C\uDF55",
+    "Description": "Tear off greasy sections of your pizza box ✂\uFE0F These clean portions CAN be recycled"
+  },
+  {
+    "ID": 2,
     "Title": "Don't recycle anything smaller than a tennis ball",
     "Description": "Small items can jam the recycling machinery, causing delays and potential damage."
   },
   {
-    "ID": 2,
+    "ID": 3,
     "Title": "Rinse out containers before recycling",
     "Description": "Food residue can contaminate other recyclables, making them unsuitable for recycling."
   },
   {
-    "ID": 3,
+    "ID": 4,
     "Title": "Do not recycle plastic bags",
     "Description": "Plastic bags can get tangled in the machinery, causing operational issues."
   },
   {
-    "ID": 4,
+    "ID": 5,
     "Title": "Flatten cardboard boxes",
     "Description": "Flattening boxes saves space and makes the recycling process more efficient."
   }

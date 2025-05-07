@@ -2,55 +2,61 @@
   {
     "title": "Cardboard",
     "description": "Cardboard is a recyclable material used for packaging.",
-    "image": "assets/logo/placeholder.jpg",
+    "image": "assets/materials/cardboard.png",
     "contaminators": ["Food residue", "Plastic tape"]
   },
   {
     "title": "Glass",
     "description": "Glass can be recycled endlessly without loss in quality.",
-    "image": "assets/logo/placeholder.jpg",
+    "image": "assets/materials/glass.png",
     "contaminators": ["Ceramics", "Pyrex"]
+  },
+  {
+    "title": "Aluminium",
+    "description": "Aluminium can be recycled endlessly without loss in quality.",
+    "image": "assets/materials/cans.png",
+    "contaminators": ["tbc"]
   },
   {
     "title": "Plastic",
     "description": "Plastic is a versatile material that can be recycled into various products.",
-    "image": "assets/logo/placeholder.jpg",
+    "image": "assets/materials/hard_plastic.png",
     "contaminators": ["Grease", "Food residue"]
   },
   {
     "title": "Electronics",
     "description": "Electronics contain valuable materials that can be recycled.",
-    "image": "assets/logo/placeholder.jpg",
+    "image": "assets/materials/computer.png",
     "contaminators": ["Batteries", "Hazardous materials"]
   },
   {
     "title": "Food Waste",
     "description": "Food waste can be composted to create nutrient-rich soil.",
-    "image": "assets/logo/placeholder.jpg",
+    "image": "assets/materials/food.png",
     "contaminators": ["Plastic packaging", "Non-organic waste"]
   },
   {
     "title": "Metal",
     "description": "Metal can be recycled indefinitely without losing its properties.",
-    "image": "assets/logo/placeholder.jpg",
+    "image": "assets/materials/metal.png",
     "contaminators": ["Paint", "Chemical residues"]
   },
   {
     "title": "Textiles",
     "description": "Textiles can be recycled into new fabrics or other products.",
-    "image": "assets/logo/placeholder.jpg",
+    "image": "assets/materials/textile.png",
     "contaminators": ["Non-textile materials", "Stains"]
   },
   {
     "title": "Wood",
     "description": "Wood can be recycled into mulch, compost, or new wood products.",
-    "image": "assets/logo/placeholder.jpg",
+    "image": "assets/materials/wood.png",
     "contaminators": ["Paint", "Chemical treatments"]
   },
   {
     "title": "Flexible Plastics",
     "description": "Flexible plastics can be recycled into new plastic products.",
-    "image": "assets/logo/placeholder.jpg",
+    "image": "assets/materials/plastic_bag.png",
     "contaminators": ["Food residue", "Non-plastic materials"]
   }
 ]

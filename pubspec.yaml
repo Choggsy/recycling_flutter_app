@@ -64,6 +64,16 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
+    - assets/materials/cans.png
+    - assets/materials/cardboard.png
+    - assets/materials/computer.png
+    - assets/materials/food.png
+    - assets/materials/glass.png
+    - assets/materials/hard_plastic.png
+    - assets/materials/metal.png
+    - assets/materials/plastic_bag.png
+    - assets/materials/textile.png
+    - assets/materials/wood.png
     - assets/home/map_screenshot.png
     - assets/home/bin_icon.png
     - assets/home/sustainability.png
