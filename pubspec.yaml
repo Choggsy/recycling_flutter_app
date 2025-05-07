@@ -74,6 +74,12 @@ flutter:
     - assets/materials/plastic_bag.png
     - assets/materials/textile.png
     - assets/materials/wood.png
+    - assets/upcycle/tutorials/wine.png
+    - assets/upcycle/tutorials/cd.png
+    - assets/upcycle/tutorials/shelf.png
+    - assets/upcycle/tutorials/lantern.png
+    - assets/upcycle/tutorials/garden.png
+    - assets/upcycle/tutorials/books.png
     - assets/home/map_screenshot.png
     - assets/home/bin_icon.png
     - assets/home/sustainability.png
