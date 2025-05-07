@@ -60,7 +60,7 @@ class GuidelinesPage extends StatelessWidget {
               child: LogoButton(
                 label: 'Logo Guide',
                 index: 10,
-                getPage: (context) => getMaterialPage(9),
+                getPage: (context) => getMaterialPage(10),
               ),
             ),
             Space.small.box,

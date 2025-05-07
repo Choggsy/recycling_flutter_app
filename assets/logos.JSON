@@ -8,7 +8,7 @@
     {
       "title": "Widely Recycled",
       "imageUrl": "https://www.hants.gov.uk/-/media/Images/wasteandrecycling/widelyrecycled.jpg?h=258&iar=0&w=190&hash=CFEFC41D3E17CDF76257FDD2AFCADE30",
-      "description": "TBC"
+      "description": "This symbol means that the packaging is collected for recycling by 75% or more of local authorities in the UK. It’s commonly found on items like plastic bottles, food tins, and cardboard, indicating that these materials are widely accepted in kerbside recycling collections"
     },
     {
       "title": "Recycle | Rinse",
@@ -38,7 +38,7 @@
     {
       "title": "Check Locally",
       "imageUrl": "https://www.hants.gov.uk/-/media/Images/wasteandrecycling/checklocally.jpg?h=258&iar=0&w=190&hash=24112A5BCF61CEC7331F74DE71C3CEF9",
-      "description": "TBC"
+      "description": "This label indicates that the item may be recyclable, but not in all areas. You should check with your local council to see if they accept this material. It’s often used for packaging types that some facilities can process, but others cannot—like certain plastics or composite materials "
     }
   ],
   "sustainable": [
@@ -102,7 +102,7 @@
     {
       "title": "Triman",
       "imageUrl": "https://www.recycle-more.co.uk/images/triman-n3069n.png",
-      "description": "TBC"
+      "description": "The Triman logo is a French recycling symbol that indicates the product is subject to sorting rules and should be disposed of in a recycling bin if accepted. It’s mandatory in France for recyclable products and packaging, but it doesn’t necessarily apply to UK recycling systems."
     }
   ]
 }
