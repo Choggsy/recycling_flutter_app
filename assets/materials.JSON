@@ -3,60 +3,139 @@
     "title": "Cardboard",
     "description": "Cardboard is a recyclable material used for packaging.",
     "image": "assets/materials/cardboard.png",
-    "contaminators": ["Food residue", "Plastic tape"]
+    "contaminators": [
+      "Food residue",
+      "Plastic tape"
+    ],
+    "instructions": [
+      "Remove any plastic tape",
+      "Flatten the cardboard",
+      "Keep it dry"
+    ]
   },
   {
     "title": "Glass",
     "description": "Glass can be recycled endlessly without loss in quality.",
     "image": "assets/materials/glass.png",
-    "contaminators": ["Ceramics", "Pyrex"]
+    "contaminators": [
+      "Ceramics",
+      "Pyrex"
+    ],
+    "instructions": [
+      "Rinse the glass to remove any residue",
+      "Avoid breaking the glass",
+      "Do not mix with ceramics"
+    ]
   },
   {
     "title": "Aluminium",
     "description": "Aluminium can be recycled endlessly without loss in quality.",
     "image": "assets/materials/cans.png",
-    "contaminators": ["tbc"]
+    "contaminators": [
+      "tbc"
+    ],
+    "instructions": [
+      "Rinse the aluminium to remove any residue",
+      "Crush cans to save space",
+      "Do not mix with other metals"
+    ]
   },
   {
     "title": "Plastic",
     "description": "Plastic is a versatile material that can be recycled into various products.",
     "image": "assets/materials/hard_plastic.png",
-    "contaminators": ["Grease", "Food residue"]
+    "contaminators": [
+      "Grease",
+      "Food residue"
+    ],
+    "instructions": [
+      "Rinse the plastic to remove any residue",
+      "Remove any labels or stickers",
+      "Do not mix with non-recyclable plastics"
+    ]
   },
   {
     "title": "Electronics",
     "description": "Electronics contain valuable materials that can be recycled.",
     "image": "assets/materials/computer.png",
-    "contaminators": ["Batteries", "Hazardous materials"]
+    "contaminators": [
+      "Batteries",
+      "Hazardous materials"
+    ],
+    "instructions": [
+      "Remove batteries before recycling",
+      "Do not dismantle electronics yourself",
+      "Take to a certified e-waste recycler"
+    ]
   },
   {
     "title": "Food Waste",
     "description": "Food waste can be composted to create nutrient-rich soil.",
     "image": "assets/materials/food.png",
-    "contaminators": ["Plastic packaging", "Non-organic waste"]
+    "contaminators": [
+      "Plastic packaging",
+      "Non-organic waste"
+    ],
+    "instructions": [
+      "Separate food waste from packaging",
+      "Avoid adding non-organic waste",
+      "Compost in a designated bin"
+    ]
   },
   {
     "title": "Metal",
     "description": "Metal can be recycled indefinitely without losing its properties.",
     "image": "assets/materials/metal.png",
-    "contaminators": ["Paint", "Chemical residues"]
+    "contaminators": [
+      "Paint",
+      "Chemical residues"
+    ],
+    "instructions": [
+      "Remove any paint or chemical residues",
+      "Separate different types of metal",
+      "Do not mix with non-metal materials"
+    ]
   },
   {
     "title": "Textiles",
     "description": "Textiles can be recycled into new fabrics or other products.",
     "image": "assets/materials/textile.png",
-    "contaminators": ["Non-textile materials", "Stains"]
+    "contaminators": [
+      "Non-textile materials",
+      "Stains"
+    ],
+    "instructions": [
+      "Remove non-textile materials",
+      "Ensure textiles are clean and dry",
+      "Donate wearable textiles to charity"
+    ]
   },
   {
     "title": "Wood",
     "description": "Wood can be recycled into mulch, compost, or new wood products.",
     "image": "assets/materials/wood.png",
-    "contaminators": ["Paint", "Chemical treatments"]
+    "contaminators": [
+      "Paint",
+      "Chemical treatments"
+    ],
+    "instructions": [
+      "Remove any paint or chemical treatments",
+      "Cut wood into smaller pieces",
+      "Do not mix with treated wood"
+    ]
   },
   {
     "title": "Flexible Plastics",
     "description": "Flexible plastics can be recycled into new plastic products.",
     "image": "assets/materials/plastic_bag.png",
-    "contaminators": ["Food residue", "Non-plastic materials"]
+    "contaminators": [
+      "Food residue",
+      "Non-plastic materials"
+    ],
+    "instructions": [
+      "Rinse to remove any residue",
+      "Do not mix with non-plastic materials",
+      "Recycle at designated collection points"
+    ]
   }
 ]

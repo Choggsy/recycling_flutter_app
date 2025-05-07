@@ -1,5 +1,6 @@
-import 'package:flutter/cupertino.dart' show AsyncSnapshot, Center, ConnectionState, FutureBuilder, StatelessWidget, Text, Widget;
+import 'package:flutter/cupertino.dart' show AsyncSnapshot, Center, Column, ConnectionState, FutureBuilder, Padding, SizedBox, StatelessWidget, Text, Widget;
 import 'package:flutter/material.dart' show AppBar, BuildContext, CircularProgressIndicator, ListView, Scaffold;
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'dart:convert';
 import '../../../component/material_card.dart';
@@ -34,6 +35,8 @@ class MaterialPage extends StatelessWidget {
   Widget _buildEmpty() => const Center(child: Text('No material available'));
 
   Widget _buildMaterialList(final Map<String, dynamic> material) {
+    final List<String> instructions = List<String>.from(material['instructions'] ?? []);
+
     return ListView(
       children: [
         MaterialCard(
@@ -42,6 +45,24 @@ class MaterialPage extends StatelessWidget {
           description: material['description'],
           contaminators: List<String>.from(material['contaminators']),
         ),
+        if (instructions.isNotEmpty)
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'Instructions',
+                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 8),
+                ...instructions.map((step) => Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 4.0),
+                  child: Text('• $step'),
+                )),
+              ],
+            ),
+          ),
       ],
     );
   }
