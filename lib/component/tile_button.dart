@@ -32,13 +32,14 @@ class TileButton extends StatelessWidget {
             MaterialPageRoute(builder: (context) => getPage(index)),
           );
         },
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(8),
           child: Image.asset(
             imagePath,
-            fit: BoxFit.contain,
+            fit: BoxFit.cover,
           ),
         ),
+
       ),
     );
   }
