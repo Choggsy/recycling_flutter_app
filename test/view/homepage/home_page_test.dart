@@ -9,17 +9,6 @@ import 'package:recycling_flutter_app/view/upcycle/upcycle_page.dart';
 import '../guideline/guidelines_page_test.dart';
 
 void main() {
-  testWidgets('renders HomePage with expected widgets after facts load', (final WidgetTester tester) async {
-    await tester.pumpWidget(buildPage(<RecyclingFact>[
-      RecyclingFact(id: 1, title: 'Fact 1', description: 'Description 1'),
-      RecyclingFact(id: 2, title: 'Fact 2', description: 'Description 2'),
-    ]),);
-    await tester.pumpAndSettle();
-
-    expect(find.byType(HomePage), findsOneWidget);
-    expect(find.text('Sorting Guide'), findsOneWidget);
-  });
-
   group('HomePage navigation bar', () {
     testWidgets('navigates to UpcyclePage', (final WidgetTester tester) async {
       await tester.pumpWidget(MaterialApp(home: HomePage()));

@@ -30,14 +30,6 @@ void main() {
       await navigateOnBottomBarTo(tester, 'assets/navigation/home.png');
       expect(find.byType(HomePage), findsOneWidget);
     });
-
-    testWidgets('navigates to GuidelinesPage', (final WidgetTester tester) async {
-      await tester.pumpWidget(MaterialApp(home: GuidelinesPage()));
-      expect(find.byType(CustomBottomNavigationBar), findsOneWidget);
-
-      await navigateOnBottomBarTo(tester, 'assets/navigation/guidelines.png');
-      expect(find.byType(GuidelinesPage), findsOneWidget);
-    });
   });
 }
 

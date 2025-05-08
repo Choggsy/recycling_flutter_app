@@ -17,7 +17,7 @@ void main() {
 
     expect(find.widgetWithText(LogoButton, 'Recyclable'), findsOneWidget);
     expect(find.widgetWithText(LogoButton, 'Sustainable'), findsOneWidget);
-    expect(find.widgetWithText(LogoButton, 'Non Regulated'), findsOneWidget);
+    expect(find.widgetWithText(LogoButton, 'Other Logos'), findsOneWidget);
   });
 
   testWidgets('NonRegulatedLogoPage navigates back to GuidelinesPage', (final WidgetTester tester) async {

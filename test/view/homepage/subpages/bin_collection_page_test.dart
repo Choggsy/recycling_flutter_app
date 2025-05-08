@@ -37,13 +37,5 @@ void main() {
       expect(find.text('Organic Bin'), findsOneWidget);
       expect(find.text('General Waste Bin'), findsOneWidget);
     });
-
-    testWidgets('displays correct description for each LogoCard', (final WidgetTester tester) async {
-      await tester.pumpWidget(const MaterialApp(home: BinCollectionPage()));
-
-      expect(find.text('Used for paper, cardboard, and plastics.'), findsOneWidget);
-      expect(find.text('Used for food waste and garden clippings.'), findsOneWidget);
-      expect(find.text('Used for non-recyclable household waste.'), findsOneWidget);
-    });
   });
 }

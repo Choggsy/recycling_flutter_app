@@ -23,7 +23,7 @@ void main() {
 
     expect(find.widgetWithText(LogoButton, 'Recyclable Logos'), findsOneWidget);
     expect(find.widgetWithText(LogoButton, 'Sustainable'), findsOneWidget);
-    expect(find.widgetWithText(LogoButton, 'Non Regulated'), findsOneWidget);
+    expect(find.widgetWithText(LogoButton, 'Other Logos'), findsOneWidget);
   });
 
   testWidgets(

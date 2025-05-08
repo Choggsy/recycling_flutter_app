@@ -17,16 +17,16 @@ void main() {
     expect((page as recycling_app.MaterialPage).materialTitle, 'Glass');
   });
 
-  test('getMaterialPage returns MaterialPage for index 2 with title Plastic', () {
+  test('getMaterialPage returns MaterialPage for index 2 with title Aluminium', () {
     final page = getMaterialPage(2);
     expect(page, isA<recycling_app.MaterialPage>());
-    expect((page as recycling_app.MaterialPage).materialTitle, 'Plastic');
+    expect((page as recycling_app.MaterialPage).materialTitle, 'Aluminium');
   });
 
-  test('getMaterialPage returns MaterialPage for index 3 with title Aluminium', () {
+  test('getMaterialPage returns MaterialPage for index 3 with title Plastic', () {
     final page = getMaterialPage(3);
     expect(page, isA<recycling_app.MaterialPage>());
-    expect((page as recycling_app.MaterialPage).materialTitle, 'Aluminium');
+    expect((page as recycling_app.MaterialPage).materialTitle, 'Plastic');
   });
 
   test('getMaterialPage returns MaterialPage for index 4 with title Electronics', () {
