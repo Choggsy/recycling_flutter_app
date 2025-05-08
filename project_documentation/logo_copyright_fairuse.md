@@ -13,6 +13,12 @@ These logos should not be used under the following conditions:
 - The paper is intended for commercial publication or the logos are to be used in a commercial product without permission.
 - The logos are modified or repurposed for branding or interface purposes.
 
+## Fair Use
+The use of recycling logos within the solution prototype of this research paper is justified under 
+educational and non-commercial fair use. As the project is solely intended for academic purposes,
+is not being published commercially, and the logos are presented unaltered with appropriate
+attribution, their inclusion supports the research aims without infringing on intellectual property
+rights.
 
 # Recycling Logos and Their Copyright Status
 
