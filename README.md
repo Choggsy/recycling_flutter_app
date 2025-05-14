@@ -3,12 +3,12 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-<h3 align="center">Reducing Wishcycling while Recycling with a Mobile Application</h3>
+  <h3 align="center">Reducing Wishcycling while Recycling with a Mobile Application</h3>
 
   <p align="center">
-    project_description
+    A mobile application designed to reduce wishcycling by guiding users through proper recycling practices.
     <br />
-    <a href="https://github.com/Choggsy/recycling_flutter_app/tree/master/project_documentation"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Choggsy/recycling_flutter_app/tree/master/project_documentation"><strong>Explore the Docs »</strong></a>
     <br />
     <br />
     <a href="https://github.com/Choggsy/recycling_flutter_app/releases">View Latest Release</a>
@@ -17,42 +17,50 @@
   </p>
 </div>
 
-## About The Project
+---
 
-[![Watch the video](https://img.youtube.com/vi/HvwM1pO-OYw/0.jpg)](https://youtube.com/shorts/HvwM1pO-OYw?feature=share)
+## 📱 Prototype in Action
 
-The finished prototype is demonstrated on an android phone in the provided video. This showcases a real demonstration of the applications preformance without the addition of emulator errors.
+Watch a short clip from the evaluation workshop demonstrating the application running on an Android device:
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<div align="center">
+  <a href="https://youtube.com/shorts/HvwM1pO-OYw?feature=share" target="_blank">
+    <img src="https://img.youtube.com/vi/HvwM1pO-OYw/0.jpg" alt="Watch the video" style="width:60%; max-width:400px;">
+  </a>
+</div>
 
+---
 
-<!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To get a local copy of the project up and running, follow these steps. This guide assumes you're setting up the Flutter environment for Android development.
 
 ### Prerequisites
 
+Make sure the following tools are installed on your system:
 
+- **Flutter SDK**  
+  Install Flutter and add it to your system path.
 
-### Installation
+- **Android Studio**  
+  Includes Android SDK, emulator, and tools for building Android apps.  
+  Download Android Studio
 
-1. todo
-   ```
+- **Git**  
+  Required for cloning the repository.  
+  Install Git
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+- **Dart & Flutter Plugins**  
+  Ensure these are enabled in your IDE (Android Studio or VS Code).
 
+- **Device or Emulator**  
+  Use a physical Android device or set up an emulator via Android Studio.
 
+To verify your setup, run:
 
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+```bash
+flutter doctor
+```
 
 
 <!-- ROADMAP -->
