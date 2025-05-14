@@ -8,10 +8,9 @@ import 'package:recycling_flutter_app/view/guideline/material/material_page.dart
     show MaterialPage;
 
 void main() {
-  TestWidgetsFlutterBinding.ensureInitialized(); // Ensure that the binding is initialized
+  TestWidgetsFlutterBinding.ensureInitialized();
 
   setUp(() {
-    // Mock the rootBundle.loadString to return the mock JSON
     ServicesBinding.instance.defaultBinaryMessenger.setMockMessageHandler(
       'flutter/assets',
       (message) async {
@@ -31,7 +30,6 @@ void main() {
   });
 
   tearDown(() {
-    // Reset the mock handler after each test
     ServicesBinding.instance.defaultBinaryMessenger.setMockMessageHandler(
       'flutter/assets',
       null,
@@ -47,7 +45,6 @@ void main() {
       );
     }(tester, 'Plastic');
 
-    // Verify CircularProgressIndicator is displayed
     expect(find.byType(CircularProgressIndicator), findsOneWidget);
   });
 }
