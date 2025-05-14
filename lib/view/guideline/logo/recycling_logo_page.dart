@@ -10,7 +10,9 @@ import '../../../helper/get_logo_page.dart' show getLogoPage;
 import '../../../properties/app_theme.dart' show AppColors;
 
 class RecyclableLogoPage extends StatefulWidget {
-  const RecyclableLogoPage({super.key});
+  final Future<Map<String, dynamic>> Function()? loader;
+
+  const RecyclableLogoPage({super.key, this.loader});
 
   @override
   _RecyclableLogoPageState createState() => _RecyclableLogoPageState();
@@ -24,11 +26,10 @@ class _RecyclableLogoPageState extends State<RecyclableLogoPage> {
     return json.decode(response);
   }
 
-
   @override
   void initState() {
     super.initState();
-    logosData = loadLogos();
+    logosData = widget.loader != null ? widget.loader!() : loadLogos();
   }
 
   @override
@@ -86,11 +87,11 @@ class _RecyclableLogoPageState extends State<RecyclableLogoPage> {
                   final logos = snapshot.data!;
                   return ListView(
                     children: [
-                      ...logos['recyclable'].map((logo) => LogoCard(
+                      ...logos['recyclable'].map<Widget>((logo) => LogoCard(
                         imageUrl: logo['imageUrl'],
                         title: logo['title'],
                         description: logo['description'],
-                      )).toList(),
+                      )),
                     ],
                   );
                 }
