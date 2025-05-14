@@ -2,15 +2,17 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:recycling_flutter_app/component/logo_button.dart';
-import 'package:recycling_flutter_app/view/guideline/guidelines_page.dart';
 
+import '../../../component/logo_button.dart';
 import '../../../component/logo_card.dart';
-import '../../../helper/get_logo_page.dart' show getLogoPage;
-import '../../../properties/app_theme.dart' show AppColors;
+import '../../../helper/get_logo_page.dart';
+import '../../../properties/app_theme.dart';
+import '../guidelines_page.dart';
 
 class FairTradeEnvironmentalLogoPage extends StatefulWidget {
-  const FairTradeEnvironmentalLogoPage({super.key});
+  final Future<Map<String, dynamic>> Function()? loader;
+
+  const FairTradeEnvironmentalLogoPage({super.key, this.loader});
 
   @override
   _FairTradeEnvironmentalLogoPageState createState() =>
@@ -29,7 +31,7 @@ class _FairTradeEnvironmentalLogoPageState
   @override
   void initState() {
     super.initState();
-    logosData = loadLogos();
+    logosData = widget.loader != null ? widget.loader!() : loadLogos();
   }
 
   @override
@@ -87,11 +89,11 @@ class _FairTradeEnvironmentalLogoPageState
                   final logos = snapshot.data!;
                   return ListView(
                     children: [
-                      ...logos['sustainable'].map((logo) => LogoCard(
+                      ...logos['sustainable'].map<Widget>((logo) => LogoCard(
                         imageUrl: logo['imageUrl'],
                         title: logo['title'],
                         description: logo['description'],
-                      )).toList(),
+                      )),
                     ],
                   );
                 }
