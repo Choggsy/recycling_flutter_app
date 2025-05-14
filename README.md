@@ -62,22 +62,20 @@ To verify your setup, run:
 flutter doctor
 ```
 
-
 <!-- ROADMAP -->
 ## Release Roadmap
+- <a href="https://github.com/Choggsy/recycling_flutter_app/releases/tag/prototype">Feature V0.0.1</a>
+- <a href="https://github.com/Choggsy/recycling_flutter_app/releases/tag/prototype_diss">Feature V0.0.2</a>
+- <a href="https://github.com/Choggsy/recycling_flutter_app/releases/tag/upcycling">Feature V0.0.3</a>
+- <a href="https://github.com/Choggsy/recycling_flutter_app/releases/tag/Map1">Feature V0.0.4</a>
+- <a href="https://github.com/Choggsy/recycling_flutter_app/releases/tag/home">Feature V0.0.5</a>
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-- [ ] Nested Feature
-
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/Choggsy/recycling_flutter_app/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTACT -->
 ## Contact
-Chloe Greenstreet - [@twitter_handle](https://twitter.com/twitter_handle) - s5416604@bournemouth.ac.uk
-
+Chloe Greenstreet - s5416604@bournemouth.ac.uk
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
