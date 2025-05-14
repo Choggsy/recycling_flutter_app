@@ -8,23 +8,20 @@
   <p align="center">
     project_description
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Choggsy/recycling_flutter_app/tree/master/project_documentation"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Latest Release</a>
+    <a href="https://github.com/Choggsy/recycling_flutter_app/releases">View Latest Release</a>
     &middot;
-    <a href="https://github.com/github_username/repo_name/issues/new?labels=bug&template=bug-report---.md">View Coding Standards</a>
-    &middot;
-    <a href="https://github.com/github_username/repo_name/issues/new?labels=enhancement&template=feature-request---.md">View Copyright Citations</a>
+    <a href="https://github.com/Choggsy/recycling_flutter_app/blob/master/project_documentation/coding_standards.md">View Coding Standards</a>
   </p>
 </div>
 
-<!-- ABOUT THE PROJECT -->
 ## About The Project
-![image](https://github.com/user-attachments/assets/cd0a8901-e16f-445a-b200-049387279cbe)
-https://youtube.com/shorts/HvwM1pO-OYw?feature=share
 
-Template TODO
+[![Watch the video](https://img.youtube.com/vi/HvwM1pO-OYw/0.jpg)](https://youtube.com/shorts/HvwM1pO-OYw?feature=share)
+
+The finished prototype is demonstrated on an android phone in the provided video. This showcases a real demonstration of the applications preformance without the addition of emulator errors.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
