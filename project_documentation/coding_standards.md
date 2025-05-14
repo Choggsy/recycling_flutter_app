@@ -12,7 +12,7 @@
   var variableLocationName;
   ```
 
-- **Constants**: Use `ALL_CAPS_WITH_UNDERSCORES` for constant names
+- **Constants**: Use `LowerCamelCase` for constant names
   ```dart
   const int maxIntCount = 10;
   ```
