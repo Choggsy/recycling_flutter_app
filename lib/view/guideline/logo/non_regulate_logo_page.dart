@@ -10,7 +10,9 @@ import '../../../helper/get_logo_page.dart' show getLogoPage;
 import '../../../properties/app_theme.dart' show AppColors;
 
 class NonRegulatedLogoPage extends StatefulWidget {
-  const NonRegulatedLogoPage({super.key});
+  final Future<Map<String, dynamic>> Function()? loader;
+
+  const NonRegulatedLogoPage({super.key, this.loader});
 
   @override
   _NonRegulatedLogoPageState createState() => _NonRegulatedLogoPageState();
@@ -27,7 +29,7 @@ class _NonRegulatedLogoPageState extends State<NonRegulatedLogoPage> {
   @override
   void initState() {
     super.initState();
-    logosData = loadLogos();
+    logosData = widget.loader != null ? widget.loader!() : loadLogos();
   }
 
   @override
@@ -86,13 +88,11 @@ class _NonRegulatedLogoPageState extends State<NonRegulatedLogoPage> {
                   return ListView(
                     children: [
                       ...logos['non_regulated']
-                          .map(
-                            (logo) => LogoCard(
-                              imageUrl: logo['imageUrl'],
-                              title: logo['title'],
-                              description: logo['description'],
-                            ),
-                          )
+                          .map<Widget>((logo) => LogoCard(
+                        imageUrl: logo['imageUrl'],
+                        title: logo['title'],
+                        description: logo['description'],
+                      ))
                           .toList(),
                     ],
                   );
