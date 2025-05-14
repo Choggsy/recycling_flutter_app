@@ -69,6 +69,7 @@ flutter doctor
 - <a href="https://github.com/Choggsy/recycling_flutter_app/releases/tag/upcycling">Feature V0.0.3</a>
 - <a href="https://github.com/Choggsy/recycling_flutter_app/releases/tag/Map1">Feature V0.0.4</a>
 - <a href="https://github.com/Choggsy/recycling_flutter_app/releases/tag/home">Feature V0.0.5</a>
+- <a href="https://github.com/Choggsy/recycling_flutter_app/releases/tag/evaluation">Feature V0.1.1</a>
 
 See the [open issues](https://github.com/Choggsy/recycling_flutter_app/issues) for a full list of proposed features (and known issues).
 
