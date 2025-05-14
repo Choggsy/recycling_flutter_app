@@ -14,7 +14,7 @@
 
 - **Constants**: Use `ALL_CAPS_WITH_UNDERSCORES` for constant names
   ```dart
-  const int MAX_BOTTLE_COUNT = 10;
+  const int maxIntCount = 10;
   ```
 
 - **Functions**: Use `LowerCamelCase` for function names
